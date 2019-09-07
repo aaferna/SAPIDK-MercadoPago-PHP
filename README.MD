@@ -49,6 +49,12 @@ Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos 
 
 *Si nosotros miramos index.php y actions.php tendremos funciones basdas en formularios con __$_GET__ ya estipuladas para ejemplo.*
 
++ Acción es la referencia que tenemos que usar en la función de PHP
+
++ POST es el dato que hay o no que enviar
+
++ Condicionado es aquel elemento que hay que tener en cuenta para la utilización 
+
 | Accion | POST | Condicionado | Descripcion |
 | ------ | ----------- | ----------- | ----------- |
 | __$ipn__   |id|| Recibe la notificacion desde MercadoPago o la Consultamos |
