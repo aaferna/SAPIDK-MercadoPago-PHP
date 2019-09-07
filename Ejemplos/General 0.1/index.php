@@ -169,7 +169,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h2>Es necesario poner el token en Linea 153 de Index.php </h2>
+			<h2>Es necesario poner el token en credentials.php </h2>
 			<form action="" method="GET" >
 				<h3>Consutla de IPN</h3>
 				<input type="hidden" name="action" value="ipn">
