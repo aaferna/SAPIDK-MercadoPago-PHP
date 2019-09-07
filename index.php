@@ -175,7 +175,7 @@
 				<button class="btn btn-sm btn-success" type="submite">Enviar</button>
 			</form>
 			<form action="" method="GET">
-				<h3>Consutla de QR's</h3>
+				<h3>Consulta de QR's</h3>
 				<input type="hidden" name="action" value="qrlistado">
 				<br>
 				<button class="btn btn-sm btn-success" type="submite">Enviar</button>
