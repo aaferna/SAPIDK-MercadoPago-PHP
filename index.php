@@ -164,81 +164,76 @@
 ?>
 
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-<form action="" method="GET" >
-	<h3>Consutla de IPN</h3>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<form action="" method="GET" >
+				<h3>Consutla de IPN</h3>
+				<input type="hidden" name="action" value="ipn">
+				<input class="form-control"  type="text" name="id" placeholder="ID DE VENTA">
+				<br>
+				<button class="btn btn-sm btn-success" type="submite">Enviar</button>
+			</form>
+			<form action="" method="GET">
+				<h3>Consutla de QR's</h3>
+				<input type="hidden" name="action" value="qrlistado">
+				<br>
+				<button class="btn btn-sm btn-success" type="submite">Enviar</button>
+			</form>
+			<form action="" method="GET">
+				<h3>Creacion de QR's</h3>
+				<input class="form-control"  type="hidden" name="action" value="qrnuevo">
+				<input class="form-control"  type="text" name="nombreqr" value="name">
+				<input class="form-control"  type="text" name="fixed_amount" value="true">
+				<input class="form-control"  type="text" name="external_id" value="<?php echo mt_rand(3,20000); ?>">
+				<br>
+				<button class="btn btn-sm btn-success" type="submite">Enviar</button>
+			</form>
+			<form action="" method="GET">
+				<h3>Post a QR's</h3>
+				<input class="form-control"  type="hidden" name="action" value="qractiva">
+				<input class="form-control"  type="text" name="unit_price" placeholder="precio" >
+				<input class="form-control"  type="text" name="external_id" placeholder="ID ASOCIADO CUANDO CREO QR">
+				<br>
+				<button class="btn btn-sm btn-success" type="submite">Enviar</button>
+			</form>
+			<form action="" method="GET">
+				<h3>Obtener Point's</h3>
+				<input class="form-control"  type="hidden" name="action" value="pointlist">
+				<br>
+				<button class="btn btn-sm btn-success" type="submite">Enviar</button>
+			</form>
+			<form action="" method="GET">
+				<h3>Post a Point's</h3>
+				<input class="form-control"  type="hidden" name="action" value="pointactive">
+				<input class="form-control"  type="text" name="device_name" placeholder="device_name" >
+				<input class="form-control"  type="text" name="amount" placeholder="amount">
+				<br>
+				<button class="btn btn-sm btn-success" type="submite">Enviar</button>
+			</form>
+			<form action="" method="GET">
+				<h3>Cancelar post de point</h3>
+				<input  class="form-control" type="hidden" name="action" value="pointdelete">
+				<input  class="form-control" type="text" name="device_name" placeholder="device_name" >
+				<br>
+				<button class="btn btn-sm btn-success" type="submite">Enviar</button>
+			</form>
+			<form action="" method="GET">
+				<h3>Crear hLINK</h3>
+				<input class="form-control" type="hidden" name="action" value="hlink">
+				<br>
+				<button class="btn btn-sm btn-success" type="submite">Enviar</button>
+			</form>
+			<form action="" method="GET">
+				<h3>Crear nuevo plan de suscripcion</h3>
+				<input class="form-control" type="hidden" name="action" value="nplan">
+				<br>
+				<button class="btn btn-sm btn-success" type="submite">Enviar</button>
+			</form>
 
-	<input type="hidden" name="action" value="ipn">
-	<input class="form-control"  type="text" name="id" placeholder="ID DE VENTA">
-	<button class="btn btn-sm btn-success" type="submite">Enviar</button>
-
-</form>
-<form action="" method="GET">
-	<h3>Consutla de QR's</h3>
-	<input type="hidden" name="action" value="qrlistado">
-	<button class="btn btn-sm btn-success" type="submite">Enviar</button>
-</form>
-
-<form action="" method="GET">
-	<h3>Creacion de QR's</h3>
-	<input class="form-control"  type="hidden" name="action" value="qrnuevo">
-	<input class="form-control"  type="text" name="nombreqr" value="name">
-	<input class="form-control"  type="text" name="fixed_amount" value="true">
-	<input class="form-control"  type="text" name="external_id" value="<?php echo mt_rand(3,20000); ?>">
-	<button class="btn btn-sm btn-success" type="submite">Enviar</button>
-</form>
-
-<form action="" method="GET">
-	<h3>Post a QR's</h3>
-	<input class="form-control"  type="hidden" name="action" value="qractiva">
-	<input class="form-control"  type="text" name="unit_price" placeholder="precio" >
-	<input class="form-control"  type="text" name="external_id" placeholder="ID ASOCIADO CUANDO CREO QR">
-	<button class="btn btn-sm btn-success" type="submite">Enviar</button>
-</form>
-
-<form action="" method="GET">
-	<h3>Obtener Point's</h3>
-	<input class="form-control"  type="hidden" name="action" value="pointlist">
-	<button class="btn btn-sm btn-success" type="submite">Enviar</button>
-</form>
-
-<form action="" method="GET">
-	<h3>Post a Point's</h3>
-	<input class="form-control"  type="hidden" name="action" value="pointactive">
-	<input class="form-control"  type="text" name="device_name" placeholder="device_name" >
-	<input class="form-control"  type="text" name="amount" placeholder="amount">
-	<button class="btn btn-sm btn-success" type="submite">Enviar</button>
-</form>
-
-<form action="" method="GET">
-
-	<h3>Cancelar post de point</h3>
-
-	<input  class="form-control" type="hidden" name="action" value="pointdelete">
-	<input  class="form-control" type="text" name="device_name" placeholder="device_name" >
-	<button class="btn btn-sm btn-success" type="submite">Enviar</button>
-
-</form>
-<form action="" method="GET">
-	<h3>Crear hLINK</h3>
-
-	<input class="form-control" type="hidden" name="action" value="hlink">
-	<button class="btn btn-sm btn-success" type="submite">Enviar</button>
-
-</form>
-<form action="" method="GET">
-	<h3>Crear nuevo plan de suscripcion</h3>
-
-	<input class="form-control" type="hidden" name="action" value="nplan">
-	<button class="btn btn-sm btn-success" type="submite">Enviar</button>
-
-</form>
-
-			</div>
 		</div>
 	</div>
+</div>
 
 
 
