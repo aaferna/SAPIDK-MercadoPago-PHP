@@ -196,6 +196,24 @@ Las respuestas de las funciones se puede trabajar por niveles, inicialmente agar
 
 La forma de obtener el dato, es poner entre corchetes el nivel del array y así llegar hasta lo que nos interesa obtener.  
 
-El ejemplo de IPN, es el más sencillo, pero pueden aparecer distintos escenarios en el que será necesario manejar alguna que otra variable, aca los invito a que miren IPN Manager para que vean los tres escenarios posibles _(recurring_payment, pos_payment, regular_payment)_ y sus variables.
+El ejemplo de IPN, es el más sencillo, pero pueden aparecer distintos escenarios en el que será necesario manejar alguna que otra variable, aca los invito a que miren [IPN Manager](https://github.com/gusgeek/SAPIDK-MercadoPago/blob/master/Ejemplos/IPN%20Manager/ipnManager.php) para que vean los tres escenarios posibles _(recurring_payment, pos_payment, regular_payment)_ y sus variables.
 
-En los casos que requieren un post más elaborado como es un Array, lleva según lo que buscamos un árbol distinto.
+En los casos que requieren un post más elaborado como es un Array, lleva según lo que buscamos un Array distinto, ire agregando mas informacion a medida que al tenga verificada.
+
+
+## Ejemplos de Array y Funcion
+
+### Crear un nuevo QR
+```
+<?php
+
+include('./library/core.php');
+
+	$dataArray = array(
+		'name' => $_REQUEST['nombreqr'], // Nombre del QR / Caja
+		'fixed_amount' => false, // Elegir si el cliente puede modificar o poner el precio  
+		'external_id' => $_REQUEST['external_id'], // ID por el cual va a identificarlo internamente, le recomendamos usar mt_rand(3,20000)
+	);
+
+?>
+```
