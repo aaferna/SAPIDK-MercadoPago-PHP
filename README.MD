@@ -23,7 +23,7 @@ Acá viene la parte divertida, y espero poder explicarme lo mejor posible.
 
 SAPI-DK MP Funciona mediante solicitudes cURL a la API de Mercado Pago. Mediante funciones de PHP podemos obtener un ARRAY jSoneado donde manejar las variables que nos responde sin ningún problema.  
 
-## ¿Como seria?
+## ¿Como Empiezo?
 
 Como indicamos anteriormente, SAPI-DK MP está escrito en PHP, por lo cual necesitamos un documento en tal formato con un include a core.php
 
@@ -42,4 +42,4 @@ En el file core.php tenemos las líneas iniciales en el orden qué deben ser car
 
 En genius.php encontraras los Links a la API de Mercado Pago y sus Funciones en PHP para poder ejecutar las consultas.  
 
-En credentials.php se cargará el Access Token para la utilización de la herramienta, brindada por Mercado Pago en https://www.mercadopago.com/mla/account/credentials una vez que nosotros tengamos creada una aplicación base en https://applications.mercadopago.com/ 
+En credentials.php se cargará el Access Token para la utilización de la herramienta, brindada por Mercado Pago en https://www.mercadopago.com/mla/account/credentials una vez que nosotros tengamos creada una aplicación base en https://applications.mercadopago.com/
