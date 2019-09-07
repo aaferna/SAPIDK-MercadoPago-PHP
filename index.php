@@ -28,7 +28,7 @@
 	if (isset($_GET['action'])) {
 
 		if ($_GET['action'] == "qrnuevo") {
-			
+
 				$dataArray = array(
 			        'name' => $_REQUEST['nombreqr'],
 			        'fixed_amount' => false, // puede elejir true para que sea modificable precio o false si no
@@ -44,9 +44,9 @@
 				$dataArray = array (
 				  // 'external_reference' => "REFERENCIA PARA IDENFICAR LA VENTA CUANDO IPN",
 				  // 'notification_url' => "URL A IPN",
-				  'items' => 
+				  'items' =>
 					array (
-					    0 => 
+					    0 =>
 					    array (
 					      'title' => 'Pago Presencial NVI: ',
 					      'currency_id' => 'ARS',
@@ -81,7 +81,7 @@
 		}
 
 		if ($_GET['action'] == "hlink") {
-$datetime = new DateTime(date("Y-m-d H:i:s.uP"));
+			$datetime = new DateTime(date("Y-m-d H:i:s.uP"));
 
 			$dataArray = array (
 
@@ -92,7 +92,7 @@ $datetime = new DateTime(date("Y-m-d H:i:s.uP"));
 				'expiration_date_to' =>  date("Y-m-d\TH:i:s", +strtotime("+30 minutes")) . substr((string)microtime(), 1, 4).date('P'),
 				'items' =>  array (
 
-					0 => 
+					0 =>
 						array (
 							'id' => 202030,
 							'title' => 30,
@@ -101,7 +101,7 @@ $datetime = new DateTime(date("Y-m-d H:i:s.uP"));
 							'currency_id' => "ARS",
 							'unit_price' => 12
 						),
-					1 => 
+					1 =>
 						array (
 							'id' => 202031,
 							'title' => 30,
@@ -109,7 +109,7 @@ $datetime = new DateTime(date("Y-m-d H:i:s.uP"));
 							'quantity' => 1,
 							'currency_id' => "ARS",
 							'unit_price' => 12
-						),      
+						),
 				    ),
 				'payer' =>
 					array (
@@ -132,22 +132,22 @@ $datetime = new DateTime(date("Y-m-d H:i:s.uP"));
 				'back_url' => 'https://www.tiendacomputacion.com/',
 				'external_reference' => "reference",
 				'auto_recurring' => array(
-					'frequency' => 30, 
-					'frequency_type' => "days", 
+					'frequency' => 30,
+					'frequency_type' => "days",
 					'transaction_amount' => 10,
-					'currency_id' => "ARS", 
+					'currency_id' => "ARS",
 					'debit_date' => 1,
-					
+
 					),
-			
-			
+
+
 			);
 
 			$_REQUEST['array'] = $dataArray;
 
 		}
 
-		include ("./core.php");
+		include ("./library/core.php");
 
 		if (isset($response)) {
 
