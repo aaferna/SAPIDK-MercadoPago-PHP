@@ -150,7 +150,7 @@
 
 		include ("../../library/core.php");
 		include ("./actions.php");
-
+		$token = "";
 		if (isset($response)) {
 
 			echo '<div class="container"><div class="row"><div class="col-md-12"><h3>Respuesta en json</h3>';
@@ -169,6 +169,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
+			<h2>Es necesario poner el token en Linea 153 de Index.php </h2>
 			<form action="" method="GET" >
 				<h3>Consutla de IPN</h3>
 				<input type="hidden" name="action" value="ipn">
