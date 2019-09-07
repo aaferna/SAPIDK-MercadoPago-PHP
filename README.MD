@@ -73,7 +73,12 @@ Todos los casos, actualmente, responden un ___jSon___
 
 Segun el POST, dependemos de una funcion distinta en la cual ejecutaremos la consulta.
 
- 
+| Funcion | Accion |
+| ------ | ----------- |
+| `responseid($ipn, $_REQUEST['id'], $token)`    |id|| Recibe la notificacion desde MercadoPago o la Consultamos |
+
+
+
 Un caso práctico es el siguiente, donde obtenemos el detalle de una venta realizada con mediante IPN, en esta oportunidad enviamos el numero de la venta por __$_REQUEST__
 
 ```
