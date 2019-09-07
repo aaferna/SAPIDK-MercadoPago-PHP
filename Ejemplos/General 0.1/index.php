@@ -148,7 +148,7 @@
 
 		}
 
-		include ("../library/core.php");
+		include ("../../library/core.php");
 		include ("./actions.php");
 
 		if (isset($response)) {
