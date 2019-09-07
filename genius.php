@@ -44,7 +44,7 @@
 
 
 
-		function ipn($uri,$id,$token) {
+		function responsearray($uri,$id,$token) {
 
 			$url = $uri.$id."?access_token=".$token;
 
