@@ -23,7 +23,8 @@
   </div>
 </nav>
 <?php
-  	date_default_timezone_set('America/Argentina/Buenos_Aires');
+
+	date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 	if (isset($_GET['action'])) {
 
@@ -147,7 +148,8 @@
 
 		}
 
-		include ("./library/core.php");
+		include ("../library/core.php");
+		include ("./actions.php");
 
 		if (isset($response)) {
 
