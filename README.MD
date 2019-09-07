@@ -54,7 +54,7 @@ __Antes de continuar:__ Si nosotros miramos index.php y actions.php tendremos fu
 
 + Condicionado es aquel elemento que hay que tener en cuenta para la utilización
 
-Todos los casos, actualmente, responden un ___jSon___
+Todos los casos, actualmente, responden un ___JSON___ pero ya están listos para ser trabajados ya que queda preparados para parsear por Array
 
 | Accion | POST | Condicionado | Descripcion |
 | ------ | ----------- | ----------- | ----------- |
@@ -86,7 +86,7 @@ Un caso práctico es el siguiente, donde obtenemos el detalle de una venta reali
 ```
 <?php
 
-  include('./core.php');
+  include('./library/core.php');
   $response = responseid($ipn, $_REQUEST['id'], $token);
 
   print_r($response);
@@ -183,7 +183,8 @@ Array
 )
 ```
 
-Estas respuestas, en su forma, la podremos manejar de la siguiente forma
+Las respuestas de las funciones se puede trabajar por niveles, inicialmente agarramos  `$response` donde tendremos la respuesta de la consulta (en este caso) para ir filtrando en el array por niveles. De esta venta, nos interesa saber si fue paga o no, entonces lo que haremos es buscar _status_ donde sabremos si el resultado fue approved.
+
 
 ```
 <?php
@@ -193,6 +194,8 @@ Estas respuestas, en su forma, la podremos manejar de la siguiente forma
 ?>
 ```
 
-La forma de obtener el dato, es poner entre corchetes el nivel del array y así llegar hasta el dato.  
+La forma de obtener el dato, es poner entre corchetes el nivel del array y así llegar hasta lo que nos interesa obtener.  
 
-El ejemplo de IPN, es el más sencillo. En los casos que requieren un post más elaborado como es un Array, lleva según lo que buscamos un árbol distinto.
+El ejemplo de IPN, es el más sencillo, pero pueden aparecer distintos escenarios en el que será necesario manejar alguna que otra variable, aca los invito a que miren IPN Manager para que vean los tres escenarios posibles _(recurring_payment, pos_payment, regular_payment)_ y sus variables.
+
+En los casos que requieren un post más elaborado como es un Array, lleva según lo que buscamos un árbol distinto.
