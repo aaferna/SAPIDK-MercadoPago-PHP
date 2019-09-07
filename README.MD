@@ -58,3 +58,4 @@ Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos 
 | __$qractiva__|array|Si por URL| Envia la solicitud de pago al QR indicado  |
 | __$devicesPoint__|||Enlista los Points sincronizados a la Cuenta|
 | __$pointActive__|array||Envia la solicitud de pago al Point indicado|
+| __$$pointDelete__ |device_name||Elimina la solicitud de pago del Point Indicado|
