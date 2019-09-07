@@ -55,5 +55,5 @@ Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos 
 | __$category__ ||| Obtiene las categorias autorizadas para ventas |
 | __$qrlist__||| Enlista los QR's disponibles  |
 | __$qrnuevo__|array|| Crea un nuevo QR'  |
-| __$qractiva__|array|Si por URL| Crea un nuevo QR'  |
-| __$qractiva__|array|Si por URL| Crea un nuevo QR'  |
+| __$qractiva__|array|Si por URL| Envia la solicitud de pago al QR indicado  |
+| __$devicesPoint__|array|Si por URL| Crea un nuevo QR'  |
