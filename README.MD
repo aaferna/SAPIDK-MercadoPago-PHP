@@ -41,3 +41,17 @@ En el file _core.php_ tenemos las líneas iniciales en el orden qué deben ser c
 En _genius.php_ encontraras los Links a la API de Mercado Pago y sus Funciones en PHP para poder ejecutar las consultas.  
 
 En _credentials.php_ se cargará el Access Token para la utilización de la herramienta, brindada por Mercado Pago en https://www.mercadopago.com/mla/account/credentials una vez que nosotros tengamos creada una aplicación base en https://applications.mercadopago.com/
+
+
+
+## ¿Como lo hago funcionar?
+Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos actualmente.
+
+*Si nosotros miramos index.php y actions.php tendremos funciones basdas en formularios con __$_GET__ ya estipuladas para ejemplo.*
+
+| Accion | POST | descripcion |
+| ------ | ----------- | ----------- |
+| __$ipn__   |id| Recibe la notificacion desde MercadoPago o la Consultamos |
+| __$category__ || Obtiene las categorias autorizadas para ventas |
+| __$qrlist__    || Enlista los QR's disponibles  |
+| __$qrnuevo__    || Crea un nuevo QR'  |
