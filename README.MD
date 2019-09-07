@@ -1,5 +1,5 @@
 # SAPI-DK Mercado Pago
-SDK no oficial de Mercado Pago, para la integracion de sistemas PHP
+SDK no oficial de Mercado Pago, para la integración de sistemas PHP 
 
 
 ## Resumen
