@@ -38,24 +38,10 @@ if (isset($external_reference)) {
      	if ($status == "approved") {
 
             echo "approved";
-            
+
         }
 
         if ($status == "in_process") {
-
-            $nvidb = mysqli_query($db, "SELECT * FROM ".$nombredb.".sqlventas
-                                    	WHERE (idventa = '".$external_reference."' and mediodepago = '3') or
-                                    	(idventa = '".$external_reference."' and mediodepago = '6')
-                                   	");
-
-            $dbnvi = mysqli_num_rows($nvidb);
-
-            if ($dbnvi != 0 ) {
-
-                mysqli_query($db, "UPDATE ".$nombredb.".sqlventas
-                                    SET referenciapagodigital = '".$id."',
-                                        estado = '6' WHERE idventa = '".$external_reference."'");
-            }
 
             echo "in_process";
 
@@ -63,60 +49,16 @@ if (isset($external_reference)) {
 
         if ($status == "pending") {
 
-            $nvidb = mysqli_query($db, "SELECT * FROM ".$nombredb.".sqlventas
-                                    	WHERE (idventa = '".$external_reference."' and mediodepago = '3') or
-                                    	(idventa = '".$external_reference."' and mediodepago = '6')
-                                   	");
-
-            $dbnvi = mysqli_num_rows($nvidb);
-
-            if ($dbnvi != 0 ) {
-
-                mysqli_query($db, "UPDATE ".$nombredb.".sqlventas
-                                    SET referenciapagodigital = '".$id."',
-                                        estado = '3' WHERE idventa = '".$external_reference."'");
-            }
-
             echo "pending";
-
 
         }
 
         if ($status == "rejected") {
 
-            $nvidb = mysqli_query($db, "SELECT * FROM ".$nombredb.".sqlventas
-                                    	WHERE (idventa = '".$external_reference."' and mediodepago = '3') or
-                                    	(idventa = '".$external_reference."' and mediodepago = '6')
-                                   	");
-
-            $dbnvi = mysqli_num_rows($nvidb);
-
-            if ($dbnvi != 0 ) {
-
-                mysqli_query($db, "UPDATE ".$nombredb.".sqlventas
-                                    SET referenciapagodigital = '".$id."',
-                                        estado = '5' WHERE idventa = '".$external_reference."'");
-            }
-
             echo "rejected";
-
         }
 
         if ($status == "refunded") {
-
-            $nvidb = mysqli_query($db, "SELECT * FROM ".$nombredb.".sqlventas
-                                    	WHERE (idventa = '".$external_reference."' and mediodepago = '3') or
-                                    	(idventa = '".$external_reference."' and mediodepago = '6')
-                                   	");
-
-            $dbnvi = mysqli_num_rows($nvidb);
-
-            if ($dbnvi != 0 ) {
-
-                mysqli_query($db, "UPDATE ".$nombredb.".sqlventas
-                                    SET referenciapagodigital = '".$id."',
-                                        estado = '7' WHERE idventa = '".$external_reference."'");
-            }
 
             echo "refunded";
 
@@ -125,9 +67,9 @@ if (isset($external_reference)) {
 
 }
 
-//	file_put_contents('filename.txt', print_r($response, true).PHP_EOL, FILE_APPEND | LOCK_EX);
+  // file_put_contents('filename.txt', print_r($response, true).PHP_EOL, FILE_APPEND | LOCK_EX);
 
-// echo "<pre>";
-// print_r($response);
+  // echo "<pre>";
+  // print_r($response);
 
  ?>
