@@ -1,12 +1,12 @@
-<?php 
-	
+<?php
+
 	// Instant Pay Notification
 
 		$ipn = "https://api.mercadopago.com/collections/notifications/";
 
 	// QR
 
-		// Post a el QR 
+		// Post a el QR
 		$qrPost = "https://api.mercadopago.com/mpmobile/instore/qr/";
 
 		// Creacion o Consulta de QR's
@@ -28,7 +28,7 @@
 	// https://api.mercadopago.com/checkout/preferences?access_token=
 	$link = "https://api.mercadopago.com/checkout/preferences/";
 
-	// Categorias 
+	// Categorias
 	$category = "https://api.mercadopago.com/item_categories";
 
 	// https://api.mercadopago.com/v1/customers?access_token=
@@ -42,9 +42,9 @@
 		// crear suscripciones
 		$suscriptionscreate = "https://api.mercadopago.com/preapproval_plan/";
 
-		
 
-		function responsearray($uri,$id,$token) {
+
+		function ipn($uri,$id,$token) {
 
 			$url = $uri.$id."?access_token=".$token;
 
@@ -69,7 +69,7 @@
 			$url = $uri."?access_token=".$token;
 
 	        $ch = curl_init($url);
-	        
+
 	        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
 	        curl_setopt($ch, CURLOPT_POST, true);
@@ -79,7 +79,7 @@
 	            'Content-Type: application/json',
 	            'Content-Length: ' . strlen(json_encode($array)))
 	        );
-	         
+
 	        $result = curl_exec($ch);
 
 	        curl_close($ch);
@@ -115,5 +115,5 @@
 		// $plan = "https://api.mercadopago.com/v1/plans/";
 		// facturas a servicios
 		// $invoice = "https://api.mercadopago.com/v1/invoices/";
-	
+
  ?>
