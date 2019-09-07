@@ -56,4 +56,4 @@ Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos 
 | __$qrlist__||| Enlista los QR's disponibles  |
 | __$qrnuevo__|array|| Crea un nuevo QR'  |
 | __$qractiva__|array|Si por URL| Envia la solicitud de pago al QR indicado  |
-| __$devicesPoint__|array|Si por URL| Crea un nuevo QR'  |
+| __$devicesPoint__|||Enlista los Points sincronizados a la Cuenta|
