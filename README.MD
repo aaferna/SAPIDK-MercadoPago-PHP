@@ -71,6 +71,9 @@ Todos los casos, actualmente, responden un ___jSon___
 | __$suscriptionscreate__ |array||Crea una nueva suscripcion |
 
 
+Segun el POST, dependemos de una funcion distinta en la cual ejecutaremos la consulta.
+
+ 
 Un caso práctico es el siguiente, donde obtenemos el detalle de una venta realizada con mediante IPN, en esta oportunidad enviamos el numero de la venta por __$_REQUEST__
 
 ```
