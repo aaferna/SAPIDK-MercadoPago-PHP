@@ -6,17 +6,17 @@ include('core.php');
 
 	$response = responsearray($ipn, $_REQUEST['id'], $token);
 
-  	// Estado de pago, puede ver los manejadores de estos aqui https://www.mercadopago.com.ar/developers/es/guides/payments/api/handling-responses
-    	$status = $response['collection']['status'];
+  // Estado de pago, puede ver los manejadores de estos aqui https://www.mercadopago.com.ar/developers/es/guides/payments/api/handling-responses
+  $status = $response['collection']['status'];
 
-    // ID de la Transaccion, misma que se recibe en $_GET['id'];
-    	$id = $response['collection']['id'];
+  // ID de la Transaccion, misma que se recibe en $_GET['id'];
+  $id = $response['collection']['id'];
 
-    // Referencia vinculada a el metodo de pago para identificarlo en nuestro sistema
-    	$external_reference = $response['collection']['external_reference'];
+  // Referencia vinculada a el metodo de pago para identificarlo en nuestro sistema
+  $external_reference = $response['collection']['external_reference'];
 
-    // Metodo de Cobro recurring_payment: suscripcion, pos_payment: POINT, regular_payment: QR o Link
-    	$method = $response['collection']['operation_type'];
+  // Metodo de Cobro recurring_payment: suscripcion, pos_payment: POINT, regular_payment: QR o Link
+  $method = $response['collection']['operation_type'];
 
 
 if (isset($external_reference)) {
