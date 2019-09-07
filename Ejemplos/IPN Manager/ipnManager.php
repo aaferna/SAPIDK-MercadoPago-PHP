@@ -1,6 +1,6 @@
 <?php
 header("HTTP/1.1 200 OK");
-include('core.php');
+include('../../library/core.php');
 
 	$token = "";
 
