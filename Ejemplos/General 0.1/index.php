@@ -150,7 +150,7 @@
 
 		include ("../../library/core.php");
 		include ("./actions.php");
-		$token = "";
+
 		if (isset($response)) {
 
 			echo '<div class="container"><div class="row"><div class="col-md-12"><h3>Respuesta en json</h3>';
