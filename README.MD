@@ -1,5 +1,5 @@
 # SAPI-DK Mercado Pago
-SDK no oficial de Mercado Pago, para la integración de sistemas PHP 
+SDK no oficial de Mercado Pago, para la integración de sistemas PHP
 
 
 ## Resumen
@@ -15,3 +15,29 @@ Mi intención, no es más que la de colaborar con una nueva herramienta sin áni
 El lenguaje español, es increíble. Sus formas y características de poder combinar una misma palabra en más de un sentido. A estas, las suelo llamar Palabras Maleta.  
 
 SAPI-DK nace como un juego de combinación de API y SDK, si bien, el SDK de Mercado Pago invoca al API de ellos, este hace exactamente lo mismo. Pero para poder calificar este proyecto diferenciado en su totalidad del original decidí llamarlo de una forma peculiar, llevando un poco del juego del español, Software Application Programming Interface, Development Kit, que en español sería algo como Interfaz de programación de aplicaciones de software, kit de desarrollo.
+
+
+## ¿Como funciona?
+
+Acá viene la parte divertida, y espero poder explicarme lo mejor posible.
+
+SAPI-DK MP Funciona mediante solicitudes cURL a la API de Mercado Pago. Mediante funciones de PHP podemos obtener un ARRAY jSoneado donde manejar las variables que nos responde sin ningún problema.  
+
+## ¿Como seria?
+
+Como indicamos anteriormente, SAPI-DK MP está escrito en PHP, por lo cual necesitamos un documento en tal formato con un include a core.php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
