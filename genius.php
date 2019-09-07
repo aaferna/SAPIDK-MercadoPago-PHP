@@ -44,7 +44,7 @@
 
 
 
-		function responsearray($uri,$id,$token) {
+		function responseid($uri,$id,$token) {
 
 			$url = $uri.$id."?access_token=".$token;
 
