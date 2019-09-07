@@ -47,7 +47,7 @@ En _credentials.php_ se cargará el Access Token para la utilización de la herr
 ## ¿Como lo hago funcionar?
 Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos actualmente.
 
-*Si nosotros miramos index.php y actions.php tendremos funciones basdas en formularios con __$_GET__ ya estipuladas para ejemplo.*
+*Antes de continuar: Si nosotros miramos index.php y actions.php tendremos funciones basdas en formularios con __$_GET__ ya estipuladas para ejemplo.*
 
 + Acción es la referencia que tenemos que usar en la función de PHP
 
@@ -77,7 +77,7 @@ Un caso práctico es el siguiente, donde obtenemos el detalle de una venta reali
 <?php
 
   include('./core.php');
-  $response = responsearray($ipn, $_REQUEST['id'], $token);
+  $response = responseid($ipn, $_REQUEST['id'], $token);
 
   print_r($response);
 
@@ -172,3 +172,22 @@ Array
 
 )
 ```
+
+Segun el POST, dependemos de una funcion distinta en la cual ejecutaremos la consulta.
+
+
+
+
+Estas respuestas, en su forma, la podremos manejar de la siguiente forma
+
+```
+<?php
+
+  echo $response['collection']['status'];
+
+?>
+```
+
+La forma de obtener el dato, es poner entre corchetes el nivel del array y así llegar hasta el dato.  
+
+El ejemplo de IPN, es el más sencillo. En los casos que requieren un post más elaborado como es un Array, lleva según lo que buscamos un árbol distinto.
