@@ -1,12 +1,8 @@
 <?php
 header("HTTP/1.1 200 OK");
-include('../../framework/db.php');
 include('core.php');
 
-	$array = explode(",", $configDB['opMercadopago']);
-	$token = $array[2];
-
-
+	$token = "";
 
 	$response = responsearray($ipn, $_REQUEST['id'], $token);
 
