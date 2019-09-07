@@ -17,7 +17,7 @@ El lenguaje español, es increíble. Sus formas y características de poder comb
 SAPI-DK nace como un juego de combinación de API y SDK, si bien, el SDK de Mercado Pago invoca al API de ellos, este hace exactamente lo mismo. Pero para poder calificar este proyecto diferenciado en su totalidad del original decidí llamarlo de una forma peculiar, llevando un poco del juego del español, Software Application Programming Interface, Development Kit, que en español sería algo como Interfaz de programación de aplicaciones de software, kit de desarrollo.
 
 
-## ¿Como funciona?
+## ¿Como Funciona?
 
 Acá viene la parte divertida, y espero poder explicarme lo mejor posible.
 
