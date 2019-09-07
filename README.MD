@@ -38,8 +38,6 @@ Como indicamos anteriormente, SAPI-DK MP está escrito en PHP, por lo cual neces
 
 En el file core.php tenemos las líneas iniciales en el orden qué deben ser cargadas secuencialmente, estas son genius.php y credentials.php
 
-
-
 En genius.php encontraras los Links a la API de Mercado Pago y sus Funciones en PHP para poder ejecutar las consultas.  
 
 En credentials.php se cargará el Access Token para la utilización de la herramienta, brindada por Mercado Pago en https://www.mercadopago.com/mla/account/credentials una vez que nosotros tengamos creada una aplicación base en https://applications.mercadopago.com/
