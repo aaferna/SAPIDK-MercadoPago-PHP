@@ -173,11 +173,6 @@ Array
 )
 ```
 
-Segun el POST, dependemos de una funcion distinta en la cual ejecutaremos la consulta.
-
-
-
-
 Estas respuestas, en su forma, la podremos manejar de la siguiente forma
 
 ```
