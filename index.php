@@ -17,7 +17,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="./test.php">
-        SAPI-DK
+        SAPI-DK MP
       </a>
     </div>
   </div>
