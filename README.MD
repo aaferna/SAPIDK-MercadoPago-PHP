@@ -82,7 +82,7 @@ Segun el POST, dependemos de una funcion distinta en la cual ejecutaremos la con
 
 
 
-Un caso práctico es el siguiente, donde obtenemos el detalle de una venta realizada con mediante IPN, en esta oportunidad enviamos el numero de la venta por __$_GET__
+Un caso práctico es el siguiente, donde obtenemos el detalle de una venta realizada con mediante IPN, en esta oportunidad enviamos el numero de la venta por __*$_GET*__
 
 ```
 <?php
