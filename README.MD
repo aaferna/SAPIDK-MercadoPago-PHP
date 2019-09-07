@@ -53,7 +53,9 @@ Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos 
 
 + POST es el dato que hay o no que enviar
 
-+ Condicionado es aquel elemento que hay que tener en cuenta para la utilización 
++ Condicionado es aquel elemento que hay que tener en cuenta para la utilización
+
+Todos los casos, actualmente, responden un ___jSon___
 
 | Accion | POST | Condicionado | Descripcion |
 | ------ | ----------- | ----------- | ----------- |
@@ -67,3 +69,106 @@ Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos 
 | __$pointDelete__ |device_name||Elimina la solicitud de pago del Point Indicado|
 | __$hlink__ |array||Crea link de solicitud de Pago con Checkout de MP|
 | __$suscriptionscreate__ |array||Crea una nueva suscripcion |
+
+
+Un caso práctico es el siguiente, donde obtenemos el detalle de una venta realizada con mediante IPN, en esta oportunidad enviamos el numero de la venta por __$_REQUEST__
+
+```
+<?php
+
+  include('./core.php');
+  $response = responsearray($ipn, $_REQUEST['id'], $token);
+
+  print_r($response);
+
+?>
+```
+
+Esto, nos responde lo siguiente
+
+
+```
+Array
+(
+    [collection] => Array
+        (
+            [id] => 5157151402
+            [site_id] => MLA
+            [date_created] => 2019-09-04T10:36:36.000-04:00
+            [date_approved] => 2019-09-04T10:36:38.000-04:00
+            [money_release_date] => 2019-09-04T10:36:38.000-04:00
+            [last_modified] => 2019-09-04T10:36:53.000-04:00
+            [payer] => Array
+                (
+                    [id] => 147688640
+                    [first_name] => Cobro recibido
+                    [last_name] => en persona
+                    [phone] => Array
+                        (
+                            [area_code] =>
+                            [number] => 00000
+                            [extension] =>
+                        )
+
+                    [identification] => Array
+                        (
+                            ...
+                        )
+
+                    [email] => ventapresencial@mercadopago.com
+                    [nickname] => VENTASPRESENCIAL
+                )
+
+            [order_id] => Venta presencial
+            [external_reference] => Venta presencial
+            [merchant_order_id] =>
+            [reason] => Venta presencial
+            [currency_id] => ARS
+            [transaction_amount] => 2300
+            [net_received_amount] => 2133.25
+            [total_paid_amount] => 2300
+            [shipping_cost] => 0
+            [coupon_amount] => 0
+            [coupon_fee] => 0
+            [finance_fee] => 0
+            [discount_fee] => 0
+            [coupon_id] =>
+            [status] => approved
+            [status_detail] => accredited
+            [installments] => 1
+            [issuer_id] => 688
+            [installment_amount] => 2300
+            [deferred_period] =>
+            [payment_type] => credit_card
+            [payment_method_id] => cabal
+            [marketplace] => NONE
+            [operation_type] => pos_payment
+            [transaction_order_id] =>
+            [statement_descriptor] => WWW.MERCADOPAGO.COM
+            [cardholder] => Array
+                (
+                ...
+                )
+
+            [authorization_code] => 825136
+            [marketplace_fee] => 0
+            [last_four_digits] => 2589
+            [deduction_schema] =>
+            [refunds] => Array
+                (
+                )
+
+            [amount_refunded] => 0
+            [last_modified_by_admin] =>
+            [api_version] => 2
+            [concept_id] =>
+            [concept_amount] => 0
+            [collector] => Array
+                (
+                ...
+                )
+
+        )
+
+)
+``
