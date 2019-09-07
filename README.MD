@@ -77,7 +77,7 @@ Segun el POST, dependemos de una funcion distinta en la cual ejecutaremos la con
 | ------ | ----------- |----------- |
 | `responseid`|Ejecuta una consulta en base a un ID  | `$url, $id, $token`  |
 | `responsesimple`|Ejecuta una consulta simple  | `$url, $token`  |
-| `post`|Ejecuta un POST con ARRAY  | `$url, $token`  |
+| `post`|Ejecuta un POST con ARRAY  | `$url, $array, $token`  |
 | `deletePoint`|Exclusivo de Point, libera device_name para otro pago | `$url, $device_name, $token`  |
 
 
