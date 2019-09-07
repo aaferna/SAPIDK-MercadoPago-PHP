@@ -47,7 +47,7 @@ En _credentials.php_ se cargará el Access Token para la utilización de la herr
 ## ¿Como lo hago funcionar?
 Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos actualmente.
 
-*Antes de continuar: Si nosotros miramos index.php y actions.php tendremos funciones basdas en formularios con __$_GET__ ya estipuladas para ejemplo.*
+*Antes de continuar:* Si nosotros miramos index.php y actions.php tendremos funciones basdas en formularios con __*$_GET*__ ya estipuladas para ejemplo.
 
 + Acción es la referencia que tenemos que usar en la función de PHP
 
