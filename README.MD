@@ -60,4 +60,4 @@ Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos 
 | __$pointActive__|array||Envia la solicitud de pago al Point indicado|
 | __$pointDelete__ |device_name||Elimina la solicitud de pago del Point Indicado|
 | __$hlink__ |array||Crea link de solicitud de Pago con Checkout de MP|
-| __$suscriptionscreate__ |array||Crea link de solicitud de Pago con Checkout de MP|
+| __$suscriptionscreate__ |array||Crea una nueva suscripcion |
