@@ -49,9 +49,11 @@ Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos 
 
 *Si nosotros miramos index.php y actions.php tendremos funciones basdas en formularios con __$_GET__ ya estipuladas para ejemplo.*
 
-| Accion | POST | descripcion |
-| ------ | ----------- | ----------- |
-| __$ipn__   |id| Recibe la notificacion desde MercadoPago o la Consultamos |
-| __$category__ || Obtiene las categorias autorizadas para ventas |
-| __$qrlist__    || Enlista los QR's disponibles  |
-| __$qrnuevo__    || Crea un nuevo QR'  |
+| Accion | POST | Condicionado | Descripcion |
+| ------ | ----------- | ----------- | ----------- |
+| __$ipn__   |id|| Recibe la notificacion desde MercadoPago o la Consultamos |
+| __$category__ ||| Obtiene las categorias autorizadas para ventas |
+| __$qrlist__||| Enlista los QR's disponibles  |
+| __$qrnuevo__|array|| Crea un nuevo QR'  |
+| __$qractiva__|array|Si por URL| Crea un nuevo QR'  |
+| __$qractiva__|array|Si por URL| Crea un nuevo QR'  |
