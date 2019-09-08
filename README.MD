@@ -420,5 +420,6 @@ include('./library/core.php');
 
 ## Aclaraciones
 
-1. En los Ejemplos [Creando un nuevo Link](#crear-uno-nuevo-link) y [Activando un QR](#activando-un-qr), el array items puede tener mas de un elemento, solo quedaria buclearlo de alguna forma segun cada proyecto. Ademas, si se agrega un valor en quantity mayor a 1, MercadoPago multiplicara el valor de unit_price por quantity.
-2.
+1. En los Ejemplos [Creando un nuevo Link](#crear-uno-nuevo-link) y [Activando un QR](#activando-un-qr), el array items puede tener mas de un elemento, solo quedaría buclearlo de alguna forma según cada proyecto. Además, si se agrega un valor en quantity mayor a 1, MercadoPago multiplicara el valor de unit_price por quantity.
+
+2. Cada uno puede manejar el core.php de la forma que mejor le convenga, con que solo este el include de genius.php y declarado $token y $user_id sera suficiente el uso de este SDK
