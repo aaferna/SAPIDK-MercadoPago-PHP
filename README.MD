@@ -85,7 +85,7 @@ Todos los casos, actualmente, responden un ___JSON___ pero ya están listos para
 
 # Casos practicos
 
-## Situacion con IPN
+## IPN
 
 Un caso práctico es el de IPN, donde obtenemos o recibimos el detalle de una venta realizada mediante esta herramienta. En esta oportunidad recibimos el numero de la venta por __*$_REQUEST*__
 
@@ -204,7 +204,7 @@ La forma de obtener el dato, es poner entre corchetes el nivel del array y así 
 
 El ejemplo de IPN, es el más sencillo, pero pueden aparecer distintos escenarios en el que será necesario manejar alguna que otra variable, aca los invito a que miren [IPN Manager](https://github.com/gusgeek/SAPIDK-MercadoPago/blob/master/Ejemplos/IPN%20Manager/ipnManager.php) para que vean los tres escenarios posibles _(recurring_payment, pos_payment, regular_payment)_ y sus variables.
 
-## Situacion con QR
+## QR
 
 La opción de pago por QR resulta algo muy bueno para la interacción con el cliente y los pagos digitales, la experiencia resulta practica y segura.
 
@@ -278,7 +278,7 @@ include('./library/core.php');
 
 ?>
 ```
-## Situacion con Point
+## Point
 
 Para poder usar Mercado Pago Point es obligatorio que nos activen la posibilidad de sincronizar los dispositivos donde lo usaremos con MercadoPago, para esto hay que comunicarse con soporte mediante Ayuda.
 
@@ -334,7 +334,7 @@ include('./library/core.php');
 
 ?>
 ```
-## Situacion con Hyper Links
+## Hyper Links
 
 La mas antigua, comoda y practica herramienta que tiene Mercado Pago son los Links de Pago. Podremos crear los nuestros desde nuestro SDK si necesidad de tocar el Panel de Mercado Pago y asi como con POINT y QR recibir notificacion por IPN
 
@@ -383,7 +383,7 @@ $dataArray = array (
 
 ?>
 ```
-## Situacion con Suscripciones
+## Suscripciones
 
 Un metodo excelente para fidelizar clientes a servicios que dispongamos, este metodo segun comentan quedara deprecate pero, mientras podramos utilizarlo aca les explicare como sera.
 
@@ -421,4 +421,4 @@ include('./library/core.php');
 ## Aclaraciones
 
 1. En los Ejemplos [Creando un nuevo Link](#crear-uno-nuevo-link) y [Activando un QR](#activando-un-qr), el array items puede tener mas de un elemento, solo quedaria buclearlo de alguna forma segun cada proyecto. Ademas, si se agrega un valor en quantity mayor a 1, MercadoPago multiplicara el valor de unit_price por quantity.
-2. 
+2.
