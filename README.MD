@@ -39,8 +39,9 @@ En el file _core.php_ tenemos las líneas iniciales en el orden qué deben ser c
 
 En _genius.php_ encontraras los Links a la API de Mercado Pago y sus Funciones en PHP para poder ejecutar las consultas.  
 
-En _credentials.php_ se cargará el Access Token para la utilización de la herramienta, brindada por Mercado Pago en https://www.mercadopago.com/mla/account/credentials una vez que nosotros tengamos creada una aplicación base en https://applications.mercadopago.com/
+En _credentials.php_ se cargará el Access Token y el user_id para la utilización de la herramienta, brindada por Mercado Pago en https://www.mercadopago.com/mla/account/credentials una vez que nosotros tengamos creada una aplicación base en https://applications.mercadopago.com/
 
+_Una pista:_ El `user_id` son los ultimos numeros del Token
 
 
 ## ¿Como lo hago funcionar?
@@ -62,7 +63,7 @@ Todos los casos, actualmente, responden un ___JSON___ pero ya están listos para
 | __$category__ ||| Obtiene las categorias autorizadas para ventas |
 | __$qrlist__||| Enlista los QR's disponibles  |
 | __$qrnuevo__|array|| Crea un nuevo QR'  |
-| __$qractiva__|array|Si por URL| Envia la solicitud de pago al QR indicado  |
+| __$qractiva__|array|Si por URL a tener user_id| Envia la solicitud de pago al QR indicado  |
 | __$devicesPoint__|||Enlista los Points sincronizados a la Cuenta|
 | __$pointActive__|array||Envia la solicitud de pago al Point indicado|
 | __$pointDelete__ |device_name||Elimina la solicitud de pago del Point Indicado|
@@ -201,9 +202,10 @@ El ejemplo de IPN, es el más sencillo, pero pueden aparecer distintos escenario
 En los casos que requieren un post más elaborado como es un Array, lleva según lo que buscamos un Array distinto, ire agregando mas informacion a medida que al tenga verificada.
 
 
-## Ejemplos de Array y Funcion
+## Situacion con QR
 
-### Crear un nuevo QR
+### Crear uno nuevo
+
 ```
 <?php
 
@@ -214,6 +216,106 @@ include('./library/core.php');
 		'fixed_amount' => false, // Elegir si el cliente puede modificar o poner el precio  
 		'external_id' => $_REQUEST['external_id'], // ID por el cual va a identificarlo internamente, le recomendamos usar mt_rand(3,20000)
 	);
+
+	$response = post($qrlist, $array, $token);
+
+?>
+```
+
+### Activando un QR
+
+```
+<?php
+
+include('./library/core.php');
+
+	$external_id = $_GET['external_id'];
+
+	$dataArray = array (
+		// 'external_reference' => "REFERENCIA PARA IDENFICAR LA VENTA CUANDO IPN",
+		// 'notification_url' => "URL A IPN",
+		'items' =>
+			array (
+					0 =>
+					array (
+						'title' => 'Pago Presencial',
+						'currency_id' => 'ARS',
+						'unit_price' => $_GET['unit_price'], // NO STRING Precio de la venta
+						'quantity' => 1,
+					),
+			),
+	);
+
+	$url = $qrPost.$user_id."/".$external_id; // Condicionado por user_id y external_id
+
+	$response = post($qrlist, $dataArray, $token);
+
+?>
+```
+
+### Listando QR's
+
+```
+<?php
+
+include('./library/core.php');
+
+	$response = responsesimple($qrlist, $token);
+
+?>
+```
+## Situacion con Point
+
+Para poder usar Mercado Pago Point es obligatorio que nos activen la posibilidad de sincronizar los dispositivos donde lo usaremos con MercadoPago, para esto hay que comunicarse con soporte mediante Ayuda.
+
+Una vez que los dispositivos los nombremos y los sincronicemos mediante Configuración de la App de Mercado Pago, solo queda enlistarlos.
+
+### Listar Point's
+
+```
+<?php
+
+include('./library/core.php');
+
+	$response = responsesimple($devicesPoint, $token);
+
+?>
+```
+### Activando un Point
+
+Tanto como los QR's se activan mediante la función POST con un Array, lo primero es tener reconocido a que dispositivo vamos a realizarle la solicitud de pago. Una vez que este identificado, y ejecutemos la función, se iniciara la App de MercadoPago lista para pasar la tarjeta.
+
+```
+<?php
+
+include('./library/core.php');
+
+	$int = (int)$_GET['amount']; // convierte valor string a numeric
+
+	$dataArray = array(
+		'device_name' => $_GET['device_name'], // Nombre del Dispositivo
+		'amount' => $int, // Valor a Cobrar
+		'description' => 'Pago Presencial', // Descripcion
+		'external_reference' => $_GET['nvi'], // REFERENCIA PARA IDENFICAR LA VENTA CUANDO IPN
+		'cc_type' => 'debit_card' // tipo de tarjeta, puede ser tambien credit_card
+	);
+
+
+	$response = post($pointActive, $dataArray, $token);
+
+
+?>
+```
+### Desactivar pago en Point
+
+Algo molesto de trabajar con SDK y Point es que el pago no se vence si es que no fue efectuado si quiera visto, como si pasa con QR. El dispositivo queda en estado BUSSY y nos toca cancelar la orden de pago.
+
+```
+<?php
+
+include('./library/core.php');
+
+	$response = deletePoint($pointDelete, $_REQUEST['device_name'], $token);
 
 ?>
 ```
