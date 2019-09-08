@@ -83,7 +83,7 @@ Todos los casos, actualmente, responden un ___JSON___ pero ya están listos para
 
 
 
-
+# Casos practicos
 
 ## Situacion con IPN
 
