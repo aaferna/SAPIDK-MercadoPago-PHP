@@ -87,7 +87,7 @@ Todos los casos, actualmente, responden un ___JSON___ pero ya están listos para
 
 ## Situacion con IPN
 
-Un caso práctico es el de IPN, donde obtenemos o recibimos el detalle de una venta realizada mediante IPN, en esta oportunidad recibimos el numero de la venta por __*$_REQUEST*__
+Un caso práctico es el de IPN, donde obtenemos o recibimos el detalle de una venta realizada mediante esta herramienta. En esta oportunidad recibimos el numero de la venta por __*$_REQUEST*__
 
 ```
 <?php
@@ -203,9 +203,6 @@ Las respuestas de las funciones se puede trabajar por niveles, inicialmente agar
 La forma de obtener el dato, es poner entre corchetes el nivel del array y así llegar hasta lo que nos interesa obtener.  
 
 El ejemplo de IPN, es el más sencillo, pero pueden aparecer distintos escenarios en el que será necesario manejar alguna que otra variable, aca los invito a que miren [IPN Manager](https://github.com/gusgeek/SAPIDK-MercadoPago/blob/master/Ejemplos/IPN%20Manager/ipnManager.php) para que vean los tres escenarios posibles _(recurring_payment, pos_payment, regular_payment)_ y sus variables.
-
-En los casos que requieren un post más elaborado como es un Array, lleva según lo que buscamos un Array distinto, ire agregando mas informacion a medida que al tenga verificada.
-
 
 ## Situacion con QR
 
