@@ -209,6 +209,7 @@ La opción de pago por QR resulta algo muy bueno para la interacción con el cli
 ### Crear uno nuevo
 
 Uno puede crear QR's desde el panel de usuario pero no se le puede ubicar `external_id`, lo que nos hace que el QR pueda interactuar con nuestra integracion. Mas tarde, si uno se fija en el panel de Sucursales o Negocios les mostrara que los QR's creados quedaaran pendientes para vincular.
+
 ![qr](https://github.com/gusgeek/SAPIDK-MercadoPago/blob/master/Ejemplos/Imagenes/qr1.png?raw=true)
 
 ```
