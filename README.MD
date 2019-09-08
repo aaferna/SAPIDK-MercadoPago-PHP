@@ -87,7 +87,7 @@ Todos los casos, actualmente, responden un ___JSON___ pero ya están listos para
 
 ## Situacion con IPN
 
-Un caso práctico es el siguiente, donde obtenemos el detalle de una venta realizada mediante IPN, en esta oportunidad recibimos el numero de la venta por __*$_REQUEST*__
+Un caso práctico es el de IPN, donde obtenemos o recibimos el detalle de una venta realizada mediante IPN, en esta oportunidad recibimos el numero de la venta por __*$_REQUEST*__
 
 ```
 <?php
