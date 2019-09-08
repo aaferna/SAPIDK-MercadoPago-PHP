@@ -49,28 +49,6 @@ Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos 
 
 __Antes de continuar:__ Si nosotros miramos index.php y actions.php tendremos funciones basdas en formularios con __*$_GET*__ ya estipuladas para ejemplo.
 
-+ Acción es la referencia que tenemos que usar en la función de PHP
-
-+ POST es el dato que hay o no que enviar
-
-+ Condicionado es aquel elemento que hay que tener en cuenta para la utilización
-
-Todos los casos, actualmente, responden un ___JSON___ pero ya están listos para ser trabajados ya que queda preparados para parsear por Array
-
-| Accion | POST | Condicionado | Descripcion |
-| ------ | ----------- | ----------- | ----------- |
-| __$ipn__   |id|| Recibe la notificacion desde MercadoPago o la Consultamos |
-| __$category__ ||| Obtiene las categorias autorizadas para ventas |
-| __$qrlist__||| Enlista los QR's disponibles  |
-| __$qrnuevo__|array|| Crea un nuevo QR'  |
-| __$qractiva__|array|Si por URL a tener user_id| Envia la solicitud de pago al QR indicado  |
-| __$devicesPoint__|||Enlista los Points sincronizados a la Cuenta|
-| __$pointActive__|array||Envia la solicitud de pago al Point indicado|
-| __$pointDelete__ |device_name||Elimina la solicitud de pago del Point Indicado|
-| __$hlink__ |array||Crea link de solicitud de Pago con Checkout de MP|
-| __$suscriptionscreate__ |array||Crea una nueva suscripcion |
-
-
 Segun el POST, dependemos de una funcion distinta en la cual ejecutaremos la consulta.
 
 | Funcion | Accion | Elementos |
@@ -80,7 +58,34 @@ Segun el POST, dependemos de una funcion distinta en la cual ejecutaremos la con
 | `post`|Ejecuta un POST con ARRAY  | `$url, $array, $token`  |
 | `deletePoint`|Exclusivo de Point, libera device_name para otro pago | `$url, $device_name, $token`  |
 
+Mas explicito, dejare un cuadro para el desgloce de funciones
 
++ Acción es la referencia que tenemos que usar en la función de PHP
+
++ POST es el dato que hay o no que enviar
+
++ Condicionado es aquel elemento que hay que tener en cuenta para la utilización
+
+Todos los casos, actualmente, responden un ___JSON___ pero ya están listos para ser trabajados ya que queda preparados para parsear por Array
+
+| Accion | POST | Funcion | Condicionado | Descripcion |
+| ------ | ----------- | ----------- |----------- | ----------- |
+| __$ipn__   |id|`responseid($ipn, $_REQUEST['id'], $token)`|| Recibe la notificacion desde MercadoPago o la Consultamos |
+| __$category__ ||`responsesimple($category, $token)`|| Obtiene las categorias autorizadas para ventas |
+| __$qrlist__||`responsesimple($qrlist, $token)`|| Enlista los QR's disponibles  |
+| __$qrnuevo__|array|`post($qrlist, $_REQUEST['array'], $token)`||Crea un nuevo QR'  |
+| __$qractiva__|array|`post($qrPost.$user_id."/".$external_id, $_REQUEST['array'], $token)`|Si por URL a tener user_id y external_id| Envia la solicitud de pago al QR indicado  |
+| __$devicesPoint__||`responsesimple($devicesPoint, $token)`||Enlista los Points sincronizados a la Cuenta|
+| __$pointActive__|array|`post($pointActive, $_REQUEST['array'], $token)`||Envia la solicitud de pago al Point indicado|
+| __$pointDelete__ |device_name|`deletePoint($pointDelete, $_REQUEST['device_name'], $token)`||Elimina la solicitud de pago del Point Indicado|
+| __$hlink__ |array|`post($link, $_REQUEST['array'], $token)`||Crea link de solicitud de Pago con Checkout de MP|
+| __$suscriptionscreate__ |array|`post($suscriptionscreate, $_REQUEST['array'], $token)`||Crea una nueva suscripcion |
+
+
+
+
+
+## Situacion con IPN
 
 Un caso práctico es el siguiente, donde obtenemos el detalle de una venta realizada mediante IPN, en esta oportunidad recibimos el numero de la venta por __*$_REQUEST*__
 
@@ -184,7 +189,7 @@ Array
 )
 ```
 
-Las respuestas de las funciones se puede trabajar por niveles, inicialmente agarramos  `$response` donde tendremos la respuesta de la consulta (en este caso) para ir filtrando en el array por niveles. De esta venta, nos interesa saber si fue paga o no, entonces lo que haremos es buscar _status_ donde sabremos si el resultado fue approved.
+Las respuestas de las funciones se puede trabajar por niveles, inicialmente agarramos  `$response` donde tendremos la respuesta de la consulta (en este caso) para ir filtrando en el array. De esta venta, nos interesa saber si fue paga o no, entonces lo que haremos es buscar _status_ donde sabremos si el resultado fue approved.
 
 
 ```
@@ -385,9 +390,9 @@ $dataArray = array (
 
 Un metodo excelente para fidelizar clientes a servicios que dispongamos, este metodo segun comentan quedara deprecate pero, mientras podramos utilizarlo aca les explicare como sera.
 
-### Crear uno nuevo Link
+### Crear un nuevo Plan
 
-Muy similar a Hyper Link, con la diferencia de que elegiremos cuando se cobra, nos devolverá una URL (que se puede ver en el Panel de Mercado Pago), con el que podremos asociar nuestros clientes a el plan de suscripción que crearemos 
+Muy similar a Hyper Link, con la diferencia de que elegiremos cuando se cobra, nos devolverá una URL (que se puede ver en el Panel de Mercado Pago), con el que podremos asociar nuestros clientes a el plan de suscripción que crearemos
 
 ```
 <?php
