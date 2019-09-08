@@ -23,23 +23,16 @@
 		// Listar Points Disponibles
 		$devicesPoint = "https://mobile.mercadopago.com/point/services/integrations/v1/devices";
 
-
-
-	// https://api.mercadopago.com/checkout/preferences?access_token=
+	// Crea Links
 	$link = "https://api.mercadopago.com/checkout/preferences/";
 
 	// Categorias
 	$category = "https://api.mercadopago.com/item_categories";
 
-	// https://api.mercadopago.com/v1/customers?access_token=
-	$customerscard = "https://api.mercadopago.com/v1/customers/";
-
 
 	// Suscripciones
 
-		// CREO que son los suscriptos
-		$suscriptions = "https://api.mercadopago.com/v1/subscriptions/";
-		// crear suscripciones
+		// Crear suscripciones
 		$suscriptionscreate = "https://api.mercadopago.com/preapproval_plan/";
 
 
@@ -107,13 +100,5 @@
 	        return json_decode($result, true);
 
 		}
-
-
-		// https://api.mercadopago.com/preapproval/?access_token=
-		// $preapproval = "https://api.mercadopago.com/preapproval/";
-		// https://api.mercadopago.com/v1/plans/?access_token=
-		// $plan = "https://api.mercadopago.com/v1/plans/";
-		// facturas a servicios
-		// $invoice = "https://api.mercadopago.com/v1/invoices/";
 
  ?>
