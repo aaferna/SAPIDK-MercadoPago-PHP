@@ -45,7 +45,11 @@ _Una pista:_ El `user_id` son los ultimos numeros del Token
 # Wiki y Manual
 Desde la [Wiki](https://github.com/gusgeek/SAPIDK-MercadoPago/wiki) podran acceder a toda la informacion sobre el uso y como integrarlo de manera eficiente
 
-## Autores 
+## Tengo una idea o sugerencia ##
+
+Crea un issue y usa el Tag (idea) para que pueda ser asignado y atendido.
+
+## Autores
 
 * **Agustin Fernandez** - aaferna@cheprogramadora.com
 
