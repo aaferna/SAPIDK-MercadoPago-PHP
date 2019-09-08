@@ -42,7 +42,7 @@ En _credentials.php_ se cargar√° el Access Token y el user_id para la utilizaci√
 
 _Una pista:_ El `user_id` son los ultimos numeros del Token
 
-# Wiki y Manual
+## Wiki y Manual
 Desde la [Wiki](https://github.com/gusgeek/SAPIDK-MercadoPago/wiki) podran acceder a toda la informacion sobre el uso y como integrarlo de manera eficiente
 
 ## Tengo una idea o sugerencia ##
