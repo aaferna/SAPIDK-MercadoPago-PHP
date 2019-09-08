@@ -212,7 +212,9 @@ Uno puede crear QR's desde el panel de usuario pero no se le puede ubicar `exter
 
 ![qr](https://github.com/gusgeek/SAPIDK-MercadoPago/blob/master/Ejemplos/Imagenes/qr1.png?raw=true)
 
-Para que esto este organizado, nosotros recomendamos que los QRs se edifiquen como "Cajas", ya que MP lo idéntica así y no como accesorios como lo es con Points 
+Para que esto este organizado, nosotros recomendamos que los QRs se edifiquen como "Cajas", ya que MP lo idéntica así y no como accesorios como lo es con Points
+
+Esto se logra de la siguiente forma
 
 ```
 <?php
@@ -231,6 +233,7 @@ include('./library/core.php');
 ```
 
 ### Activando un QR
+Enviamos la solicitud de pago al QR (Caja)
 
 ```
 <?php
