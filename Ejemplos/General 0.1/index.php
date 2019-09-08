@@ -57,6 +57,7 @@
 					),
 				);
 		}
+
 		if ($_GET['action'] == "pointactive") {
 
 			$int = (int)$_GET['amount']; // convierte valor string a numeric
@@ -82,6 +83,7 @@
 		}
 
 		if ($_GET['action'] == "hlink") {
+
 			$datetime = new DateTime(date("Y-m-d H:i:s.uP"));
 
 			$dataArray = array (
@@ -92,25 +94,15 @@
 				'expiration_date_from' => date("Y-m-d\TH:i:s") . substr((string)microtime(), 1, 4).date('P'),
 				'expiration_date_to' =>  date("Y-m-d\TH:i:s", +strtotime("+30 minutes")) . substr((string)microtime(), 1, 4).date('P'),
 				'items' =>  array (
-
-					0 =>
-						array (
-							'id' => 202030,
-							'title' => 30,
-							'category_id' => "services",
-							'quantity' => 1,
-							'currency_id' => "ARS",
-							'unit_price' => 12
-						),
-					1 =>
-						array (
-							'id' => 202031,
-							'title' => 30,
-							'category_id' => "services",
-							'quantity' => 1,
-							'currency_id' => "ARS",
-							'unit_price' => 12
-						),
+						0 =>
+							array (
+								'id' => 202030,
+								'title' => 30,
+								'category_id' => "services",
+								'quantity' => 1,
+								'currency_id' => "ARS",
+								'unit_price' => 12
+							),
 				    ),
 				'payer' =>
 					array (

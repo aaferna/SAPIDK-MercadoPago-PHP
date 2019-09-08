@@ -208,7 +208,7 @@ La opción de pago por QR resulta algo muy bueno para la interacción con el cli
 
 ### Crear uno nuevo
 
-Uno puede crear QR's desde el panel de usuario pero no se le puede ubicar `external_id`, lo que nos hace que el QR pueda interactuar con nuestra integracion. Mas tarde, si uno se fija en el panel de Sucursales o Negocios les mostrara que los QR's creados quedaaran pendientes para vincular.
+Uno puede crear QR's desde el panel de usuario pero no se le puede ubicar `external_id`, lo que nos hace que el QR pueda interactuar con nuestra integracion. Mas tarde, si uno se fija en el panel de Locales o Negocios les mostrara que los QR's creados quedaran pendientes para vincular a alguna sucursal.
 
 ![qr](https://github.com/gusgeek/SAPIDK-MercadoPago/blob/master/Ejemplos/Imagenes/qr1.png?raw=true)
 
@@ -265,6 +265,7 @@ include('./library/core.php');
 ```
 
 ### Listando QR's
+Obtenemos todos los QR's (Cajas, por sucursal o global) asociados a nuestra cuenta
 
 ```
 <?php
@@ -282,6 +283,7 @@ Para poder usar Mercado Pago Point es obligatorio que nos activen la posibilidad
 Una vez que los dispositivos los nombremos y los sincronicemos mediante Configuración de la App de Mercado Pago, solo queda enlistarlos.
 
 ### Listar Point's
+Obtenemos los Points sincronizados con nuestra cuenta
 
 ```
 <?php
@@ -327,6 +329,88 @@ Algo molesto de trabajar con SDK y Point es que el pago no se vence si es que no
 include('./library/core.php');
 
 	$response = deletePoint($pointDelete, $_REQUEST['device_name'], $token);
+
+?>
+```
+## Situacion con Hyper Links
+
+La mas antigua, comoda y practica herramienta que tiene Mercado Pago son los Links de Pago. Podremos crear los nuestros desde nuestro SDK si necesidad de tocar el Panel de Mercado Pago y asi como con POINT y QR recibir notificacion por IPN
+
+### Crear uno nuevo Link
+
+En este ejemplo, estamos creando un Link con vencimiento a 30 Minutos, si uno lo desea puede evitar esta condicion eliminando las lineas expires, expiration_date_from y expiration_date_to.
+
+```
+<?php
+
+include('./library/core.php');
+
+$datetime = new DateTime(date("Y-m-d H:i:s.uP"));
+
+$dataArray = array (
+
+	'binary_mode' => true, // El pago sera approved o rejected no in_progress
+
+	// vence a loas 30 minutos
+		'expires' => true,
+		'expiration_date_from' => date("Y-m-d\TH:i:s") . substr((string)microtime(), 1, 4).date('P'),
+		'expiration_date_to' =>  date("Y-m-d\TH:i:s", +strtotime("+30 minutes")) . substr((string)microtime(), 1, 4).date('P'),
+	// vence a loas 30 minutos
+
+	'items' =>  array (
+			0 =>
+				array (
+					'id' => 202030, // ID Articulo
+					'title' => "Peras", // Titulo del articulo, (siempre son peras...)
+					'category_id' => "services", // Usando la funcion de Categorias podremos saber cuales son compatibles aquí
+					'quantity' => 1, // cantidad
+					'currency_id' => "ARS", // moneda en la que se cobra ARS, USD, MEX
+					'unit_price' => 12 // Precio del articulo, (si uno vende cantidad y pone el total, MP lo multiplicara)
+				),
+			),
+	'payer' =>
+		array (
+					'name' => "test ", // nombre del pagador
+					'surname' => 'user', // apellido del pagador
+					'email' => "test@user.com" // email del pagador
+				),
+);
+
+	$response = post($link, $dataArray, $token);
+
+
+?>
+```
+## Situacion con Suscripciones
+
+Un metodo excelente para fidelizar clientes a servicios que dispongamos, este metodo segun comentan quedara deprecate pero, mientras podramos utilizarlo aca les explicare como sera.
+
+### Crear uno nuevo Link
+
+Muy similar a Hyper Link, con la diferencia de que elegiremos cuando se cobra, nos devolverá una URL (que se puede ver en el Panel de Mercado Pago), con el que podremos asociar nuestros clientes a el plan de suscripción que crearemos 
+
+```
+<?php
+
+include('./library/core.php');
+
+	$dataArray = array (
+
+		'reason' => 'reason',
+		'back_url' => 'https://www.suscripcion.noexiste/',
+		'external_reference' => 1212, // referencia interna
+		'auto_recurring' => array(
+			'frequency' => 30, // frecuencia de cobro
+			'frequency_type' => "days", // se cobraria cada dia o mes segun frequency
+			'transaction_amount' => 10, // monto a cobrar
+			'currency_id' => "ARS", // moneda con la que se cobrar
+			'debit_date' => 1, // que dia del mes se cobra
+
+			),
+	);
+
+	$response = post($suscriptionscreate, $dataArray, $token);
+
 
 ?>
 ```
