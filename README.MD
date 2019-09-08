@@ -1,7 +1,6 @@
 # SAPI-DK Mercado Pago
 SDK no oficial de Mercado Pago, para la integración de sistemas PHP
 
-
 ## Resumen
 Este software, nacido como proyecto interno, está pensado para simplificar algunas de las integraciones más buscadas o conocidas de Mercado Pago.
 
