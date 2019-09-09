@@ -25,6 +25,7 @@ SAPI-DK nace como un juego de combinación de API y SDK, si bien el SDK de Merca
 Acá viene la parte divertida, y espero poder explicarme lo mejor posible.
 
 SAPI-DK MP Funciona mediante solicitudes cURL a la API de Mercado Pago. Mediante funciones de PHP podemos obtener un jSon como Array y asi trabajar las respuestas y solicitudes de la plataforma de manera más sencilla y entera que el SDK Original.
+
 ## ¿Como Empiezo?
 
 Como indicamos anteriormente, SAPI-DK MP está escrito en PHP, por lo cual necesitamos un documento en tal formato con un include a core.php
