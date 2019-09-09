@@ -1,0 +1,8 @@
+#SOs
+Thumbs.db
+*~
+._*
+.DS_Store
+
+#IDEs
+.code-workspace

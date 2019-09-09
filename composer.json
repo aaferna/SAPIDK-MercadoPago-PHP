@@ -1,0 +1,33 @@
+{
+    "name": "GusGeek/SAPIDK-MercadoPago",
+    "type": "library",
+    "homepage": "https://github.com/gusgeek/SAPIDK-MercadoPago",
+    "license": "Apache-2.0",
+    "config": {
+        "platform": {
+            "php": "5.6"
+        }
+    },
+    "authors": [
+        {
+            "name": "GusGeek",
+            "role": "Developer",
+            "homepage": "https://github.com/gusgeek"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5",
+        "phpmd/phpmd": "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "SAPIDK-MercadoPago\\": [
+                "src/library/",
+                "Ejemplos/"
+            ]
+        }
+    }
+}
