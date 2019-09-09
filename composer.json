@@ -3,6 +3,7 @@
     "type": "library",
     "homepage": "https://github.com/gusgeek/SAPIDK-MercadoPago",
     "license": "Apache-2.0",
+    "description": "SDK no Oficial de Mercado Pago",
     "config": {
         "platform": {
             "php": "5.6"
