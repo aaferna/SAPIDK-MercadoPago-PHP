@@ -1,4 +1,3 @@
-[![Latest Stable Version](https://poser.pugx.org/aaferna/sapidk-mercadopago/v/stable)](https://packagist.org/packages/aaferna/sapidk-mercadopago)
 [![Total Downloads](https://poser.pugx.org/aaferna/sapidk-mercadopago/downloads)](https://packagist.org/packages/aaferna/sapidk-mercadopago)
 [![License](https://poser.pugx.org/aaferna/sapidk-mercadopago/license)](https://packagist.org/packages/aaferna/sapidk-mercadopago)
 
@@ -36,7 +35,15 @@ Como indicamos anteriormente, SAPI-DK MP está escrito en PHP, por lo cual neces
 
 ?>
 ```
+En el caso de que quieras usar composer seria si
 
+```
+<?php
+
+	include('./vendor/autoload.php');
+
+?>
+```
 En el file _core.php_ tenemos las líneas iniciales en el orden qué deben ser cargadas secuencialmente, estas son genius.php y credentials.php
 
 En _genius.php_ encontraras los Links a la API de Mercado Pago y sus Funciones en PHP para poder ejecutar las consultas.  
