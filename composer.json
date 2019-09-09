@@ -1,7 +1,7 @@
 {
-    "name": "GusGeek/SAPIDK-MercadoPago",
+    "name": "aaferna/sapidk-mercadopago",
     "type": "library",
-    "homepage": "https://github.com/gusgeek/SAPIDK-MercadoPago",
+    "homepage": "https://github.com/aaferna/SAPIDK-MercadoPago",
     "license": "Apache-2.0",
     "description": "SDK no Oficial de Mercado Pago",
     "config": {
@@ -11,7 +11,7 @@
     },
     "authors": [
         {
-            "name": "GusGeek",
+            "name": "aaferna",
             "role": "Developer",
             "homepage": "https://github.com/gusgeek"
         }
