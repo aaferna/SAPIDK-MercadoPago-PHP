@@ -16,7 +16,7 @@
             "homepage": "https://github.com/gusgeek"
         }
     ],
-    "minimum-stability": "stable",
+    "prefer-stable": true,
     "require": {
         "php": ">=5.6.0"
     },
@@ -25,11 +25,8 @@
         "phpmd/phpmd": "@stable"
     },
     "autoload": {
-        "psr-4": {
-            "SAPIDK-MercadoPago\\": [
-                "src/library/",
-                "Ejemplos/"
-            ]
-        }
+        "files": [
+            "library/core.php"
+        ]
     }
 }
