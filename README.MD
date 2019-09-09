@@ -1,3 +1,7 @@
+[![Latest Stable Version](https://poser.pugx.org/aaferna/sapidk-mercadopago/v/stable)](https://packagist.org/packages/aaferna/sapidk-mercadopago)
+[![Total Downloads](https://poser.pugx.org/aaferna/sapidk-mercadopago/downloads)](https://packagist.org/packages/aaferna/sapidk-mercadopago)
+[![License](https://poser.pugx.org/aaferna/sapidk-mercadopago/license)](https://packagist.org/packages/aaferna/sapidk-mercadopago)
+
 # SAPI-DK Mercado Pago
 SDK no oficial de Mercado Pago, para la integración de sistemas PHP
 
