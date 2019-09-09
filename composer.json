@@ -4,6 +4,7 @@
     "homepage": "https://github.com/aaferna/SAPIDK-MercadoPago",
     "license": "Apache-2.0",
     "description": "SDK no Oficial de Mercado Pago",
+    "minimum-stability": "master",
     "config": {
         "platform": {
             "php": "7.0"
@@ -11,7 +12,7 @@
     },
     "authors": [
         {
-            "name": "aaferna",
+            "name": "gusgeek",
             "role": "Developer",
             "homepage": "https://github.com/gusgeek"
         }
