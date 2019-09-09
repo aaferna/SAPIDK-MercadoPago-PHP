@@ -10,6 +10,7 @@
             "email": "aaferna@cheprogramadora.com"
         }
     ],
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.6"
     },
