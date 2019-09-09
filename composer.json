@@ -4,8 +4,6 @@
     "license": "Apache-2.0",
     "description": "SDK no Oficial de Mercado Pago",
     "type": "package",
-    "prepend-autoloader": false,
-    "version": "1.0",
     "authors": [
         {
             "name": "Agustin Fernandez",
@@ -17,8 +15,8 @@
         "php": ">=5.6"
     },
     "autoload": {
-        "files": [
-            "library/core.php"
-        ]
+        "psr-4": {
+            "gusgeek\\sapidk-mercadopago\\": "/library/core.php"
+        }
     }
 }
