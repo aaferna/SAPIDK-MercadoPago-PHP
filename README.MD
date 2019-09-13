@@ -18,7 +18,7 @@ Mi intención, no es más que la de colaborar con una nueva herramienta sin áni
 ## ¿Porque SAPI-DK?
 El lenguaje español, es increíble. Sus formas y características de poder hacer que una palabra tenga más de un sentido. A estas, las suelo llamar Palabras Maleta.  
 
-SAPI-DK nace como un juego de combinación de API y SDK, si bien el SDK de Mercado Pago invoca a la API propietaria, este hace exactamente lo mism, pero para poder calificar este proyecto, diferenciado en su totalidad del original, decidí llamarlo de una forma peculiar llevando un poco del juego que hace el español: Software Application Programming Interface, Development Kit, que en español sería algo como Software para la Interfaz de programación de aplicaciones, kit de desarrollo.
+SAPI-DK nace como un juego de combinación de API y SDK, si bien el SDK de Mercado Pago invoca a la API propietaria, este hace exactamente lo mismo, pero para poder calificar este proyecto, diferenciado en su totalidad del original, decidí llamarlo de una forma peculiar llevando un poco del juego que hace el español: Software Application Programming Interface, Development Kit, que en español sería algo como Software para la Interfaz de programación de aplicaciones, kit de desarrollo.
 
 ## ¿Como Funciona?
 
