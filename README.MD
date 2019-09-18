@@ -2,6 +2,8 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/gusgeek/SAPIDK-MercadoPago)
 ![GitHub issues](https://img.shields.io/github/issues/gusgeek/SAPIDK-MercadoPago)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/gusgeek/SAPIDK-MercadoPago)
+![GitHub release (latest by date)](https://img.shields.io/github/downloads/gusgeek/SAPIDK-MercadoPago/total)
+
 
 # SAPI-DK Mercado Pago
 SDK no oficial de Mercado Pago, para la integración de sistemas PHP
