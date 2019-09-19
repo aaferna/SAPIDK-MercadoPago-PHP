@@ -141,6 +141,7 @@
 		}
 
 		include ("../../library/core.php");
+		$token = $_GET['token'];
 		include ("./actions.php");
 
 		if (isset($response)) {
