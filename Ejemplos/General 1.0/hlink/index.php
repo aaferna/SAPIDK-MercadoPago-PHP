@@ -1,6 +1,7 @@
 <?php 
   session_start();
 ?>
+
 <script src="./source/controller.js"></script>
 <div class="row">
     <div class="col-lg-12">
