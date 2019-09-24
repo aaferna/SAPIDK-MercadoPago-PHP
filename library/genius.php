@@ -35,6 +35,8 @@
 		// Crear suscripciones
 		$suscriptionscreate = "https://api.mercadopago.com/preapproval_plan/";
 
+	// Payments Controller
+		$payment = "https://api.mercadopago.com/v1/payments/";
 
 
 		function responseid($uri,$id,$token) {
