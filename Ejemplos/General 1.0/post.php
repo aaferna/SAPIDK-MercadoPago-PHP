@@ -25,6 +25,13 @@ if (isset($_GET['btnCheqkIPN'])) {
 
 }
 
+if (isset($_GET['btnCheqkPaymnt'])) {
+
+	print_r(responseid($payment, $_REQUEST['id'], $token));
+
+}
+
+
 if (isset($_GET['btnCheqkQR'])) {
 
 	print_r(responsesimple($qrlist, $token));
@@ -179,5 +186,23 @@ $dataArray = array (
 	print_r(post($link, $dataArray, $token));
 
 }
+
+
+
+
+if (isset($_GET['btndevPaymnt'])) {
+
+	$payment_id = $_REQUEST['id'];
+
+	$dataArray = array(
+		'payment_id' => $payment_id
+	);
+
+
+	print_r(post($payment."/".$payment_id."/refunds", $array, $token));
+	
+}
+
+
 
 ?>

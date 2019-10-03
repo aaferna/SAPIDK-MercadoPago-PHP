@@ -265,3 +265,54 @@ $('#btnLink').click(function(){
       });
 
 });
+
+
+$('#btnCheqkPaymnt').click(function(){
+
+    idpayment = document.getElementById("idpayment").value;
+    var ajaxUrl = './post.php?btnCheqkPaymnt&id='+idpayment;
+       
+
+      $.ajax({
+
+        url : ajaxUrl
+       
+
+      }).done(function(response){
+
+
+          document.getElementById('response').innerHTML = "<h4> Respuesta al ID "+idpayment+"</h4><pre>"+response+"</pre>";
+
+
+      }).fail(function(){
+          alert("Hubo un problema con la carga el gasto, porfavor reintente");
+      }).always(function(){
+
+      });
+
+});
+
+$('#btndevPaymnt').click(function(){
+
+    idpayment = document.getElementById("idpayment").value;
+    var ajaxUrl = './post.php?btndevPaymnt&id='+idpayment;
+       
+
+      $.ajax({
+
+        url : ajaxUrl
+       
+
+      }).done(function(response){
+
+
+          document.getElementById('response').innerHTML = "<h4> Respuesta al ID "+idpayment+"</h4><pre>"+response+"</pre>";
+
+
+      }).fail(function(){
+          alert("Hubo un problema con la carga el gasto, porfavor reintente");
+      }).always(function(){
+
+      });
+
+});

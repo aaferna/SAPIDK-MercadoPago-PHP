@@ -43,6 +43,17 @@ $('#ipn').click(function(){
             </ul>
         </li>
         <li>
+            <a href="javascript:;" data-toggle="collapse" data-target="#payment"> Payment <i class="fa fa-fw fa-caret-down"></i></a>
+            <ul id="payment" class="collapse">
+                <li>
+                    <a id="pagoConsulta">Consultar un Pago</a>
+                </li>
+                <li>
+                    <a id="pagoDevolucion">Devolucion un Pago</a>
+                </li>
+            </ul>
+        </li>
+        <li>
             <a id="hLink">Hyper Link</a>
         </li>
        
@@ -85,5 +96,13 @@ $('#ipn').click(function(){
     $('#hLink').click(function(){
         $('#menuTag').html('</br><center><br><br><div class="loader2"></div><br><br>Hyper Link</center>');
         $("#menuTag").load('./hlink/index.php');
+    });
+    $('#pagoConsulta').click(function(){
+        $('#menuTag').html('</br><center><br><br><div class="loader2"></div><br><br>Consultar un Pago</center>');
+        $("#menuTag").load('./payment/payment.php');
+    });
+    $('#pagoDevolucion').click(function(){
+        $('#menuTag').html('</br><center><br><br><div class="loader2"></div><br><br>Devolucion un Pago</center>');
+        $("#menuTag").load('./payment/devolucion.php');
     });
 </script>
