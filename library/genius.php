@@ -46,9 +46,18 @@
 
 			$url = $uri.$id."?access_token=".$token;
 
-			$urlneto = file_get_contents($url, true);
+			$urlneto = @file_get_contents($url, true);
 
-			return json_decode($urlneto, true);
+			if ($http_response_header[0] == "HTTP/1.1 301 Moved Permanently") {
+
+				return "400";
+
+			} else {
+
+				return json_decode($urlneto, true);
+
+			}
+			
 
 		}
 
@@ -56,9 +65,17 @@
 
 			$url = $uri."?access_token=".$token;
 
-			$urlneto = file_get_contents($url, true);
+			$urlneto = @file_get_contents($url, true);
 
-			return json_decode($urlneto, true);
+			if ($http_response_header[0] == "HTTP/1.1 301 Moved Permanently") {
+
+				return "400";
+
+			} else {
+
+				return json_decode($urlneto, true);
+
+			}
 
 		}
 
@@ -82,7 +99,27 @@
 
 	        curl_close($ch);
 
-	        return json_decode($result, true);
+	        $response = json_decode($result, true);
+
+	        if (isset($response['status'])) {
+
+	        	if ($response['status'] == 400) {
+
+	        		return $response['status']; 
+
+	        	} else {
+
+	        		return $response;
+	        		
+	        	}
+
+			} else {
+
+				return $response;
+				
+
+			}
+
 
 		}
 
@@ -102,7 +139,11 @@
 
 			$result = curl_exec($ch);
 
-	        return json_decode($result, true);
+			curl_close($ch);
+
+	        $response = json_decode($result, true);
+
+	        return $response;
 
 		}
 
