@@ -31,6 +31,11 @@ if (isset($_GET['btnCheqkPaymnt'])) {
 
 }
 
+if (isset($_GET['btndevUser'])) {
+
+	print_r(responseid($user, $_REQUEST['id'], $token));
+
+}
 
 if (isset($_GET['btnCheqkQR'])) {
 

@@ -38,7 +38,10 @@
 	// Payments Controller
 		$payment = "https://api.mercadopago.com/v1/payments/";
 
+	// Perfil de Usuario Comprador - Vendedor
 
+		$user = "https://api.mercadopago.com/users/";
+		
 		function responseid($uri,$id,$token) {
 
 			$url = $uri.$id."?access_token=".$token;

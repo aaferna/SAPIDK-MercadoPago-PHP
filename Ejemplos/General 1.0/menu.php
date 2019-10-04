@@ -56,7 +56,9 @@ $('#ipn').click(function(){
         <li>
             <a id="hLink">Hyper Link</a>
         </li>
-       
+        <li>
+            <a id="user">Usuarios</a>
+        </li>
     </ul>
 </div>
 
@@ -104,5 +106,9 @@ $('#ipn').click(function(){
     $('#pagoDevolucion').click(function(){
         $('#menuTag').html('</br><center><br><br><div class="loader2"></div><br><br>Devolucion un Pago</center>');
         $("#menuTag").load('./payment/devolucion.php');
+    });
+    $('#user').click(function(){
+        $('#menuTag').html('</br><center><br><br><div class="loader2"></div><br><br>Usuarios</center>');
+        $("#menuTag").load('./user/index.php');
     });
 </script>

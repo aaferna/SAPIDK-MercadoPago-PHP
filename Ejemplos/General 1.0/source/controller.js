@@ -316,3 +316,28 @@ $('#btndevPaymnt').click(function(){
       });
 
 });
+
+$('#btndevUser').click(function(){
+
+    iduser = document.getElementById("iduser").value;
+    var ajaxUrl = './post.php?btndevUser&id='+iduser;
+       
+
+      $.ajax({
+
+        url : ajaxUrl
+       
+
+      }).done(function(response){
+
+
+          document.getElementById('response').innerHTML = "<h4> Respuesta al ID "+iduser+"</h4><pre>"+response+"</pre>";
+
+
+      }).fail(function(){
+          alert("Hubo un problema con la carga el gasto, porfavor reintente");
+      }).always(function(){
+
+      });
+
+});
