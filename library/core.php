@@ -94,7 +94,7 @@ function sapidk_mp($dataArray){
 
 		}
 
-		function deletePoint($uri,$value,$token) {
+		function delete($uri,$value,$token) {
 
 			$url = $uri.$value."?access_token=".$token;
 	        $ch = curl_init();
@@ -225,9 +225,21 @@ function sapidk_mp($dataArray){
 
 				if (isset($dataArray['delete']['point'])) {
 
-					return deletePoint($pointDelete, $dataArray['delete']['point'], $dataArray['accessToken']);
+					return delete($pointDelete, $dataArray['delete']['point'], $dataArray['accessToken']);
 
 				}
+
+				if (isset($dataArray['delete']['customers'])) {
+
+					return delete($customers, $dataArray['delete']['customers'], $dataArray['accessToken']);
+
+				}
+
+			}
+
+			if (isset($dataArray['put'])) {
+
+				
 
 			}
 
