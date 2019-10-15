@@ -13,7 +13,7 @@ include('./core.php');
 
     );
 
-  $response = mp($dataArray);
+  $response = sapidk_mp($dataArray);
 
   // Estado de pago, puede ver los manejadores de estos aqui https://www.mercadopago.com.ar/developers/es/guides/payments/api/handling-responses
   $status = $response['collection']['status'];
