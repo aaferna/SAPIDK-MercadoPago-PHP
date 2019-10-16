@@ -1,0 +1,18 @@
+{
+  "name": "gusgeek/SAPIDK-MercadoPago-PHP",
+  "description": "DK no-Oficial de Mercado Pago en PHP",
+  "minimum-stability": "master",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Agustin Fernandez",
+      "email": "aaferna@cheprogramadora.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.3"
+  },
+  "autoload": {
+    "psr-4": {"gusgeek\\SAPIDK-MercadoPago-PHP\\": "library/core.php"}
+  }
+}
