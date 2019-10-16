@@ -12,6 +12,7 @@
   "require": {
     "php": ">=5.3.3"
   },
+  "minimum-stability": "master",
   "autoload": {
     "psr-4": {"gusgeek\\gusgeek/sapidk-mercado-pago-php\\": "library/core.php"}
   }
