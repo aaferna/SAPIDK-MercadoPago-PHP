@@ -143,7 +143,7 @@ function sapidk_mp($dataArray){
 
 				if (isset($dataArray['get']['user'])) {
 
-					return responseid($user, $dataArray['get']['user'], $dataArray['accessToken']);
+					return responseid($user, $dataArray['get']['id'], $dataArray['accessToken']);
 
 				}
 
