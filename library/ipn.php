@@ -139,9 +139,4 @@ if (isset($external_reference)) {
 
 }
 
-//file_put_contents('ipnDoc.txt', print_r($response, true).PHP_EOL, FILE_APPEND | LOCK_EX);
-
-//echo "<pre>";
-//print_r($response);
-
  ?>
