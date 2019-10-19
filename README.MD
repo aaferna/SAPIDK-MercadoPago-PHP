@@ -5,6 +5,11 @@
 # SAPI-DK Mercado Pago
 SDK no oficial de Mercado Pago, para la integración de sistemas PHP
 
+### Antes de continuar
+Si visita este proyecto con el fin de descargar una copia y empezar a trabajar, es ***altamente - recomendable***, que descargue [la ultima version compilada en las build](https://github.com/gusgeek/SAPIDK-MercadoPago-PHP/releases/latest).
+
+Me sentire feliz de que en su proyecto nos nombre, haremos lo mismo desde este lugar. Para eso enviar un correo a aaferna@cheprogramadora.com y me encargare de agregarlos o ayudar en lo que pueda.
+
 ## Resumen
 Este software, nacido como proyecto interno, está pensado para simplificar algunas de las integraciones más buscadas o conocidas de Mercado Pago.
 
