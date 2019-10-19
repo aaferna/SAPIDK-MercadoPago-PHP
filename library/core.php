@@ -246,12 +246,12 @@ function sapidk_mp($dataArray){
 		if ($dataArray['developer']["log"]["registro"] == 1) {
 
 			if (isset($dataArray['developer']["log"]["directorio"])) {
-				
-				$fileDirname = $dataArray['developer']["log"]["directorio"]."log.txt";
-				
+
+				$fileDirname = $dataArray['developer']["log"]["directorio"]."sapidkmp_log.txt";
+
 			} else {
 				
-				$fileDirname = "./log.txt";
+				$fileDirname = "./sapidkmp_log.txt";
 
 			}
 
