@@ -125,49 +125,49 @@ function sapidk_mp($dataArray){
 
 				if (isset($dataArray['get']['ipn'])) {
 
-					return responseid($ipn, $dataArray['get']['id'], $dataArray['accessToken']);
+					$response = responseid($ipn, $dataArray['get']['id'], $dataArray['accessToken']);
 
 				}
 
 				if (isset($dataArray['get']['point'])) {
 
-					return responsesimple($devicesPoint, $dataArray['accessToken']);
+					$response = responsesimple($devicesPoint, $dataArray['accessToken']);
 
 				}
 
 				if (isset($dataArray['get']['qr'])) {
 
-					return responsesimple($qrPos, $dataArray['accessToken']);
+					$response = responsesimple($qrPos, $dataArray['accessToken']);
 
 				}
 
 				if (isset($dataArray['get']['user'])) {
 
-					return responseid($user, $dataArray['get']['id'], $dataArray['accessToken']);
-
+					$response = responseid($user, $dataArray['get']['id'], $dataArray['accessToken']);
+					
 				}
 
 				if (isset($dataArray['get']['payment'])) {
 
-					return responseid($payment, $dataArray['get']['id'], $dataArray['accessToken']);
+					$response = responseid($payment, $dataArray['get']['id'], $dataArray['accessToken']);
 
 				}
 				
 				if (isset($dataArray['get']['customers']['search'])) {
 
-					return responsesimple($customers."/search", $dataArray['accessToken']);
+					$response = responsesimple($customers."/search", $dataArray['accessToken']);
 
 				}
 
 				if (isset($dataArray['get']['customers']['client'])) {
 
-					return responsesimple($customers."/".$dataArray['get']['id'], $dataArray['accessToken']);
+					$response = responsesimple($customers."/".$dataArray['get']['id'], $dataArray['accessToken']);
 
 				}
 
 				if (isset($dataArray['get']['customers']['cards'])) {
 
-					return responsesimple($customers."/".$dataArray['get']['id']."/cards", $dataArray['accessToken']);
+					$response = responsesimple($customers."/".$dataArray['get']['id']."/cards", $dataArray['accessToken']);
 
 				}
 
@@ -179,43 +179,44 @@ function sapidk_mp($dataArray){
 
 					$array = "";
 
-					return post($payment.$dataArray['post']['data']['payment_id']."/refunds", $array, $dataArray['accessToken']);
+					$response = post($payment.$dataArray['post']['data']['payment_id']."/refunds", $array, $dataArray['accessToken']);
 
 				}
 
 				if (isset($dataArray['post']['link'])) {
 
-					return post($link, $dataArray['post']['data'], $dataArray['accessToken']);
+					$response = post($link, $dataArray['post']['data'], $dataArray['accessToken']);
 
 				}
 
 				if (isset($dataArray['post']['pointActive'])) {
 
-					return post($pointActive, $dataArray['post']['data'], $dataArray['accessToken']);
+					$response = post($pointActive, $dataArray['post']['data'], $dataArray['accessToken']);
 
 				}
 
 				if (isset($dataArray['post']['qrNuevo'])) {
 
-					return post($qrPos, $dataArray['post']['data'], $dataArray['accessToken']);
+					$response = post($qrPos, $dataArray['post']['data'], $dataArray['accessToken']);
+
 
 				}
 
 				if (isset($dataArray['post']['qrPost'])) {
 
-					return post($qrPost.$dataArray['user_id']."/".$dataArray['post']['external_id'], $dataArray['post']['data'], $dataArray['accessToken']);
+					$response = post($qrPost.$dataArray['user_id']."/".$dataArray['post']['external_id'], $dataArray['post']['data'], $dataArray['accessToken']);
 
 				}
 
 				if (isset($dataArray['post']['plan'])) {
 
-					return post($plan, $dataArray['post']['data'], $dataArray['accessToken']);
+					$response = post($plan, $dataArray['post']['data'], $dataArray['accessToken']);
 
 				}
 
 				if (isset($dataArray['post']['customers']['create'])) {
 
-					return post($customers, $dataArray['post']['data'], $dataArray['accessToken']);
+					$response = post($customers, $dataArray['post']['data'], $dataArray['accessToken']);
 
 				}
 
@@ -225,28 +226,43 @@ function sapidk_mp($dataArray){
 
 				if (isset($dataArray['delete']['point'])) {
 
-					return delete($pointDelete, $dataArray['delete']['point'], $dataArray['accessToken']);
+					$response = delete($pointDelete, $dataArray['delete']['point'], $dataArray['accessToken']);
 
 				}
 
 				if (isset($dataArray['delete']['customers'])) {
 
-					return delete($customers, $dataArray['delete']['customers'], $dataArray['accessToken']);
+					$response = delete($customers, $dataArray['delete']['customers'], $dataArray['accessToken']);
 
 				}
-
-			}
-
-			if (isset($dataArray['put'])) {
-
-				
 
 			}
 
 		}
 
 
-		
+	if (isset($dataArray['developer'])) {
+
+		if ($dataArray['developer']["log"]["registro"] == 1) {
+
+			if (isset($dataArray['developer']["log"]["directorio"])) {
+				
+				$fileDirname = $dataArray['developer']["log"]["directorio"]."log.txt";
+				
+			} else {
+				
+				$fileDirname = "./log.txt";
+
+			}
+
+			file_put_contents($fileDirname, print_r($response, true).PHP_EOL, FILE_APPEND | LOCK_EX);
+
+		}
+
+	}
+	
+	
+	return $response;
 
 }	
 
