@@ -13,7 +13,8 @@ function sapidk_mp($dataArray){
 	$payment = "https://api.mercadopago.com/v1/payments/";
 	$user = "https://api.mercadopago.com/users/";
 	$customers = "https://api.mercadopago.com/v1/customers/";
-	$stores = "https://api.mercadolibre.com/stores/";
+	$storesML = "https://api.mercadolibre.com/stores/";
+	$storesMP = "https://api.mercadopago.com/stores/";
 
 
 		function responsesimple($uri, $token) {
@@ -169,9 +170,7 @@ function sapidk_mp($dataArray){
 	        $response = json_decode($result, true);
 
 		       
-					return $response;
-					
-
+			return $response;
 
 		}
 
@@ -217,9 +216,21 @@ function sapidk_mp($dataArray){
 					}
 
 
-					if (isset($dataArray['get']['user']['store'])) {
+					if (isset($dataArray['get']['store'])) {
 
-						$response = getOutarray($stores, $dataArray['get']['user']['id'], $dataArray['accessToken']);
+						if ($dataArray['get']['method'] == "mp") {
+								
+							$mLink = $storesMP;
+
+						} 
+
+						if ($dataArray['get']['method'] == "ml") {
+								
+							$mLink = $storesML;
+
+						} 
+
+						$response = getOutarray($mLink, $dataArray['get']['store'], $dataArray['accessToken']);
 						
 					}
 
@@ -369,6 +380,21 @@ function sapidk_mp($dataArray){
 
 					}
 
+				// Tiendas
+
+					if (isset($dataArray['delete']['stores'])) {
+
+						$response = delete($user.$dataArray['user_id']."/stores/", $dataArray['delete']['id'], $dataArray['accessToken']);
+
+					}
+
+					if (isset($dataArray['delete']['qr'])) {
+
+						$response = delete($qrPost.$dataArray['user_id']."/", $dataArray['delete']['qr'], $dataArray['accessToken']);
+
+					}
+
+					
 			}
 
 			if (isset($dataArray['put'])) {
