@@ -173,18 +173,6 @@ function sapidk_mp($dataArray){
 
 					}
 
-					if (isset($dataArray['get']['qr']['list'])) {
-
-						$limit = $dataArray['get']['qr']['limit'];
-						$offset = $dataArray['get']['qr']['offset'];
-
-						$ext = "limit=".$limit."&offset=".$offset;
-
-						$response = responseXtended($qrPos, $ext, $dataArray['accessToken']);
-
-
-					}
-
 					if (isset($dataArray['get']['payment'])) {
 
 						$response = getOutarray($payment, $dataArray['get']['id'], $dataArray['accessToken']);
@@ -200,16 +188,6 @@ function sapidk_mp($dataArray){
 						
 					}
 
-					if (isset($dataArray['get']['user']['stores'])) {
-
-						$limit = $dataArray['get']['user']['limit'];
-						$offset = $dataArray['get']['user']['offset'];
-
-						$ext = "limit=".$limit."&offset=".$offset;
-
-						$response = responseXtended($user.$dataArray['user_id']."/stores/search", $ext, $dataArray['accessToken']);
-						
-					}
 
 					if (isset($dataArray['get']['user']['store'])) {
 
@@ -218,29 +196,61 @@ function sapidk_mp($dataArray){
 					}
 
 				// Clientes
-				
-					if (isset($dataArray['get']['customers']['search'])) {
-
-						$limit = $dataArray['get']['customers']['limit'];
-						$offset = $dataArray['get']['customers']['offset'];
-
-						$ext = "limit=".$limit."&offset=".$offset;
-
-						$response = responseXtended($customers."/search", $ext, $dataArray['accessToken']);
-
-					}
 
 					if (isset($dataArray['get']['customers']['client'])) {
 
-						$response = responsesimple($customers."/".$dataArray['get']['id'], $dataArray['accessToken']);
+						$response = responsesimple($customers.$dataArray['get']['id'], $dataArray['accessToken']);
 
 					}
 
-					if (isset($dataArray['get']['customers']['cards'])) {
+				// Busquedas
 
-						$response = responsesimple($customers."/".$dataArray['get']['id']."/cards", $dataArray['accessToken']);
+					if (isset($dataArray['get']['search']['customers'])) {
+
+						$limit = $dataArray['get']['search']['limit'];
+						$offset = $dataArray['get']['search']['offset'];
+
+						$ext = "limit=".$limit."&offset=".$offset;
+
+						$response = responseXtended($customers."search", $ext, $dataArray['accessToken']);
 
 					}
+
+					if (isset($dataArray['get']['search']['stores'])) {
+
+						$limit = $dataArray['get']['search']['limit'];
+						$offset = $dataArray['get']['search']['offset'];
+
+						$ext = "limit=".$limit."&offset=".$offset;
+
+						$response = responseXtended($user.$dataArray['user_id']."/stores/search", $ext, $dataArray['accessToken']);
+						
+					}
+
+					if (isset($dataArray['get']['search']['qr'])) {
+
+						$limit = $dataArray['get']['search']['limit'];
+						$offset = $dataArray['get']['search']['offset'];
+
+						$ext = "limit=".$limit."&offset=".$offset;
+
+						$response = responseXtended($qrPos, $ext, $dataArray['accessToken']);
+
+
+					}
+
+					if (isset($dataArray['get']['search']['payment'])) {
+
+						$limit = $dataArray['get']['search']['limit'];
+						$offset = $dataArray['get']['search']['offset'];
+
+						$ext = "limit=".$limit."&offset=".$offset;
+
+						$response = responseXtended($payment."search", $ext, $dataArray['accessToken']);
+
+
+					}
+
 
 			}
 
