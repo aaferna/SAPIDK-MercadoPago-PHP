@@ -7,7 +7,7 @@ include('./core.php');
     "accessToken" => "APP_USR-1512413086135942-081220-8b0cb3af04c2567f7bb8d09779aefba5-264344950",
     "user_id" => "264344950",
       "get" => array( 
-        'user' => true,
+        'ipn' => true,
         'id' => "264344950" 
       ),
 
