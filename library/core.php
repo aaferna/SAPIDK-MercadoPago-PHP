@@ -9,7 +9,7 @@ function sapidk_mp($dataArray){
 	$pointDelete = "https://mobile.mercadopago.com/point/services/integrations/v1/attempt/device/";
 	$devicesPoint = "https://mobile.mercadopago.com/point/services/integrations/v1/devices";
 	$link = "https://api.mercadopago.com/checkout/preferences/";
-	$plan = "https://api.mercadopago.com/preapproval_plan/";
+	$preapproval_plan = "https://api.mercadopago.com/preapproval_plan/";
 	$payment = "https://api.mercadopago.com/v1/payments/";
 	$user = "https://api.mercadopago.com/users/";
 	$customers = "https://api.mercadopago.com/v1/customers/";
@@ -152,6 +152,28 @@ function sapidk_mp($dataArray){
 
 		}
 
+		function put($uri, $array, $token) {
+
+			$url = $uri."?access_token=".$token;
+
+	        $ch = curl_init($url);
+
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+			curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($array));
+
+	        $result = curl_exec($ch);
+
+	        curl_close($ch);
+
+	        $response = json_decode($result, true);
+
+		       
+					return $response;
+					
+
+
+		}
 
 		if ((isset($dataArray['accessToken'])) && (isset($dataArray['user_id']))) {
 
@@ -179,6 +201,12 @@ function sapidk_mp($dataArray){
 
 					}
 
+					if (isset($dataArray['get']['preapproval_plan'])) {
+
+						$response = getOutarray($preapproval_plan, $dataArray['get']['id'], $dataArray['accessToken']);
+
+					}
+					
 				// Usuario
 
 
@@ -251,7 +279,6 @@ function sapidk_mp($dataArray){
 
 					}
 
-
 			}
 
 			if (isset($dataArray['post'])) {
@@ -299,12 +326,11 @@ function sapidk_mp($dataArray){
 
 				// Suscripciones
 
-					if (isset($dataArray['post']['plan'])) {
+					if (isset($dataArray['post']['preapproval_plan'])) {
 
-						$response = post($plan, $dataArray['post']['data'], $dataArray['accessToken']);
+						$response = post($preapproval_plan, $dataArray['post']['data'], $dataArray['accessToken']);
 
 					}
-
 
 				// Clientes
 
@@ -340,6 +366,18 @@ function sapidk_mp($dataArray){
 					if (isset($dataArray['delete']['customers'])) {
 
 						$response = delete($customers, $dataArray['delete']['customers'], $dataArray['accessToken']);
+
+					}
+
+			}
+
+			if (isset($dataArray['put'])) {
+
+				// Suscripcion
+
+					if (isset($dataArray['put']['preapproval_plan'])) {
+
+						$response = put($preapproval_plan.$dataArray['put']['id'], $dataArray['put']['data'], $dataArray['accessToken']);
 
 					}
 
