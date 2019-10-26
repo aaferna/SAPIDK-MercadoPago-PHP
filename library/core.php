@@ -174,6 +174,8 @@ function sapidk_mp($dataArray){
 
 		}
 
+	$response = array();
+
 		if ((isset($dataArray['accessToken'])) && (isset($dataArray['user_id']))) {
 
 			if (isset($dataArray['get'])) {
@@ -182,7 +184,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['get']['ipn'])) {
 
-						$response = getOutarray($ipn, $dataArray['get']['id'], $dataArray['accessToken']);
+						$response['get'] = getOutarray($ipn, $dataArray['get']['id'], $dataArray['accessToken']);
 
 					}
 
@@ -190,19 +192,19 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['get']['point'])) {
 
-						$response = responsesimple($devicesPoint, $dataArray['accessToken']);
+						$response['get'] = responsesimple($devicesPoint, $dataArray['accessToken']);
 
 					}
 
 					if (isset($dataArray['get']['payment'])) {
 
-						$response = getOutarray($payment, $dataArray['get']['id'], $dataArray['accessToken']);
+						$response['get'] = getOutarray($payment, $dataArray['get']['id'], $dataArray['accessToken']);
 
 					}
 
 					if (isset($dataArray['get']['preapproval_plan'])) {
 
-						$response = getOutarray($preapproval_plan, $dataArray['get']['id'], $dataArray['accessToken']);
+						$response['get'] = getOutarray($preapproval_plan, $dataArray['get']['id'], $dataArray['accessToken']);
 
 					}
 					
@@ -211,7 +213,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['get']['user'])) {
 
-						$response = getOutarray($user, $dataArray['get']['id'], $dataArray['accessToken']);
+						$response['get'] = getOutarray($user, $dataArray['get']['id'], $dataArray['accessToken']);
 						
 					}
 
@@ -230,7 +232,7 @@ function sapidk_mp($dataArray){
 
 						} 
 
-						$response = getOutarray($mLink, $dataArray['get']['store'], $dataArray['accessToken']);
+						$response['get'] = getOutarray($mLink, $dataArray['get']['store'], $dataArray['accessToken']);
 						
 					}
 
@@ -238,7 +240,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['get']['customers']['client'])) {
 
-						$response = responsesimple($customers.$dataArray['get']['id'], $dataArray['accessToken']);
+						$response['get'] = responsesimple($customers.$dataArray['get']['id'], $dataArray['accessToken']);
 
 					}
 
@@ -251,7 +253,7 @@ function sapidk_mp($dataArray){
 
 						$ext = "limit=".$limit."&offset=".$offset;
 
-						$response = responseXtended($customers."search", $ext, $dataArray['accessToken']);
+						$response['get'] = responseXtended($customers."search", $ext, $dataArray['accessToken']);
 
 					}
 
@@ -262,7 +264,7 @@ function sapidk_mp($dataArray){
 
 						$ext = "limit=".$limit."&offset=".$offset;
 
-						$response = responseXtended($user.$dataArray['user_id']."/stores/search", $ext, $dataArray['accessToken']);
+						$response['get'] = responseXtended($user.$dataArray['user_id']."/stores/search", $ext, $dataArray['accessToken']);
 						
 					}
 
@@ -273,7 +275,7 @@ function sapidk_mp($dataArray){
 
 						$ext = "limit=".$limit."&offset=".$offset;
 
-						$response = responseXtended($qrPos, $ext, $dataArray['accessToken']);
+						$response['get'] = responseXtended($qrPos, $ext, $dataArray['accessToken']);
 
 
 					}
@@ -285,7 +287,7 @@ function sapidk_mp($dataArray){
 
 						$ext = "limit=".$limit."&offset=".$offset;
 
-						$response = responseXtended($payment."search", $ext, $dataArray['accessToken']);
+						$response['get'] = responseXtended($payment."search", $ext, $dataArray['accessToken']);
 
 
 					}
@@ -300,7 +302,7 @@ function sapidk_mp($dataArray){
 
 						$array = "";
 
-						$response = post($payment.$dataArray['post']['data']['payment_id']."/refunds", $array, $dataArray['accessToken']);
+						$response['post'] = post($payment.$dataArray['post']['data']['payment_id']."/refunds", $array, $dataArray['accessToken']);
 
 					}
 
@@ -308,7 +310,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['post']['link'])) {
 
-						$response = post($link, $dataArray['post']['data'], $dataArray['accessToken']);
+						$response['post'] = post($link, $dataArray['post']['data'], $dataArray['accessToken']);
 
 					}
 
@@ -316,7 +318,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['post']['pointActive'])) {
 
-						$response = post($pointActive, $dataArray['post']['data'], $dataArray['accessToken']);
+						$response['post'] = post($pointActive, $dataArray['post']['data'], $dataArray['accessToken']);
 
 					}
 
@@ -324,14 +326,14 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['post']['qrNuevo'])) {
 
-						$response = post($qrPos, $dataArray['post']['data'], $dataArray['accessToken']);
+						$response['post'] = post($qrPos, $dataArray['post']['data'], $dataArray['accessToken']);
 
 
 					}
 
 					if (isset($dataArray['post']['qrPost'])) {
 
-						$response = post($qrPost.$dataArray['user_id']."/".$dataArray['post']['external_id'], $dataArray['post']['data'], $dataArray['accessToken']);
+						$response['post'] = post($qrPost.$dataArray['user_id']."/".$dataArray['post']['external_id'], $dataArray['post']['data'], $dataArray['accessToken']);
 
 					}
 
@@ -339,7 +341,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['post']['preapproval_plan'])) {
 
-						$response = post($preapproval_plan, $dataArray['post']['data'], $dataArray['accessToken']);
+						$response['post'] = post($preapproval_plan, $dataArray['post']['data'], $dataArray['accessToken']);
 
 					}
 
@@ -348,7 +350,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['post']['customers']['create'])) {
 
-						$response = post($customers, $dataArray['post']['data'], $dataArray['accessToken']);
+						$response['post'] = post($customers, $dataArray['post']['data'], $dataArray['accessToken']);
 
 					}
 
@@ -356,7 +358,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['post']['stores'])) {
 
-						$response = post($user.$dataArray['user_id']."/stores", $dataArray['post']['data'], $dataArray['accessToken']);
+						$response['post'] = post($user.$dataArray['user_id']."/stores", $dataArray['post']['data'], $dataArray['accessToken']);
 
 					}
 
@@ -368,7 +370,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['delete']['point'])) {
 
-						$response = delete($pointDelete, $dataArray['delete']['point'], $dataArray['accessToken']);
+						$response['delete'] = delete($pointDelete, $dataArray['delete']['point'], $dataArray['accessToken']);
 
 					}
 
@@ -376,7 +378,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['delete']['customers'])) {
 
-						$response = delete($customers, $dataArray['delete']['customers'], $dataArray['accessToken']);
+						$response['delete'] = delete($customers, $dataArray['delete']['customers'], $dataArray['accessToken']);
 
 					}
 
@@ -384,13 +386,13 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['delete']['stores'])) {
 
-						$response = delete($user.$dataArray['user_id']."/stores/", $dataArray['delete']['id'], $dataArray['accessToken']);
+						$response['delete'] = delete($user.$dataArray['user_id']."/stores/", $dataArray['delete']['id'], $dataArray['accessToken']);
 
 					}
 
 					if (isset($dataArray['delete']['qr'])) {
 
-						$response = delete($qrPost.$dataArray['user_id']."/", $dataArray['delete']['qr'], $dataArray['accessToken']);
+						$response['delete'] = delete($qrPost.$dataArray['user_id']."/", $dataArray['delete']['qr'], $dataArray['accessToken']);
 
 					}
 
@@ -403,12 +405,239 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['put']['preapproval_plan'])) {
 
-						$response = put($preapproval_plan.$dataArray['put']['id'], $dataArray['put']['data'], $dataArray['accessToken']);
+						$response['put'] = put($preapproval_plan.$dataArray['put']['id'], $dataArray['put']['data'], $dataArray['accessToken']);
 
 					}
 
 			}
 
+			if (isset($dataArray['forWhile'])) {
+				
+				$totalArray = count($dataArray['forWhile']);
+
+				for ($n=0; $n < $totalArray; $n++) { 
+
+									// IPN
+
+					if (isset($dataArray['forWhile'][$n]['get']['ipn'])) {
+
+						$response['forWhile'][$n] = getOutarray($ipn, $dataArray['forWhile'][$n]['get']['id'], $dataArray['accessToken']);
+
+					}
+
+				// Medios de Cobro
+
+					if (isset($dataArray['forWhile'][$n]['get']['point'])) {
+
+						$response['forWhile'][$n] = responsesimple($devicesPoint, $dataArray['accessToken']);
+
+					}
+
+					if (isset($dataArray['forWhile'][$n]['get']['payment'])) {
+
+						$response['forWhile'][$n] = getOutarray($payment, $dataArray['forWhile'][$n]['get']['id'], $dataArray['accessToken']);
+
+					}
+
+					if (isset($dataArray['forWhile'][$n]['get']['preapproval_plan'])) {
+
+						$response['forWhile'][$n] = getOutarray($preapproval_plan, $dataArray['forWhile'][$n]['get']['id'], $dataArray['accessToken']);
+
+					}
+					
+				// Usuario
+
+
+					if (isset($dataArray['forWhile'][$n]['get']['user'])) {
+
+						$response['forWhile'][$n] = getOutarray($user, $dataArray['forWhile'][$n]['get']['id'], $dataArray['accessToken']);
+						
+					}
+
+
+					if (isset($dataArray['forWhile'][$n]['get']['store'])) {
+
+						if ($dataArray['forWhile'][$n]['get']['method'] == "mp") {
+								
+							$mLink = $storesMP;
+
+						} 
+
+						if ($dataArray['forWhile'][$n]['get']['method'] == "ml") {
+								
+							$mLink = $storesML;
+
+						} 
+
+						$response['forWhile'][$n] = getOutarray($mLink, $dataArray['forWhile'][$n]['get']['store'], $dataArray['accessToken']);
+						
+					}
+
+				// Clientes
+
+					if (isset($dataArray['forWhile'][$n]['get']['customers']['client'])) {
+
+						$response['forWhile'][$n] = responsesimple($customers.$dataArray['forWhile'][$n]['get']['id'], $dataArray['accessToken']);
+
+					}
+
+				// Busquedas
+
+					if (isset($dataArray['forWhile'][$n]['get']['search']['customers'])) {
+
+						$limit = $dataArray['forWhile'][$n]['get']['search']['limit'];
+						$offset = $dataArray['forWhile'][$n]['get']['search']['offset'];
+
+						$ext = "limit=".$limit."&offset=".$offset;
+
+						$response['forWhile'][$n] = responseXtended($customers."search", $ext, $dataArray['accessToken']);
+
+					}
+
+					if (isset($dataArray['forWhile'][$n]['get']['search']['stores'])) {
+
+						$limit = $dataArray['forWhile'][$n]['get']['search']['limit'];
+						$offset = $dataArray['forWhile'][$n]['get']['search']['offset'];
+
+						$ext = "limit=".$limit."&offset=".$offset;
+
+						$response['forWhile'][$n] = responseXtended($user.$dataArray['user_id']."/stores/search", $ext, $dataArray['accessToken']);
+						
+					}
+
+					if (isset($dataArray['forWhile'][$n]['get']['search']['qr'])) {
+
+						$limit = $dataArray['forWhile'][$n]['get']['search']['limit'];
+						$offset = $dataArray['forWhile'][$n]['get']['search']['offset'];
+
+						$ext = "limit=".$limit."&offset=".$offset;
+
+						$response['forWhile'][$n] = responseXtended($qrPos, $ext, $dataArray['accessToken']);
+
+
+					}
+
+					if (isset($dataArray['forWhile'][$n]['get']['search']['payment'])) {
+
+						$limit = $dataArray['forWhile'][$n]['get']['search']['limit'];
+						$offset = $dataArray['forWhile'][$n]['get']['search']['offset'];
+
+						$ext = "limit=".$limit."&offset=".$offset;
+
+						$response['forWhile'][$n] = responseXtended($payment."search", $ext, $dataArray['accessToken']);
+
+
+					}
+
+				// Devoluciones
+
+					if (isset($dataArray['forWhile'][$n]['post']['refunds'])) {
+
+						$array = "";
+
+						$response['forWhile'][$n] = post($payment.$dataArray['forWhile'][$n]['post']['data']['payment_id']."/refunds", $array, $dataArray['accessToken']);
+
+					}
+
+				// Link
+
+					if (isset($dataArray['forWhile'][$n]['post']['link'])) {
+
+						$response['forWhile'][$n] = post($link, $dataArray['forWhile'][$n]['post']['data'], $dataArray['accessToken']);
+
+					}
+
+				// POINT
+
+					if (isset($dataArray['forWhile'][$n]['post']['pointActive'])) {
+
+						$response['forWhile'][$n] = post($pointActive, $dataArray['forWhile'][$n]['post']['data'], $dataArray['accessToken']);
+
+					}
+
+				// QR
+
+					if (isset($dataArray['forWhile'][$n]['post']['qrNuevo'])) {
+
+						$response['forWhile'][$n] = post($qrPos, $dataArray['forWhile'][$n]['post']['data'], $dataArray['accessToken']);
+
+
+					}
+
+					if (isset($dataArray['forWhile'][$n]['post']['qrPost'])) {
+
+						$response['forWhile'][$n] = post($qrPost.$dataArray['user_id']."/".$dataArray['forWhile'][$n]['post']['external_id'], $dataArray['forWhile'][$n]['post']['data'], $dataArray['accessToken']);
+
+					}
+
+				// Suscripciones
+
+					if (isset($dataArray['forWhile'][$n]['post']['preapproval_plan'])) {
+
+						$response['forWhile'][$n] = post($preapproval_plan, $dataArray['forWhile'][$n]['post']['data'], $dataArray['accessToken']);
+
+					}
+
+				// Clientes
+
+
+					if (isset($dataArray['forWhile'][$n]['post']['customers']['create'])) {
+
+						$response['forWhile'][$n] = post($customers, $dataArray['forWhile'][$n]['post']['data'], $dataArray['accessToken']);
+
+					}
+
+				// Tiendas
+
+					if (isset($dataArray['forWhile'][$n]['post']['stores'])) {
+
+						$response['forWhile'][$n] = post($user.$dataArray['user_id']."/stores", $dataArray['forWhile'][$n]['post']['data'], $dataArray['accessToken']);
+
+					}
+
+
+				// POINT
+
+					if (isset($dataArray['forWhile'][$n]['delete']['point'])) {
+
+						$response['forWhile'][$n] = delete($pointDelete, $dataArray['forWhile'][$n]['delete']['point'], $dataArray['accessToken']);
+
+					}
+
+				// Clientes
+
+					if (isset($dataArray['forWhile'][$n]['delete']['customers'])) {
+
+						$response['forWhile'][$n] = delete($customers, $dataArray['forWhile'][$n]['delete']['customers'], $dataArray['accessToken']);
+
+					}
+
+				// Tiendas
+
+					if (isset($dataArray['forWhile'][$n]['delete']['stores'])) {
+
+						$response['forWhile'][$n] = delete($user.$dataArray['user_id']."/stores/", $dataArray['forWhile'][$n]['delete']['id'], $dataArray['accessToken']);
+
+					}
+
+					if (isset($dataArray['forWhile'][$n]['delete']['qr'])) {
+
+						$response['forWhile'][$n] = delete($qrPost.$dataArray['user_id']."/", $dataArray['forWhile'][$n]['delete']['qr'], $dataArray['accessToken']);
+
+					}
+
+					if (isset($dataArray['forWhile'][$n]['put']['preapproval_plan'])) {
+
+						$response['forWhile'][$n] = put($preapproval_plan.$dataArray['forWhile'][$n]['put']['id'], $dataArray['forWhile'][$n]['put']['data'], $dataArray['accessToken']);
+
+					}
+
+
+				}
+
+					
+
+			}
 		}
 
 
