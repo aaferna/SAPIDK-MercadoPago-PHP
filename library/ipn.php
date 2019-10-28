@@ -4,16 +4,17 @@ include('./core.php');
 
     $dataArray = array(
 
-    "accessToken" => "APP_USR-1512413086135942-081220-8b0cb3af04c2567f7bb8d09779aefba5-264344950",
-    "user_id" => "264344950",
+    "accessToken" => "",
+    "user_id" => "",
       "get" => array( 
         'ipn' => true,
-        'id' => "264344950" 
+        'id' => "" 
       ),
 
     );
 
-  $response = sapidk_mp($dataArray);
+  $response = sapidk_mp($dataArray)['get'];
+
 
   // Estado de pago, puede ver los manejadores de estos aqui https://www.mercadopago.com.ar/developers/es/guides/payments/api/handling-responses
   $status = $response['collection']['status'];
@@ -35,6 +36,7 @@ include('./core.php');
 
   // Ultimos 4 Digitos de la Tarjeta de Pago
     $last_four_digits = $response['collection']['last_four_digits'];
+    $reason = $response['collection']['reason'];
 
 
 
