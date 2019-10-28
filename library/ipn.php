@@ -36,6 +36,7 @@ include('./core.php');
 
   // Ultimos 4 Digitos de la Tarjeta de Pago
     $last_four_digits = $response['collection']['last_four_digits'];
+    
     $reason = $response['collection']['reason'];
 
 
