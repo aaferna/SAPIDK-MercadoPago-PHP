@@ -39,10 +39,10 @@ Crea un issue y usa el Tag (idea) para que pueda ser asignado y atendido.
 
 ## Autores
 
-* **Agustin Fernandez** - aaferna@cheprogramadora.com
+* **Agustin Fernandez** - aaferna@cheprogramadora.com.ar
 
 ## Ya termino
 
-A quien le corresponda, le interese, puede contactarse conmigo mediante mi correo aaferna@cheprogramadora.com
+A quien le corresponda, le interese, puede contactarse conmigo mediante mi correo aaferna@cheprogramadora.com.ar
 
 :pencil2: con :heart:
