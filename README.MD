@@ -8,7 +8,7 @@ SDK no oficial de Mercado Pago, para la integración de sistemas PHP
 ### Antes de continuar
 Si visita este proyecto con el fin de descargar una copia y empezar a trabajar, es ***altamente - recomendable*** que descargue [la ultima version compilada en las build](https://github.com/cheprogramadora/SAPIDK-MercadoPago-PHP/releases/latest).
 
-Nos sentiremos feliz de que en su proyecto nombre a SAPIDK-MP, hare lo mismo desde este lugar. Para eso enviar un correo a hola@cheprogramadora.com.ar y nos encargaremos de agregarlo o ayudar en lo que pueda.
+Nos sentiremos feliz de que en su proyecto nombre a SAPIDK-MP, hare lo mismo desde este lugar. Para eso enviar un correo a aaferna@cheprogramadora.com.ar y nos encargaremos de agregarlo o ayudar en lo que pueda.
 
 ## Resumen
 Este software, nacido como proyecto interno, está pensado para simplificar algunas de las integraciones más buscadas o conocidas de Mercado Pago.
@@ -39,10 +39,10 @@ Crea un issue y usa el Tag (idea) para que pueda ser asignado y atendido.
 
 ## Autores
 
-* **Agustin Fernandez** - hola@cheprogramadora.com.ar
+* **Agustin Fernandez** - aaferna@cheprogramadora.com.ar
 
 ## Ya termino
 
-A quien le corresponda, se podran contactar mediante hola@cheprogramadora.com.ar
+A quien le corresponda, se podran contactar mediante aaferna@cheprogramadora.com.ar
 
 :pencil2: con :heart:
