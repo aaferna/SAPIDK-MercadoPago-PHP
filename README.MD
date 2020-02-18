@@ -6,9 +6,9 @@
 SDK no oficial de Mercado Pago, para la integración de sistemas PHP
 
 ### Antes de continuar
-Si visita este proyecto con el fin de descargar una copia y empezar a trabajar, es ***altamente - recomendable*** que descargue [la ultima version compilada en las build](https://github.com/cheprogramadora/SAPIDK-MercadoPago-PHP/releases/latest).
+Si visita este proyecto con el fin de descargar una copia y empezar a trabajar, es ***altamente - recomendable*** que descargue [la ultima version compilada en las build](https://github.com/gsugek/SAPIDK-MercadoPago-PHP/releases/latest).
 
-Nos sentiremos feliz de que en su proyecto nombre a SAPIDK-MP, hare lo mismo desde este lugar. Para eso enviar un correo a aaferna@cheprogramadora.com.ar y nos encargaremos de agregarlo o ayudar en lo que pueda.
+Nos sentiremos feliz de que en su proyecto nombre a SAPIDK-MP.
 
 ## Resumen
 Este software, nacido como proyecto interno, está pensado para simplificar algunas de las integraciones más buscadas o conocidas de Mercado Pago.
@@ -31,18 +31,14 @@ Acá viene la parte divertida, y espero poder explicarme lo mejor posible.
 SAPI-DK MP Funciona mediante solicitudes cURL a la API de Mercado Pago. Mediante funciones de PHP podemos obtener un jSon como Array y asi trabajar las respuestas y solicitudes de la plataforma de manera más sencilla y entera que el SDK Original.
 
 ## Wiki y Manual
-Desde la [Wiki](https://github.com/cheprogramadora/SAPIDK-MercadoPago/wiki) podran acceder a toda la informacion sobre el uso y como integrarlo de manera eficiente
+Desde la [Wiki](https://github.com/gusgeek/SAPIDK-MercadoPago/wiki) podran acceder a toda la informacion sobre el uso y como integrarlo de manera eficiente
 
-## Tengo una idea o sugerencia ##
+## Tengo una idea, consulta o sugerencia ##
 
 Crea un issue y usa el Tag (idea) para que pueda ser asignado y atendido.
 
 ## Autores
 
 * **Agustin Fernandez** - aaferna@cheprogramadora.com.ar
-
-## Ya termino
-
-A quien le corresponda, se podran contactar mediante aaferna@cheprogramadora.com.ar
 
 :pencil2: con :heart:
