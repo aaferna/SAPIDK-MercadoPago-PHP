@@ -6,7 +6,7 @@
 SDK no oficial de Mercado Pago, para la integración de sistemas PHP
 
 ### Antes de continuar
-Si visita este proyecto con el fin de descargar una copia y empezar a trabajar, es ***altamente - recomendable*** que descargue [la ultima version compilada en las build](https://github.com/gsugek/SAPIDK-MercadoPago-PHP/releases/latest).
+Si visita este proyecto con el fin de descargar una copia y empezar a trabajar, es ***altamente - recomendable*** que descargue [la ultima version compilada en las build](https://github.com/gusgeek/SAPIDK-MercadoPago-PHP/releases/latest).
 
 Nos sentiremos feliz de que en su proyecto nombre a SAPIDK-MP.
 
