@@ -41,4 +41,8 @@ Crea un issue y usa el Tag (idea) para que pueda ser asignado y atendido.
 
 * **Agustin Fernandez** - aaferna@cheprogramadora.com.ar
 
-:pencil2: con :heart:
+<p align="center" >
+ <strong>:pencil2: con :heart:</strong>
+</p>
+
+
