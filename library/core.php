@@ -2,6 +2,7 @@
 
 function sapidk_mp($dataArray){
 
+	$ipn = "https://api.mercadopago.com/collections/notifications/";
 	$qrPost = "https://api.mercadopago.com/mpmobile/instore/qr/";
 	$qrPos = "https://api.mercadopago.com/pos";
 	$pointActive = "https://mobile.mercadopago.com/point/services/integrations/v1";
@@ -183,7 +184,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['get']['ipn'])) {
 
-						$response['get'] = getOutarray($payment, $dataArray['get']['id'], $dataArray['accessToken']);
+						$response['get'] = getOutarray($ipn, $dataArray['get']['id'], $dataArray['accessToken']);
 
 					}
 
@@ -420,7 +421,7 @@ function sapidk_mp($dataArray){
 
 					if (isset($dataArray['forWhile'][$n]['get']['ipn'])) {
 
-						$response['forWhile'][$n] = getOutarray($payment, $dataArray['forWhile'][$n]['get']['id'], $dataArray['accessToken']);
+						$response['forWhile'][$n] = getOutarray($ipn, $dataArray['forWhile'][$n]['get']['id'], $dataArray['accessToken']);
 
 					}
 
