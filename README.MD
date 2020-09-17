@@ -36,7 +36,7 @@ Crea un issue y usa el Tag (idea) para que pueda ser asignado y atendido.
 
 ## Autores
 
-* **Agustin Fernandez** - aaferna@cheprogramadora.com.ar
+* **Agustin Fernandez** 
 
 <p align="center" >
  <strong>:pencil2: con :heart:</strong>
