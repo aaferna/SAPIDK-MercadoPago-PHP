@@ -32,7 +32,7 @@ Desde la [Wiki](https://github.com/gusgeek/SAPIDK-MercadoPago/wiki) podran acced
 
 ## Tengo una idea, consulta o sugerencia ##
 
-Crea un issue y usa el Tag (idea) para que pueda ser asignado y atendido.
+Ingresa en [Issue desde Aquí](https://github.com/gusgeek/SAPIDK-MercadoPago-PHP/issues) y Crea tu consulta, te ayudare cuanto antes
 
 ## Autores
 
