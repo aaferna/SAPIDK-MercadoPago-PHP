@@ -125,11 +125,22 @@ namespace SAPIDK_MP {
 		public static function PointList($token) { return CURL::CURL_GET_OA("https://mobile.mercadopago.com/point/services/integrations/v1/devices", $token); }
 		public static function PointActive($data, $token) { return CURL::CURL_POST("https://mobile.mercadopago.com/point/services/integrations/v1", $data, $token); }
 		public static function PointDelete($device, $token) { return CURL::CURL_DELETE_AB("https://mobile.mercadopago.com/point/services/integrations/v1/attempt/device/".$device, $token); }
-		
+
 		public static function IPN($id, $token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/collections/notifications/".$id, $token); }
 
 
 		public static function PaymentView($id, $token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/v1/payments/".$id, $token); }
+		public static function PaymentList($limit, $offset, $token) { 
+
+		 	$ext = "limit=".$limit."&offset=".$offset;
+
+			return CURL::CURL_GET_OA("https://api.mercadopago.com/v1/payments/search", $token."&".$ext); 
+
+		}
+
+		public static function PaymentRefound($id, $token) { return CURL::CURL_POST("https://api.mercadopago.com/v1/payments/".$id."/refunds", "", $token); }
+
+
 
 	}
 
