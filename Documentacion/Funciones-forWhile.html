@@ -1,0 +1,34 @@
+<p>Esta funcione, están pensadas para ejecutar multiples consultas de una sola vez.</p>
+<p>Para esto, en el <code>dataArray</code>, enumeraremos la cantidad de consultas a ejecutar en el orden que se desee. De esta forma, podremos optimizar consultas / resultados.</p>
+<p>En el array declaramos, en ves de una acción básica como es Delete, GET, PUT o POST, la función <code>forWhile</code> donde podremos, ejecutar acciones básicas en un orden &quot;cronologico&quot;</p>
+<h3 id="un-ejemplo-practico">Un ejemplo practico</h3>
+<p>A veces queda un pago &quot;trabado&quot;, (comúnmente en Point), y si se ejecuta un POST da error ya que el dispositivo queda en BUSSY hasta terminar el cobro. Este estado <strong>no vence</strong> como en QR. Por tanto, podremos ejecuta un <code>dataArray</code> con l <code>forWhile</code> donde primero eliminaríamos o &quot;liberaríamos&quot; el dispositivo del pago que no ejecuto para luego mandar la solicitud.</p>
+<h3 id="como-lo-ejecuto">¿Como lo Ejecuto?</h3>
+<p>En el siguiente array, verán que se solicita el <code>delete</code> del Point tabletSuarez y a continuación el <code>post</code> a ese dispositivo.</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+&#39;forWhile&#39; =&gt; array(
+
+    0 =&gt; array(
+        &quot;delete&quot; =&gt; array(
+            &#39;point&#39; =&gt;  &quot;tabletSuarez&quot;
+        ),
+    ),
+
+    1 =&gt; array(
+        &quot;post&quot; =&gt; array(
+            &#39;pointActive&#39; =&gt; true,
+            &#39;data&#39; =&gt; array(
+                &#39;device_name&#39; =&gt; &quot;tabletSuarez&quot;, // Nombre del Dispositivo
+                &#39;amount&#39; =&gt; 123, // Valor a Cobrar
+                &#39;description&#39; =&gt; &#39;Pago &#39;, // Descripción
+                &#39;external_reference&#39; =&gt; null, // REFERENCIA PARA IDENFICAR LA VENTA CUANDO IPN
+                &#39;cc_type&#39; =&gt; &#39;debit_card&#39; // tipo de tarjeta, puede ser también credit_card
+            ),
+        ),
+    ),
+),
+);</code></pre>
+<p>Según corresponda podes obtener la respuesta de cada consulta, en caso del <code>DELETE</code> seria <code>$response['forWhile'][0]['status']</code> o en el <code>POST</code> es <code>$response['forWhile'][1]['status']</code> para este ejemplo.</p>
+<p>Este metodo, es combinable con cualquier función disponible en SAPIDK-MP, la única obligación es enumerar de 0 a la cantidad de consultas a gusto.</p>

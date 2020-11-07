@@ -1,0 +1,76 @@
+<p>Cajas, hace referencia a la unificacion de cobros por lo que literalmente resulta ser una &quot;Caja por Tienda&quot;. La opción de pago por QR, es en realidad &quot;Cajas&quot;. Es desde aqui, donde podremos acentuar los pagos de POINT y QR esa manera tendremos dividido y controlados los cobros por cada una de ellas, siendo tambien un filtro de busqueda.</p>
+<h3 id="crear-una-nueva-caja-qr">Crear una nueva Caja / QR</h3>
+<p>Al Crear una nueva Caja, se le tiene que indicar una Tienda de referencia a la que va a estar vinculado. Por ahora es algo omitible, pero lo correcto es asignárselo de entrada. Para esto, pueden ver la sección de <a href="https://github.com/cheprogramadora/SAPIDK-MercadoPago-PHP/wiki/Tiendas">Tiendas en la Wiki</a> para más información.</p>
+<p>Para que esto este organizado, recomiendo que los QRs se edifiquen como &quot;Caja X&quot; donde X puede ser el Nombre que le quieran indicar o un número, ya que MP lo idéntica así y no como accesorios como lo es con Points.</p>
+<p>Al crear una caja, se creara un QR cual sera vinculado, (o no, como mencione anteriormente), a una tienda; Esto se logra de la siguiente forma:</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;post&quot; =&gt; array(
+        &#39;qrNuevo&#39; =&gt; true, 
+        &#39;data&#39; =&gt; array(
+            &#39;name&#39; =&gt; &quot;NombredeQR/Caja&quot;, 
+            &#39;fixed_amount&#39; =&gt; false, 
+            &#39;store_id&#39; =&gt; &quot;idstore&quot;, // omitible si no lo tienen, solo borrar la linea 
+            &#39;external_id&#39; =&gt; &quot;idCaja&quot;, // ID por el cual va a identificarlo internamente, le recomendamos usar mt_rand(3,20000) 
+        ),
+    ),
+);</code></pre>
+<p>Mas tarde, si uno se fija en el panel de Locales o Negocios les mostrara que las Cajas creadas quedaran pendientes para vincular a alguna sucursal, si es que no se especifico <code>store_id</code></p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/gusgeek/SAPIDK-MercadoPago-PHP/1.0-deprecate/Ejemplos/Imagenes/qr1.png" alt="qr" /><p class="caption">qr</p>
+</div>
+<h3 id="listando-qrs">Listando QR's</h3>
+<p>Obtenemos todos los QR's (Cajas, por sucursal o global) asociados a nuestra cuenta</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;get&quot; =&gt; array(
+        &#39;search&#39; =&gt; array(
+            &quot;qr&quot; =&gt; true,
+            &quot;limit&quot; =&gt; &quot;30&quot;,
+            &quot;offset&quot; =&gt; &quot;0&quot;
+        ),
+    ),
+);</code></pre>
+<h3 id="activando-un-qr">Activando un QR</h3>
+<p>Enviar la solicitud de pago, es sencillo, primero tenemos que tener identificado cual QR necesitamos utilizar. luego de eso, indicar el monto y el nombre de el/los artículos.</p>
+<p><strong><em>Por defecto, la orden del QR expira a los 10 minutos de ser creada o automáticamente al ser cerrada.</em></strong></p>
+<pre><code>
+$dataArray = array(
+
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;post&quot; =&gt; array(
+        &#39;qrPost&#39; =&gt; true, 
+        &#39;data&#39; =&gt; array (
+          // &#39;external_reference&#39; =&gt; $referenciainterna,
+          // &#39;notification_url&#39; =&gt; &quot;&quot;,
+          &#39;items&#39; =&gt;
+            array (
+                0 =&gt;
+                array (
+                  &#39;title&#39; =&gt; &quot;titulodelaventa&quot;,
+                  &#39;currency_id&#39; =&gt; &#39;ARS&#39;,
+                  &#39;unit_price&#39; =&gt; 123, 
+                  &#39;quantity&#39; =&gt; 1,
+                ),
+            ),
+        ),
+
+        &#39;external_id&#39; =&gt; &quot;erfc3&quot;, // id del qr
+
+    ),
+);</code></pre>
+<h3 id="eliminar-una-orden-de-pago">Eliminar una Orden de Pago</h3>
+<p>Mediante el siguiente, se puede anular un cobro a un QR. El mismo <strong><em>no respondera ningun valor</em></strong></p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;delete&quot; =&gt; array(
+        &#39;qr&#39; =&gt;  &quot;6007&quot;
+    ),
+);</code></pre>
+<h3 id="referencias">Referencias</h3>
+<h4 id="fixed_amount">fixed_amount</h4>
+<p><code>fixed_amount</code> está pensado para tener dos métodos de venta o de aplicación 100% distintos, si el valor queda en <em><strong>true</strong></em> logras que únicamente vos indiques que tiene que pagar el cliente en cualquier momento del escenario y me refiero a escenario ya que Mercado Pago, una vez que escaneas el QR, te menciona &quot;Indícale al vendedor que ya escaneaste el QR&quot;, sea antes o después de ese mensaje, el QR esperara que vos ingreses el pago por <em><strong>POST</strong></em> y si es <em><strong>false</strong></em> el cliente o vos podrán ingresar el valor a cobrar, la diferencia es que si el cliente pone el precio no tendrás &quot;external_reference&quot;, pero si lo mandas por la funcion si, por lo que de esa forma tendrá el retorno y el estado del pago.</p>

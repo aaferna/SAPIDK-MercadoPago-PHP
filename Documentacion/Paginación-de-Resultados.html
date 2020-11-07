@@ -1,0 +1,47 @@
+<p>Según corresponda, se puede hacer una paginación de resultados con los tag <code>limit</code> y <code>offset</code> en la consulta de <code>get</code>, algunas respuestas desde Mercado Pago viene con un limite bajo de resultados que podemos modificar desde estas variables.</p>
+<p>En <code>limit</code> y <code>offset</code>, puede ir de 0 a el valor que quieran agregar, siendo 0 o &quot;&quot; el que le dará lugar al valor el defecto que pone Mercado Pago.</p>
+<p>Un ejemplo de esto seria así:</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;developer&quot; =&gt; array( 
+        &#39;log&#39; =&gt; array(
+            &quot;registro&quot; =&gt; true,
+            &quot;directorio&quot; =&gt; &quot;&quot;
+        ),
+    ),
+
+    &quot;get&quot; =&gt; array(
+        &#39;qr&#39; =&gt; array(
+            &quot;list&quot; =&gt; true,
+            &quot;limit&quot; =&gt; &quot;10&quot;,
+            &quot;offset&quot; =&gt; &quot;0&quot;
+        ),
+    ),
+
+);</code></pre>
+<h2 id="como-lo-uso">¿Como lo uso?</h2>
+<h3 id="limit">limit</h3>
+<p>Delimita la cantidad de resultados que disponemos en la consulta, para esto nos sirve que tan lento nos puede realizar la consulta, por ejemplo.</p>
+<h3 id="offset">offset</h3>
+<p>Nos permite mover en la &quot;altura&quot; del resultado, si listamos 1200 resultados y queremos el 1199 en offset colocamos 1199 para listar únicamente ese resultado.</p>
+<p>El ejemplo sería el siguiente :</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;developer&quot; =&gt; array( 
+        &#39;log&#39; =&gt; array(
+            &quot;registro&quot; =&gt; true,
+            &quot;directorio&quot; =&gt; &quot;&quot;
+        ),
+    ),
+
+    &quot;get&quot; =&gt; array(
+        &#39;qr&#39; =&gt; array(
+            &quot;list&quot; =&gt; true,
+            &quot;limit&quot; =&gt; &quot;1200&quot;,
+            &quot;offset&quot; =&gt; &quot;1199&quot;
+        ),
+    ),
+
+);</code></pre>

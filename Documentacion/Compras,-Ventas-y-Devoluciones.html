@@ -1,0 +1,73 @@
+<p>Mercado Pago permite realizar una consulta de la venta mas intensa a través de la API Payments, así como también la devolución total o parcial de la transacción realizada y listar los movimientos de una cuenta.</p>
+<p>Tengamos en cuenta que desde IPN, inicialmente, uno puede recibir la información acerca de un nuevo pago donde llegamos a recibir hasta 4 Datos que en muchos de los casos (Como las suscripciones) puede ser mas que suficientes, estos datos son:</p>
+<ul>
+<li>Tipo de Transacción <em>(recurring</em>payment, pos_payment, regular_payment)_</li>
+<li>Medio de Pago (Tarjeta, Transferencia, Efectivo)</li>
+<li>Pagador</li>
+<li>Comprador</li>
+</ul>
+<p>Sin embargo mediante Payment uno puede ver el total de la información de la transacción realizada ya que es como si estuviéramos consultando desde nuestro Panel de Mercado Pago.</p>
+<p>Quiero aclarar esto, ya que nos es util desde el lado de desarrollo porque nos responde cuanto nos queda de la venta, datos exactos son <code>net_received_amount</code> (Neto recibido) y <code>installment_amount</code> | <code>total_paid_amount</code> (Total de la Transacción), no por menos importante.</p>
+<p>También podremos consultar compras, por ejemplo que realizamos por medio de nuestra cuenta.</p>
+<h2 id="consultar-un-movimiento">Consultar un movimiento</h2>
+<p>Por medio de este, vamos a consultar un pago puntual. Teniendo el ID de la transacción es suficiente.</p>
+<pre><code>$dataArray = array(
+
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;get&quot; =&gt; array(
+        &#39;payment&#39; =&gt; true,
+        &#39;id&#39; =&gt; &#39;5313377580&#39;
+    ),
+
+);</code></pre>
+<h2 id="listar-movimientos">Listar movimientos</h2>
+<p>Utilizando la función search de SAPIDK podremos listar todos los movimientos que tengamos realizados en un nuestra cuenta. Sean compras o ventas como Depositos. Esto lo podremos realizar de la siguiente forma:</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;get&quot; =&gt; array(
+        &#39;search&#39; =&gt; array(
+            &quot;payment&quot; =&gt; true,
+            &quot;limit&quot; =&gt; &quot;30&quot;,
+            &quot;offset&quot; =&gt; &quot;0&quot;
+        ),
+    ),
+);</code></pre>
+<h2 id="devoluciones">Devoluciones</h2>
+<p>Las devoluciones funcionan de una forma sencilla, mediante una función POST la ejecutamos siempre que tengamos el ID de la Transacción, ya que sera a esa ID a la que le ejecutamos la Devolución.</p>
+<p>Esta se ejecuta de la siguiente Forma</p>
+<pre><code>$dataArray = array(
+
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+
+    &quot;post&quot; =&gt; array(
+        &#39;refunds&#39; =&gt; true,
+        &#39;data&#39; = array ( 
+            &quot;payment_id&quot; =&gt; &quot;5318681098&quot;,
+        ),
+    ),
+);</code></pre>
+<p>Dándonos la siguiente Respuesta:</p>
+<pre><code>Array
+(
+    [id] =&gt; 468072699
+    [payment_id] =&gt; 5943814791
+    [amount] =&gt; 35
+    [metadata] =&gt; Array
+        (
+        )
+
+    [source] =&gt; Array
+        (
+            [id] =&gt; 297284950
+            [name] =&gt; Agustin Fernandez
+            [type] =&gt; collector
+        )
+
+    [date_created] =&gt; 2019-09-24T09:41:15.665-04:00
+    [unique_sequence_number] =&gt; 
+    [status] =&gt; approved
+)</code></pre>
+<p>En esa respuesta ya sabemos que el pago 5236314791 fue devuelto porque el status dio <code>approved</code></p>

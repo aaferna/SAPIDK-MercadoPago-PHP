@@ -1,0 +1,7 @@
+<h5 id="en-desarrollo">En desarrollo</h5>
+<p>Desde la version 2.4.0, SAPIDK MP devuelve las llamadas bajo un array con el metodo empleado. Si se ejecuto un GET, la respuesta de esta consulta seria la siguiente:</p>
+<pre><code>Array
+(
+    [get] =&gt; Array
+)</code></pre>
+<p>Si se ejecutan funciones por separado como un DELETE y un POST sin utilizar <a href="https://github.com/gusgeek/SAPIDK-MercadoPago-PHP/wiki/Funciones-forWhile">forWhile</a> este devolverá por consulta, no es conveniente utilizar multiples funciones básicas (GET, POST, PUT o DELETE), ya que se podría &quot;Pisar la información&quot;, para eso, reitero la utilización de <a href="https://github.com/gusgeek/SAPIDK-MercadoPago-PHP/wiki/Funciones-forWhile">forWhile</a></p>

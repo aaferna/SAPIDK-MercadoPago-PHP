@@ -1,0 +1,12 @@
+<p>Comento que estoy armando de a poco la información de ese SDK. Porfavor, les solicito paciencia. Si encuentras algo fuera de lugar o quieres ayudarme con algo crea un Issue con el tag Idea.</p>
+<h2 id="obtenerlo">Obtenerlo</h2>
+<p>Puedes obtener este paquete simplemente descargarlo de las <a href="https://github.com/gusgeek/SAPIDK-MercadoPago/releases/latest">Releases</a></p>
+<h2 id="versiones-deprecate">Versiones Deprecate</h2>
+<h3 id="v1.0"><a href="https://github.com/gusgeek/SAPIDK-MercadoPago-PHP/tree/1.0-deprecate">v1.0</a></h3>
+<p>Queda deprecate debito a la metodologia de uso. Se puede <a href="https://github.com/gusgeek/SAPIDK-MercadoPago-PHP/releases/tag/1.2.2">descargar y usar</a> siguiendo <a href="https://github.com/gusgeek/SAPIDK-MercadoPago-PHP/blob/1.0-deprecate/documentation.html">la documentacion</a> agradada, no la WIKI ya que vincula a la version 2.0. ## Aclaraciones</p>
+<ol style="list-style-type: decimal">
+<li><p>En los Ejemplos <a href="https://github.com/gusgeek/SAPIDK-MercadoPago/wiki/Hyper-Link#crear-uno-nuevo-link">Creando un nuevo Link</a> y <a href="https://github.com/gusgeek/SAPIDK-MercadoPago/wiki/QR#activando-un-qr">Activando un QR</a>, el array items puede tener mas de un elemento, solo quedaría buclearlo de alguna forma según cada proyecto. Además, si se agrega un valor en quantity mayor a 1, MercadoPago multiplicara el valor de unit_price por quantity.</p></li>
+<li><p>Comprendo la diferencia entre el SDK original y este proyecto, pero en pocos Kb tenemos resueltas 4 herramienta de pago por ahora. Agradecería criticas constructivas y la colaboración en el debug o lo que fuere.</p></li>
+<li><p>Errores <strong><em>400</em></strong>: Estos se pueden producir por la falta de algún dato o algún problema en el Servidor / Internet / URL, en ese caso recomiendo que verifiquen bien los datos que envían.</p></li>
+<li><p>A partir de la version 2.4.0, las respuestas que se obtengan bajo la función <code>sapidk_mp</code> vendran condicionadas con el metodo que se utilizo.</p></li>
+</ol>

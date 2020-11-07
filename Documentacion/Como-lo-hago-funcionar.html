@@ -1,0 +1,21 @@
+<p>Bien, acá dependemos de cada proyecto, pero detallare las opciones que tenemos actualmente.</p>
+<p>Todo se centra en una única función, cual envía un Array, es necesario que las primeras dos lineas de este sean <code>accessToken</code> y <code>user_id</code></p>
+<p>Posterior de este, tenemos tres operadores <code>get</code> <code>post</code> y <code>delete</code> donde pueden contener un array o determinantes de <code>true</code> / <code>false</code></p>
+<p>Un ejemplo es el de la consulta de un usuario, en el ejemplo siguiente consultaremos <em>nuestro usuario</em> para ver que datos nos devuelve, todos los datos que devuelve SAPIDK están preparados para ser trabajados por un Array.</p>
+<p>La forma de empezar a trabajar es de la siguiente manera:</p>
+<pre><code>$dataArray = array(
+
+    &quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+    &quot;user_id&quot; =&gt; &quot;264334950&quot;,
+        &quot;get&quot; =&gt; array( 
+            &#39;user&#39; =&gt; true,
+            &#39;id&#39; =&gt; &quot;264334950&quot; 
+        ),
+
+);
+
+print_r(sapidk_mp($dataArray));</code></pre>
+<p><strong><em>Si nos fijamos, el id que se consulta, es nuestro <code>user_id</code>, de esta forma obtendremos nuestra información, como así también la de cualquier otro usuario que trabajemos</em></strong></p>
+<p>La única función a utilizar es <code>sapidk_mp($dataArray);</code> según como tengamos armado nuestro array será la respuesta que reciba el mismo ya que en la estructura del mismo declararemos la acción a realizar.</p>
+<p>Recomiendo utilizar <code>$response = sapidk_mp($dataArray);</code> para tener bien ordenado el código, luego de ahí elegir si hacer un <code>print_r($response);</code> o si trabajar la respuesta de otra manera.</p>
+<p>En cada ejemplo que está documentado desde aquí, vera directamente el array a utilizar en la función.</p>

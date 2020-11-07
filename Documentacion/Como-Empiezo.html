@@ -1,0 +1,9 @@
+<p>Como indicamos anteriormente, SAPI-DK MP está escrito en PHP, por lo cual necesitamos un documento en tal formato con un include a core.php</p>
+<pre><code>&lt;?php
+
+  include(&#39;./library/core.php&#39;);
+
+?&gt;</code></pre>
+<p>En el file <em>core.php</em> tenemos el código necesario de este SDK para poder utilizarlo.</p>
+<p>Necesitaremos el Access Token y el user_id para la utilización de la herramienta. Estas las podemos obtener, brindada por Mercado Pago, en https://www.mercadopago.com/mla/account/credentials una vez que nosotros tengamos creada una aplicación base en https://applications.mercadopago.com/</p>
+<p><em>Una pista:</em> El <code>user_id</code> son los ultimos numeros del Token</p>

@@ -1,0 +1,112 @@
+<p>IPN o Instant Pay Notification es la herramienta que utilizaremos para que Mercado Pago o Nosotros verifiquemos un pago realizado por y mediante Mercado Pago. En esta oportunidad recibimos el numero de la venta por __*$_REQUEST*__</p>
+<pre><code>$dataArray = array(
+
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;get&quot; =&gt; array( 
+        &#39;ipn&#39; =&gt; true,
+        &#39;id&#39; =&gt; &quot;264344950&quot; 
+    ),
+
+);</code></pre>
+<p>Esto, nos responde lo siguiente</p>
+<pre><code>Array
+(
+    [collection] =&gt; Array
+        (
+            [id] =&gt; 5157151402
+            [site_id] =&gt; MLA
+            [date_created] =&gt; 2019-09-04T10:36:36.000-04:00
+            [date_approved] =&gt; 2019-09-04T10:36:38.000-04:00
+            [money_release_date] =&gt; 2019-09-04T10:36:38.000-04:00
+            [last_modified] =&gt; 2019-09-04T10:36:53.000-04:00
+            [payer] =&gt; Array
+                (
+                    [id] =&gt; 147688640
+                    [first_name] =&gt; Cobro recibido
+                    [last_name] =&gt; en persona
+                    [phone] =&gt; Array
+                        (
+                            [area_code] =&gt;
+                            [number] =&gt; 00000
+                            [extension] =&gt;
+                        )
+
+                    [identification] =&gt; Array
+                        (
+                            ...
+                        )
+
+                    [email] =&gt; ventapresencial@mercadopago.com
+                    [nickname] =&gt; VENTASPRESENCIAL
+                )
+
+            [order_id] =&gt; Venta presencial
+            [external_reference] =&gt; Venta presencial
+            [merchant_order_id] =&gt;
+            [reason] =&gt; Venta presencial
+            [currency_id] =&gt; ARS
+            [transaction_amount] =&gt; 2300
+            [net_received_amount] =&gt; 2133.25
+            [total_paid_amount] =&gt; 2300
+            [shipping_cost] =&gt; 0
+            [coupon_amount] =&gt; 0
+            [coupon_fee] =&gt; 0
+            [finance_fee] =&gt; 0
+            [discount_fee] =&gt; 0
+            [coupon_id] =&gt;
+            [status] =&gt; approved
+            [status_detail] =&gt; accredited
+            [installments] =&gt; 1
+            [issuer_id] =&gt; 688
+            [installment_amount] =&gt; 2300
+            [deferred_period] =&gt;
+            [payment_type] =&gt; credit_card
+            [payment_method_id] =&gt; cabal
+            [marketplace] =&gt; NONE
+            [operation_type] =&gt; pos_payment
+            [transaction_order_id] =&gt;
+            [statement_descriptor] =&gt; WWW.MERCADOPAGO.COM
+            [cardholder] =&gt; Array
+                (
+                ...
+                )
+
+            [authorization_code] =&gt; 825136
+            [marketplace_fee] =&gt; 0
+            [last_four_digits] =&gt; 2589
+            [deduction_schema] =&gt;
+            [refunds] =&gt; Array
+                (
+                )
+
+            [amount_refunded] =&gt; 0
+            [last_modified_by_admin] =&gt;
+            [api_version] =&gt; 2
+            [concept_id] =&gt;
+            [concept_amount] =&gt; 0
+            [collector] =&gt; Array
+                (
+                ...
+                )
+
+        )
+
+)</code></pre>
+<p>Las respuestas de las funciones se puede trabajar por niveles, inicialmente agarramos <code>$response</code> donde tendremos la respuesta de la consulta (en este caso) para ir filtrando en el array. De esta venta, nos interesa saber si fue paga o no, entonces lo que haremos es buscar <em>status</em> donde sabremos si el resultado fue approved.</p>
+<pre><code>&lt;?php
+
+  echo $response[&#39;collection&#39;][&#39;status&#39;];
+
+?&gt;</code></pre>
+<p>La forma de obtener el dato, es poner entre corchetes el nivel del array y así llegar hasta lo que nos interesa obtener.</p>
+<p>El ejemplo de IPN, es el más sencillo, pero pueden aparecer distintos escenarios en el que será necesario manejar alguna que otra variable, aca los invito a que miren <a href="https://github.com/cheprogramaodra/SAPIDK-MercadoPago-PHP/blob/master/library/ipn.php">IPN Manager</a> para que vean los tres escenarios posibles <em>(recurring</em>payment, pos_payment, regular_payment)_ y sus variables.</p>
+<h2 id="escenarios-de-cobro">Escenarios de Cobro</h2>
+<h3 id="regular_payment">regular_payment</h3>
+<p>Este escenario se presenta en los pagos realizados con QR, Compras de Mercado Libre y Links de Pago</p>
+<h3 id="pos_payment">pos_payment</h3>
+<p>Se recibe cuando un pago se ejecuta mendiante Point</p>
+<h3 id="recurring_payment">recurring_payment</h3>
+<p>Cuando se ejecuta un cobro de Suscripcion, este es el item que recibiremos para notificarnos tal motivo</p>
+<h2 id="metodo-de-pago">Metodo de Pago</h2>
+<p>Utilizando la Identificacion <code>payment_type</code> y <code>payment_method_id</code> sabremos si un pago fue en Efectivo, Dinero en cuenta o Transferencia o con Tarjeta de Credito / Debito</p>

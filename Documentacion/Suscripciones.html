@@ -1,0 +1,60 @@
+<p>Muy similar a Hyper Link, con la diferencia de que elegiremos cuando se cobra, nos devolverá una URL (que se puede ver en el Panel de Mercado Pago), con el que podremos asociar nuestros clientes a el plan de suscripción que crearemos</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;post&quot; =&gt; array(
+        &#39;preapproval_plan&#39; =&gt;  true,
+        &#39;data&#39; =&gt; array (
+            &#39;reason&#39; =&gt; &#39;reason&#39;,
+            &#39;back_url&#39; =&gt; &#39;https://www.suscripcion.noexiste/&#39;,
+            &#39;external_reference&#39; =&gt; 1212, // referencia interna
+            &#39;auto_recurring&#39; =&gt; array(
+                &#39;frequency&#39; =&gt; 30, // frecuencia de cobro
+                &#39;frequency_type&#39; =&gt; &quot;days&quot;, // se cobraria cada dia o mes segun frequency
+                &#39;transaction_amount&#39; =&gt; 10, // monto a cobrar
+                &#39;currency_id&#39; =&gt; &quot;ARS&quot;, // moneda con la que se cobrar
+                &#39;debit_date&#39; =&gt; 1, // que dia del mes se cobra
+
+            ),
+        ),
+    ),
+);</code></pre>
+<h3 id="como-recibo-y-analizo-el-pago">¿Como recibo y analizo el pago?</h3>
+<p>Al momento de suscribir a un nuevo cliente, mediante el Link que generamos en la función anterior, Mercado Pago ejecuta un pago con el método <code>regular_payment</code> de $2 automatico, donde cobra y devuelve el mismo para verificar la tarjeta. Esto, el IPN lo recibe como tal ya que nos sirve a nosotros para poder darle paso a nuestro sistema de que la suscripción fue correctamente realizada. De ser asi, nosotros tendriamos que recibir un pago con el Tag <code>approved</code> y luego el mismo con el Tag <code>refound</code>.</p>
+<p>Es desde aqui, que uno lo puede manejar con con el metodo <code>recurring_payment</code> para identificar y manejar los pagos que vengan cobros posteriores al regular_payment de prueba.</p>
+<p>Si uno analiza la respuesta del IPN sabra que puede obtener el pagador de esta suscripcion, entendiendo que todos los pagos con tarjetas tiene que ser a nombre del titular de la tarjeta, cuando recibamos el IPN recibimos quien lo pago y el External References, Suficientes para poder manegar los pagos recurrentes desde nuestro sistema, quiero decir, identificar al cliente, la suscripción y el estado del pago.</p>
+<p>Pueden ver IPN Manager desde: <a href="https://github.com/gusgeek/SAPIDK-MercadoPago-PHP/blob/master/library/ipn.php">IPN Manager en Git</a></p>
+<h3 id="actualizar-un-plan">Actualizar un Plan</h3>
+<p>Mediante la siguiente funcion uno puede realizar la actualizacion de un Plan.</p>
+<h4 id="esta-funcion-esta-fallando-del-lado-de-mercado-pago-la-documento-para-tenerla-completa">Esta funcion, esta fallando del lado de Mercado Pago, la documento para tenerla completa</h4>
+<pre><code>$dataArray = array(
+        &quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+        &quot;user_id&quot; =&gt; &quot;264334950&quot;,
+            &quot;put&quot; =&gt; array(
+                &#39;preapproval_plan&#39; =&gt; true,
+                &#39;id&#39; =&gt; &#39;ebf5eb4563413692d2ffb60c0033c8&#39;,
+                &#39;data&#39; =&gt; array (
+                  &#39;back_url&#39; =&gt; &#39;https://www.suscripcion.noexiste/&#39;,
+                  &#39;reason&#39; =&gt; &#39;reason&#39;,
+                  // &#39;status&#39; =&gt; &#39;active&#39;, 
+                  &#39;external_reference&#39; =&gt; &#39;1212&#39;,
+                  &#39;auto_recurring&#39; =&gt; array (
+                        &#39;frequency&#39; =&gt; 30,
+                        &#39;frequency_type&#39; =&gt; &#39;days&#39;,
+                        &#39;transaction_amount&#39; =&gt; 10,
+                        &#39;currency_id&#39; =&gt; &#39;ARS&#39;,
+                    ),
+                ),
+            ),
+        );</code></pre>
+<p>Al momento de actualizar los datos, únicamente uno corrige el dato que crea correcto y no repostea toda la información.</p>
+<h3 id="consultar-un-plan">Consultar un Plan</h3>
+<p>Sabiendo el ID del plan, podremos consultar el mismo para retomar sus datos, esto se ejecuta de la siguiente forma:</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;get&quot; =&gt; array( 
+        &#39;preapproval_plan&#39; =&gt; true,
+        &#39;id&#39; =&gt; &quot;ebf5eb9222e7413692d2ffb60c0033c8&quot; 
+    ),
+);</code></pre>

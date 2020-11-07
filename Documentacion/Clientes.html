@@ -1,0 +1,60 @@
+<p>Mediante el SDK podremos crear una cartera de Clientes para luego asociarlos a pagos o asociar tarjetas de credito o debito para cobrar pagos sin CVV (Lo que seria la nueva version de Suscripciones)</p>
+<h3 id="crear-un-cliente">Crear un Cliente</h3>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+    &quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;post&quot; =&gt; array(
+        &#39;customers&#39; =&gt;  array(
+            &#39;create&#39; =&gt; true
+        ),
+        &#39;data&#39; =&gt; array(
+            &quot;email&quot; =&gt; &quot;agustinalejandrofernandez@mail.com.ar&quot;,
+            &quot;first_name&quot; =&gt; &quot;agustin&quot;,
+            &quot;last_name&quot; =&gt; &quot;fernandez&quot;,
+            &quot;phone&quot; =&gt; array(
+                &quot;area_code&quot; =&gt; &quot;11&quot;,
+                &quot;number&quot; =&gt; &quot;23923157&quot;,
+            ),
+
+            &quot;identification&quot;=&gt; array(
+                &quot;type&quot; =&gt; &quot;DNI&quot;,
+                &quot;number&quot; =&gt; &quot;34684457&quot;,
+            ),
+        ),
+    ),
+);</code></pre>
+<h3 id="buscar-cliente-por-id">Buscar Cliente por ID</h3>
+<p>Indicando el metodo informamos el ID a buscar y obtendremos el ARRAY anterior</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;get&quot; =&gt; array(
+        &#39;customers&#39; =&gt;  array(
+            &quot;client&quot; =&gt; true,
+        ),
+    &#39;id&#39; =&gt; &quot;116145032-LGoQXCOsd0NLF5&quot;,
+    ),
+);</code></pre>
+<h3 id="listar-todos-los-clientes">Listar todos los Clientes</h3>
+<pre><code>$dataArray = array(
+
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;get&quot; =&gt; array(
+        &#39;search&#39; =&gt; array(
+            &quot;customers&quot; =&gt; true,
+            &quot;limit&quot; =&gt; &quot;10&quot;,
+            &quot;offset&quot; =&gt; &quot;0&quot;
+        ),
+    ),
+);</code></pre>
+<h3 id="eliminar-cliente">Eliminar Cliente</h3>
+<p>Usando el ID generado, lo indicamos para eliminar explícitamente ese usuario, nos responderá un array con los mismos datos como si una consulta o creacion se tratase</p>
+<pre><code>$dataArray = array(
+
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;delete&quot; =&gt; array(
+        &#39;customers&#39; =&gt;  &quot;116145032-LGoQXCOsd0NLF5&quot;
+    ),
+);</code></pre>

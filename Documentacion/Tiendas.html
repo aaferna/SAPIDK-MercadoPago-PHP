@@ -1,0 +1,134 @@
+<p>Mediante esta función podremos ver, crear y eliminar, (por ahora) las tiendas que tengamos asociadas a nuestra cuenta de Mercado Pago.</p>
+<h3 id="consultar-tiendas">Consultar Tiendas</h3>
+<p>Esta función, muy util para saber como viene configurada nuestra cuenta, nos puede brindar los datos necesarios para la asociación de los QR's por ejemplo.</p>
+<p>Para poder ver las Tiendas que tenemos creadas en nuestra cuenta, tendremos que ejecutar el siguiente <code>$dataArray</code></p>
+<pre><code>&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;get&quot; =&gt; array(
+        &#39;search&#39; =&gt; array(
+            &quot;stores&quot; =&gt; true,
+            &quot;limit&quot; =&gt; &quot;30&quot;,
+            &quot;offset&quot; =&gt; &quot;0&quot;
+        ),
+    ),
+);</code></pre>
+<p>Mediante esta solicitud, estamos realizando la búsqueda de todas las tiendas asociadas a nuestro usuario, nos devuelve un array como este:</p>
+<pre><code>Array
+(
+    [paging] =&gt; Array
+        (
+            [total] =&gt; 2
+            [offset] =&gt; 0
+            [limit] =&gt; 1
+        )
+
+    [results] =&gt; Array
+        (
+            [0] =&gt; Array
+                (
+                    [id] =&gt; 30024321
+                    [name] =&gt; Tienda Villa Lejos
+                    [date_creation] =&gt; 2019-05-15T22:32:21Z
+                    [location] =&gt; Array
+                        (
+                            [address_line] =&gt; Calle Falsa 4949, Villa Lejos, Buenos Aires
+                            [reference] =&gt; 
+                            [latitude] =&gt; -34.552104
+                            [longitude] =&gt; -58.558716
+                        )
+
+                )
+
+        )
+
+)</code></pre>
+<h3 id="tienda-por-id">Tienda por ID</h3>
+<p>Mediante SAPIDK podremos obtener la información de una tienda realizando la búsqueda por su ID. Tenemos dos metodos, por MP (default y el correcto) o ML. Si usamos MP obtendremos menos información que por ML. Tan solo con indicar el metodo obtendrán la información que quieran.</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;get&quot; =&gt; array(
+        &#39;store&#39; =&gt; &quot;30349325&quot;,
+        &#39;method&#39; =&gt; &quot;mp&quot; // o ml
+    ),
+);</code></pre>
+<p>Obteniendo una respuesta como la siguiente:</p>
+<pre><code>Array
+(
+    [id] =&gt; 30024321
+    [user_id] =&gt; 264334950
+    [description] =&gt; Tienda Villa Lejos
+    [date_creation] =&gt; 2019-05-16T02:32:21.339Z
+    [open_hours] =&gt; Lunes a sábado de 8 a 20 hs.
+    [status] =&gt; active
+    [tags] =&gt; Array
+        (
+            [0] =&gt; payment
+        )
+
+    [phone] =&gt; 
+    [location] =&gt; Array
+        (
+            [address_line] =&gt; Calle Falsa 4949, Villa Lejos, Buenos Aires
+            [other_info] =&gt; 
+            [latitude] =&gt; -34.552104
+            [longitude] =&gt; -58.558716
+            [id] =&gt; TUxBQ0DGevdGyYWxz
+            [type] =&gt; city
+        )
+
+)</code></pre>
+<h3 id="crear-tiendas">Crear Tiendas</h3>
+<p>Con el siguiente código podremos crear las sucursales, negocio, tiendas... Como prefieran llamarlo, mediante la API de Mercado Pago. Tengamos en cuenta que los días deben ser agregados según se nombre en ingles, detallando horarios de apertura y cierre, así como también obligatorio colocar <code>latitude</code> y <code>longitude</code>.</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;post&quot; =&gt; array(
+        &#39;stores&#39; =&gt; true,
+        &#39;data&#39; =&gt; array (
+          &#39;name&#39; =&gt; &#39;Sucursal Instore&#39;,
+          &#39;business_hours&#39; =&gt;  array (
+            &#39;monday&#39; =&gt; array (
+                0 =&gt;  array (
+                    &#39;open&#39; =&gt; &#39;08:00&#39;,
+                    &#39;close&#39; =&gt; &#39;12:00&#39;,
+                  ),
+                1 =&gt;  array (
+                    &#39;open&#39; =&gt; &#39;14:00&#39;,
+                    &#39;close&#39; =&gt; &#39;18:00&#39;,
+                  ),
+            ),
+
+            &#39;tuesday&#39; =&gt; array (
+                0 =&gt; array (
+                    &#39;open&#39; =&gt; &#39;09:00&#39;,
+                    &#39;close&#39; =&gt; &#39;18:00&#39;,
+                ),
+            ),
+          ),
+          &#39;location&#39; =&gt;  array (
+            &#39;street_number&#39; =&gt; &#39;3039&#39;,
+            &#39;street_name&#39; =&gt; &#39;Caseros&#39;,
+            &#39;city_name&#39; =&gt; &#39;Belgrano&#39;,
+            &#39;state_name&#39; =&gt; &#39;Capital Federal&#39;,
+            &#39;latitude&#39; =&gt; -32.8897322,
+            &#39;longitude&#39; =&gt; -68.8443275,
+            &#39;reference&#39; =&gt; &#39;3er Piso&#39;,
+          ),
+          &#39;external_id&#39; =&gt; &#39;1234&#39;,
+        ),
+    ),
+);</code></pre>
+<h3 id="eliminar-tiendas">Eliminar Tiendas</h3>
+<p>Podremos eliminar tiendas mediante la función <code>delete</code> que dispone SAPIDK, previamente deberemos reconocer el ID que tiene nuestra sucursal a eliminar.</p>
+<p>Podremos eliminarla ejecutando el siguiente Array:</p>
+<pre><code>$dataArray = array(
+    &quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+    &quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;delete&quot; =&gt; array(
+        &#39;stores&#39; =&gt; true,
+        &#39;id&#39; =&gt; &quot;30301484&quot;,
+        ),
+    
+);</code></pre>
+<p>Les respondera el ID de la Tienda y de Nuestro Usuario</p>

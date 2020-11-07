@@ -1,0 +1,341 @@
+<p>Con esta herramienta, podemos obtener información sobre los usuarios de MercadoLibre. Los atributos privados se muestran solo si el usuario está autenticado y autorizado.</p>
+<p>Es una forma mas de verificar y tener mas completo un perfil de usuarios. Si bien, para poder realizarlo tenemos que tener un User ID, se puede conseguir fácilmente usando este SDK mediante IPN (<code>$response['collection']['payer']['id']</code>) o por Payment (<code>$response['payer']['id']</code>)</p>
+<p>Este se puede ejecutar de la siguiente manera</p>
+<pre><code>$dataArray = array(
+
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1512413086135942-081220-8b0cb3af04c2567f7bb8d09779aefba5-264344950&quot;,
+&quot;user_id&quot; =&gt; &quot;264344950&quot;,
+    &quot;get&quot; =&gt; array( 
+        &#39;user&#39; =&gt; true,
+        &#39;id&#39; =&gt; &quot;264344950&quot; 
+    ),
+
+);</code></pre>
+<p>Este nos responderá un <code>array</code> de la siguiente forma</p>
+<pre><code>Array
+(
+    [id] =&gt; 1
+    [nickname] =&gt; NICTRAFFICGENER1
+    [registration_date] =&gt; 2011-09-05T12:00:00.000-04:00
+    [country_id] =&gt; CL
+    [address] =&gt; Array
+        (
+            [city] =&gt; 
+            [state] =&gt; 
+        )
+
+    [user_type] =&gt; normal
+    [tags] =&gt; Array
+        (
+            [0] =&gt; normal
+            [1] =&gt; test_user
+            [2] =&gt; mshops
+        )
+
+    [logo] =&gt; 
+    [points] =&gt; 0
+    [site_id] =&gt; MLC
+    [permalink] =&gt; http://perfil.mercadolibre.cl/NICTRAFFICGENER1
+    [seller_reputation] =&gt; Array
+        (
+            [level_id] =&gt; 
+            [power_seller_status] =&gt; 
+            [transactions] =&gt; Array
+                (
+                    [canceled] =&gt; 0
+                    [completed] =&gt; 0
+                    [period] =&gt; historic
+                    [ratings] =&gt; Array
+                        (
+                            [negative] =&gt; 0
+                            [neutral] =&gt; 0
+                            [positive] =&gt; 0
+                        )
+
+                    [total] =&gt; 0
+                )
+
+        )
+
+    [buyer_reputation] =&gt; Array
+        (
+            [tags] =&gt; Array
+                (
+                )
+
+        )
+
+    [status] =&gt; Array
+        (
+            [site_status] =&gt; deactive
+        )
+
+)</code></pre>
+<h3 id="metodo-de-empleo-recomendado">Metodo de empleo recomendado</h3>
+<p>Si bien, esta utilidad al momento de emplearla no ofrece mucho, nos puede servir para comprobar que la cuenta que ingresemos para trabajar con nuestra integración, sea la correcta.</p>
+<p>¿Que quiero decir?: Al momento de comprobar nuestro user_id y token, nos devuelve toda nuestra información detallada, con etiquetas que nos puede llegar a ser de utilidad como verificación de registro o nivel de la cuenta.</p>
+<p>Dejo un ejemplo</p>
+<pre><code>Array
+(
+    [id] =&gt; 234024450
+    [nickname] =&gt; CALIBURNUSCOMPUTACION
+    [registration_date] =&gt; 2017-07-14T10:00:10.000-04:00
+    [first_name] =&gt; Agustin
+    [last_name] =&gt; Fernandez
+    [gender] =&gt; 
+    [country_id] =&gt; AR
+    [email] =&gt; estoesunmail@tiendacomputacion.com
+    [identification] =&gt; Array
+        (
+            [number] =&gt; 3323257
+            [type] =&gt; DNI
+        )
+
+    [address] =&gt; Array
+        (
+            [address] =&gt; Artigas 4949
+            [city] =&gt; Villa Ballester
+            [state] =&gt; AR-B
+            [zip_code] =&gt; 1653
+        )
+
+    [phone] =&gt; Array
+        (
+            [area_code] =&gt; 
+            [extension] =&gt; 
+            [number] =&gt; +54 1598273245
+            [verified] =&gt; 
+        )
+
+    [alternative_phone] =&gt; Array
+        (
+            [area_code] =&gt; 
+            [extension] =&gt; 
+            [number] =&gt; 
+        )
+
+    [user_type] =&gt; normal
+    [tags] =&gt; Array
+        (
+            [0] =&gt; normal
+            [1] =&gt; user_info_verified
+            [2] =&gt; messages_as_seller
+            [3] =&gt; messages_as_buyer
+        )
+
+    [logo] =&gt; 
+    [points] =&gt; 42
+    [site_id] =&gt; MLA
+    [permalink] =&gt; http://perfil.mercadolibre.com.ar/CALIBURNUSCOMPUTACION
+    [shipping_modes] =&gt; Array
+        (
+            [0] =&gt; custom
+            [1] =&gt; not_specified
+            [2] =&gt; me2
+        )
+
+    [seller_experience] =&gt; ADVANCED
+    [bill_data] =&gt; Array
+        (
+            [accept_credit_note] =&gt; Y
+        )
+
+    [seller_reputation] =&gt; Array
+        (
+            [level_id] =&gt; 4_light_green
+            [power_seller_status] =&gt; 
+            [transactions] =&gt; Array
+                (
+                    [canceled] =&gt; 1
+                    [completed] =&gt; 14
+                    [period] =&gt; historic
+                    [ratings] =&gt; Array
+                        (
+                            [negative] =&gt; 0
+                            [neutral] =&gt; 0
+                            [positive] =&gt; 1
+                        )
+
+                    [total] =&gt; 15
+                )
+
+            [metrics] =&gt; Array
+                (
+                    [sales] =&gt; Array
+                        (
+                            [period] =&gt; 60 months
+                            [completed] =&gt; 14
+                        )
+
+                    [claims] =&gt; Array
+                        (
+                            [period] =&gt; 60 months
+                            [rate] =&gt; 0
+                        )
+
+                    [delayed_handling_time] =&gt; Array
+                        (
+                            [period] =&gt; 60 months
+                            [rate] =&gt; 0
+                        )
+
+                    [cancellations] =&gt; Array
+                        (
+                            [period] =&gt; 60 months
+                            [rate] =&gt; 0
+                        )
+
+                )
+
+        )
+
+    [buyer_reputation] =&gt; Array
+        (
+            [canceled_transactions] =&gt; 0
+            [tags] =&gt; Array
+                (
+                )
+
+            [transactions] =&gt; Array
+                (
+                    [canceled] =&gt; Array
+                        (
+                            [paid] =&gt; 
+                            [total] =&gt; 
+                        )
+
+                    [completed] =&gt; 
+                    [not_yet_rated] =&gt; Array
+                        (
+                            [paid] =&gt; 
+                            [total] =&gt; 
+                            [units] =&gt; 
+                        )
+
+                    [period] =&gt; historic
+                    [total] =&gt; 
+                    [unrated] =&gt; Array
+                        (
+                            [paid] =&gt; 
+                            [total] =&gt; 
+                        )
+
+                )
+
+        )
+
+    [status] =&gt; Array
+        (
+            [billing] =&gt; Array
+                (
+                    [allow] =&gt; 1
+                    [codes] =&gt; Array
+                        (
+                        )
+
+                )
+
+            [buy] =&gt; Array
+                (
+                    [allow] =&gt; 1
+                    [codes] =&gt; Array
+                        (
+                        )
+
+                    [immediate_payment] =&gt; Array
+                        (
+                            [reasons] =&gt; Array
+                                (
+                                )
+
+                            [required] =&gt; 
+                        )
+
+                )
+
+            [confirmed_email] =&gt; 1
+            [shopping_cart] =&gt; Array
+                (
+                    [buy] =&gt; allowed
+                    [sell] =&gt; allowed
+                )
+
+            [immediate_payment] =&gt; 
+            [list] =&gt; Array
+                (
+                    [allow] =&gt; 1
+                    [codes] =&gt; Array
+                        (
+                        )
+
+                    [immediate_payment] =&gt; Array
+                        (
+                            [reasons] =&gt; Array
+                                (
+                                )
+
+                            [required] =&gt; 
+                        )
+
+                )
+
+            [mercadoenvios] =&gt; not_accepted
+            [mercadopago_account_type] =&gt; personal
+            [mercadopago_tc_accepted] =&gt; 1
+            [required_action] =&gt; 
+            [sell] =&gt; Array
+                (
+                    [allow] =&gt; 1
+                    [codes] =&gt; Array
+                        (
+                        )
+
+                    [immediate_payment] =&gt; Array
+                        (
+                            [reasons] =&gt; Array
+                                (
+                                )
+
+                            [required] =&gt; 
+                        )
+
+                )
+
+            [site_status] =&gt; active
+            [user_type] =&gt; simple_registration
+        )
+
+    [secure_email] =&gt; m12312.3123fjb@mail.mercadolibre.com
+    [company] =&gt; Array
+        (
+            [brand_name] =&gt; Tienda Computacion
+            [city_tax_id] =&gt; 
+            [corporate_name] =&gt; FERNANDEZ AGUSTIN ALEJANDRO
+            [identification] =&gt; 2033232570
+            [state_tax_id] =&gt; 2033232570
+            [soft_descriptor] =&gt; TIENDACOMPU
+        )
+
+    [credit] =&gt; Array
+        (
+            [consumed] =&gt; 0
+            [credit_level_id] =&gt; MLA1
+            [rank] =&gt; payer
+        )
+
+    [context] =&gt; Array
+        (
+            [device] =&gt; web-desktop
+            [flow] =&gt; normal
+            [registration_level] =&gt; completed
+            [source] =&gt; mercadolibre
+        )
+
+    [thumbnail] =&gt; Array
+        (
+            [picture_id] =&gt; 934359-MLA32025557454_082019
+            [picture_url] =&gt; https://mla-s2-p.mlstatic.com/934359-MLA32025557454_082019-O.jpg
+        )
+
+)
+</code></pre>

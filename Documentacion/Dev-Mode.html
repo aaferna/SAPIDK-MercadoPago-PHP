@@ -1,0 +1,49 @@
+<p>El modo Developer lo único que hace, (por ahora), es registrar el <code>$response</code> que devuelve la función <code>sapidk_mp</code> internamente en un archivo .txt llamado sapidkmp_log.</p>
+<p>Esta función, extremadamente útil para cuando se trata de un desarrollo, nos permite guardar la respuesta que nos realiza la función que ejecutemos y así de este modo tener registro de cual fue el error/respuesta que obtuvimos de la consulta que realizamos.</p>
+<h3 id="como-lo-hago">¿Como lo hago?</h3>
+<p>Simplemente hay que adicionar este fragmento de código:</p>
+<pre><code>
+&quot;developer&quot; =&gt; array(  
+
+    &#39;log&#39; =&gt; array( 
+
+        &quot;registro&quot; =&gt; true, 
+
+        &quot;directorio&quot; =&gt; &quot;&quot; 
+
+    ), 
+
+), 
+</code></pre>
+<p>Simplemente indicando como True a <code>registro</code> ya empezara a registrar el log. Ahora, este se guardará en la raíz donde se halla iniciado la función <code>sapidk_mp</code> si hay más de una consulta a la función en distintos directorios, en cada uno de ellos guardara un sapidkmp_log.txt con el registro de <code>$response</code>.</p>
+<p>Esto puede cambiar indicando en <code>directorio</code> la raíz &quot;hacia atrás&quot; donde se desea guardar.</p>
+<p>Quiero decir, que si el directorio donde se encuentra es &quot;a/b/c&quot; y nosotros no le indicamos donde guardar el log, lo guardara en la carpeta &quot;c&quot;, ahora si le indicamos en <code>directorio</code> que lo guarde en &quot;../&quot; lo guardara en la carpeta &quot;b&quot;.</p>
+<pre><code>
+&quot;developer&quot; =&gt; array(  
+
+    &#39;log&#39; =&gt; array( 
+
+        &quot;registro&quot; =&gt; true, 
+
+        &quot;directorio&quot; =&gt; &quot;../&quot; 
+
+    ), 
+
+), 
+</code></pre>
+<p>El ejemplo completo seria asi:</p>
+<pre><code>$dataArray = array(
+
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;developer&quot; =&gt; array( 
+        &#39;log&#39; =&gt; array(
+            &quot;registro&quot; =&gt; false,
+            &quot;directorio&quot; =&gt; &quot;../../&quot;
+        ),
+    ),
+    &quot;get&quot; =&gt; array( 
+        &#39;user&#39; =&gt; true,
+        &#39;id&#39; =&gt; &quot;264344950&quot; 
+    ),
+);</code></pre>

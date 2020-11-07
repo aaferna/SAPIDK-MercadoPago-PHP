@@ -1,0 +1,39 @@
+<p>Para poder usar Mercado Pago Point es obligatorio que nos activen la posibilidad de sincronizar los dispositivos que usaremos junto con la aplicación de Mercado Pago y los Dispositivos Point, para esto hay que comunicarse con soporte mediante Ayuda de Developers.</p>
+<p>Una vez que los dispositivos los nombremos y los sincronicemos mediante la sección de Configuración de la App de Mercado Pago, solo queda enlistarlos.</p>
+<h3 id="listar-points">Listar Point's</h3>
+<p>Podemos obtenemos los Points sincronizados con nuestra cuenta de la siguiente manera</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+    &quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;get&quot; =&gt; array(
+        &#39;point&#39; =&gt; true
+
+    ),
+);</code></pre>
+<h3 id="activando-un-point">Activando un Point</h3>
+<p>Los dispositivos se activan mediante la función POST, lo primero es tener reconocido a que dispositivo vamos a realizarle la solicitud de pago. Una vez que este identificado, y ejecutemos la función, se iniciara la App de MercadoPago lista para pasar la tarjeta.</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;post&quot; =&gt; array(
+        &#39;pointActive&#39; =&gt;  true,
+        &#39;data&#39; =&gt; array(
+            &#39;device_name&#39; =&gt; &#39;tabletSuarez&#39;, // Nombre del Dispositivo
+            &#39;amount&#39; =&gt; 123, // Valor a Cobrar
+            &#39;description&#39; =&gt; &#39;Pago Presencial&#39;, // Descripcion
+            &#39;external_reference&#39; =&gt; &#39;1235&#39;, // REFERENCIA PARA IDENFICAR LA VENTA CUANDO IPN
+            &#39;cc_type&#39; =&gt; &#39;debit_card&#39; // tipo de tarjeta, puede ser tambien credit_card
+        ),
+    ),
+);
+</code></pre>
+<h3 id="desactivar-pago-en-point">Desactivar pago en Point</h3>
+<p>Si no realizamos la desactivación de un cobro, en un dispositivo POINT luego de mandar un cobro, el dispositivo queda en estado <strong>BUSSY</strong>, por lo cual el mismo queda impedido ya que <em>hay un pago pendiente de cobro</em>, en el hipotético caso de que este se halla ignorado o fallo internamente se puede desactivar y pasar a disponible de la siguiente manera:</p>
+<pre><code>$dataArray = array(
+&quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+&quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;delete&quot; =&gt; array(
+        &#39;point&#39; =&gt;  &quot;tabletSuarez&quot;
+    ),
+);</code></pre>
+<p>Para una mejor integracion, recomiendo ver <a href="https://github.com/cheprogramadora/SAPIDK-MercadoPago-PHP/wiki/Funciones-forWhile">Funcion forWhile</a></p>

@@ -1,0 +1,83 @@
+<p>La mas antigua, comoda y practica herramienta que tiene Mercado Pago son los Links de Pago. Podremos crear los nuestros desde nuestro SDK si necesidad de tocar el Panel de Mercado Pago y asi como con POINT y QR recibir notificacion por IPN</p>
+<h3 id="crear-uno-nuevo-link">Crear uno nuevo Link</h3>
+<p>En el siguiente ejemplo verán como crear un Link de manera correcta, sencillo y listo para usar.</p>
+<pre><code>$dataArray = array(
+
+    &quot;accessToken&quot; =&gt; &quot;APP_USR-1864213086135942-012340-8b0cb3af04c2567f7bb8d09779aefba5-264334950&quot;,
+    &quot;user_id&quot; =&gt; &quot;264334950&quot;,
+    &quot;post&quot; =&gt; array(
+        &#39;link&#39; =&gt; true, 
+        &#39;data&#39; =&gt; array (
+            &#39;additional_info&#39; =&gt; &#39;&#39;,
+            &#39;auto_return&#39; =&gt; &#39;&#39;, // Habilita la posibilidad de retornar success de back_urls de manera automatica
+            &#39;back_urls&#39; =&gt; array (
+                    &#39;failure&#39; =&gt; &#39;&#39;,
+                    &#39;pending&#39; =&gt; &#39;&#39;,
+                    &#39;success&#39; =&gt; &#39;&#39;,
+            ),
+            &#39;binary_mode&#39; =&gt; true, // Dispone que el cobro sea success o failure unicamente
+            &#39;external_reference&#39; =&gt; &#39;&#39;,
+            &#39;items&#39; =&gt; array (
+                0 =&gt; array (
+                        &#39;id&#39; =&gt; &#39;&#39;,
+                        &#39;currency_id&#39; =&gt; &#39;ARS&#39;,
+                        &#39;title&#39; =&gt; &#39;prueba2&#39;,
+                        &#39;picture_url&#39; =&gt; &#39;&#39;,
+                        &#39;description&#39; =&gt; &#39;&#39;,
+                        &#39;category_id&#39; =&gt; &#39;services&#39;,
+                        &#39;quantity&#39; =&gt; 1,
+                        &#39;unit_price&#39; =&gt; 150,
+                    ),
+            ),
+            &#39;notification_url&#39; =&gt; NULL,
+            &#39;payer&#39; =&gt; array (
+                &#39;phone&#39; =&gt; 
+                    array (
+                        &#39;area_code&#39; =&gt; &#39;&#39;,
+                        &#39;number&#39; =&gt; &#39;&#39;,
+                    ),
+                &#39;address&#39; =&gt; 
+                    array (
+                        &#39;zip_code&#39; =&gt; &#39;&#39;,
+                        &#39;street_name&#39; =&gt; &#39;&#39;,
+                        &#39;street_number&#39; =&gt; NULL,
+                    ),
+                
+                &#39;identification&#39; =&gt; 
+                    array (
+                        &#39;number&#39; =&gt; &#39;&#39;,
+                        &#39;type&#39; =&gt; &#39;&#39;,
+                    ),
+                &#39;email&#39; =&gt; &#39;mail@gmail.com&#39;,
+                &#39;name&#39; =&gt; &#39;Agustin&#39;,
+                &#39;surname&#39; =&gt; &#39;fernandez&#39;
+            ),
+        ),
+    ),
+);</code></pre>
+<h3 id="links-con-vencimientos">Links con Vencimientos</h3>
+<p>Con esta función, podremos darle una vida util a el Link. En el ejemplo de abajo esta estipulado que expire a los 30 Minutos, pero si modificamos la linea <code>expiration_date_to</code> en ves de poner &quot;+ 30 minutes&quot;, modificar por la cantidad de tiempo que estipule necesario el vencimiento <em>en minutos</em></p>
+<p>Nosotros podemos ejecutar esto agregando el siguiente Array a nuestro dataArray</p>
+<pre><code>// Fuera del array
+    $datetime = new DateTime(date(&quot;Y-m-d H:i:s.uP&quot;));
+
+// Dentro del Array
+    &#39;expires&#39; =&gt; true,
+    &#39;expiration_date_from&#39; =&gt; date(&quot;Y-m-d\TH:i:s&quot;) . substr((string)microtime(), 1, 4).date(&#39;P&#39;),
+    &#39;expiration_date_to&#39; =&gt;  date(&quot;Y-m-d\TH:i:s&quot;, +strtotime(&quot;+30 minutes&quot;)) . substr((string)microtime(), 1, 4).date(&#39;P&#39;),</code></pre>
+<h3 id="mercado-envios">Mercado Envios</h3>
+<p>Mediante Links podemos crear envios usando Mercado Envios. Nosotros enviamos los datos del &quot;paquete&quot; mediante API y el Cliente carga los datos de envio en la pasarela de pagos de Mercado Pago, este calcula el costo de envio y se cobra todo en un mismo pago.</p>
+<p>Al recibir el pago queda habilitado el Voucher de envio del Correo en el panel de Mercado Pago listo para pegar en el paquete y enviarlo por correo.</p>
+<p>Nosotros podemos ejecutar esto agregando el siguiente Array a nuestro dataArray</p>
+<pre><code>&quot;shipments&quot; =&gt; array(
+    &quot;mode&quot; =&gt; &quot;me2&quot;,
+    &quot;dimensions&quot; =&gt; &quot;10x10x10,1500&quot;,
+    &quot;receiver_address&quot; =&gt; array(
+        &quot;zip_code&quot; =&gt; &quot;1655&quot;,
+        &quot;street_name&quot; =&gt; &quot;12 de Mayo&quot;,
+        &quot;street_number&quot; =&gt; &quot;2468&quot;,
+        &quot;floor&quot; =&gt; null,
+        &quot;apartment&quot; =&gt; null
+
+    )
+),</code></pre>
