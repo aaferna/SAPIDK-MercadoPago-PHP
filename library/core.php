@@ -116,6 +116,7 @@ namespace SAPIDK_MP {
 		public static function Currencies() { return CURL::CURL_GET_OT("https://api.mercadopago.com/currencies"); }
 		public static function CardProm() { return CURL::CURL_GET_OT("https://www.mercadopago.com/mla/credit_card_promos.json"); }
 		public static function IDTypes($token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/v1/identification_types", $token); }
+		public static function MethodTypes($token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/v1/payment_methods", $token); }
 
 
 
