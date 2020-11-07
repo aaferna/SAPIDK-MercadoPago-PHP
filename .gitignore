@@ -4,13 +4,10 @@ Thumbs.db
 ._*
 .DS_Store
 
-#IDEs
-SAPIDKMP VC.code-workspace
-
 #Ignorar... Posta....
 git-ignore
 
 ---
-
+old
 sapidkmp_log.txt
-testLive.php
+index.php
