@@ -8,21 +8,21 @@ namespace SAPIDK_MP {
 
 			$url = $uri."?access_token=".$token;
 
-	        $ch = curl_init($url);
+			$ch = curl_init($url);
 
-	        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-	        curl_setopt($ch, CURLOPT_POST, true);
-        	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($array));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+			curl_setopt($ch, CURLOPT_POST, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($array));
 
-	        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-	            'Content-Type: application/json',
-	            'Content-Length: ' . strlen(json_encode($array)))
-	        );
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'Content-Type: application/json',
+			'Content-Length: ' . strlen(json_encode($array)))
+			);
 
-	        $result = curl_exec($ch);
+			$result = curl_exec($ch);
 
-	        curl_close($ch);
+			curl_close($ch);
 
 			return $result;
 
@@ -38,9 +38,9 @@ namespace SAPIDK_MP {
 
 			$result = curl_exec($ch);
 
-	        curl_close($ch);
+			curl_close($ch);
 
-	        return $result;
+			return $result;
 
 		}
 
@@ -52,9 +52,9 @@ namespace SAPIDK_MP {
 
 			$result = curl_exec($ch);
 
-	        curl_close($ch);
+			curl_close($ch);
 
-	        return $result;
+			return $result;
 
 		}
 
@@ -63,24 +63,24 @@ namespace SAPIDK_MP {
 			$curl = curl_init();
 
 			curl_setopt_array($curl, array(
-			  CURLOPT_URL => $uri,
-			  CURLOPT_RETURNTRANSFER => true,
-			  CURLOPT_ENCODING => "",
-			  CURLOPT_MAXREDIRS => 10,
-			  CURLOPT_TIMEOUT => 0,
-			  CURLOPT_FOLLOWLOCATION => true,
-			  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			  CURLOPT_CUSTOMREQUEST => "GET",
-			  CURLOPT_HTTPHEADER => array(
-			    "Authorization: Bearer ".$token
-			  ),
+			CURLOPT_URL => $uri,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "GET",
+			CURLOPT_HTTPHEADER => array(
+			"Authorization: Bearer ".$token
+			),
 			));
 
 			$result = curl_exec($curl);
 
 			curl_close($curl);
 
-    		return $result;
+			return $result;
 
 		}
 
@@ -88,7 +88,7 @@ namespace SAPIDK_MP {
 		public static function CURL_DELETE_AB($uri, $token) {
 
 			$url = $uri."?access_token=".$token;
-	        $ch = curl_init();
+			$ch = curl_init();
 
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -102,9 +102,9 @@ namespace SAPIDK_MP {
 
 			curl_close($ch);
 
-	        $response = json_decode($result, true);
+			$response = json_decode($result, true);
 
-	        return $response;
+			return $response;
 
 		}
 
