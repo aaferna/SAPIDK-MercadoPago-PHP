@@ -128,27 +128,27 @@ namespace SAPIDK_MP {
 
 		public static function IPN($id, $token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/collections/notifications/".$id, $token); }
 
-
 		public static function PaymentView($id, $token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/v1/payments/".$id, $token); }
+		public static function PaymentRefound($id, $token) { return CURL::CURL_POST("https://api.mercadopago.com/v1/payments/".$id."/refunds", "", $token); }
 		public static function PaymentList($limit, $offset, $token) { 
 
 		 	$ext = "limit=".$limit."&offset=".$offset;
-
 			return CURL::CURL_GET_OA("https://api.mercadopago.com/v1/payments/search", $token."&".$ext); 
 
 		}
-		public static function PaymentRefound($id, $token) { return CURL::CURL_POST("https://api.mercadopago.com/v1/payments/".$id."/refunds", "", $token); }
 
-
+		public static function StoreID($id, $token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/stores/".$id, $token); }
+		public static function StoreNew($data, $id, $token) { return CURL::CURL_POST("https://api.mercadopago.com/users/".$id."/stores", $data, $token); }
+		public static function StoreDelete($idsucursal, $id, $token) { return CURL::CURL_DELETE_AB("https://api.mercadopago.com/users/".$id."/stores/".$idsucursal, $token); }
 		public static function StoreList($id, $limit, $offset, $token) { 
 
 			$ext = "limit=".$limit."&offset=".$offset;
 			return CURL::CURL_GET_OA("https://api.mercadopago.com/users/".$id."/stores/search", $token."&".$ext); 
 
 		}
-		public static function StoreID($id, $token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/stores/".$id, $token);}
-		public static function StoreNew($data, $id, $token) { return CURL::CURL_POST("https://api.mercadopago.com/users/".$id."/stores", $data, $token); }
-		public static function StoreDelete($idsucursal, $id, $token) { return CURL::CURL_DELETE_AB("https://api.mercadopago.com/users/".$id."/stores/".$idsucursal, $token); }
+		
+		public static function RecurrentCreator($data, $token) { return CURL::CURL_POST("https://api.mercadopago.com/preapproval", $data, $token); }
+
 
 
 
