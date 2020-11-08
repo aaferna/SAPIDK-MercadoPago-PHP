@@ -118,10 +118,6 @@ namespace SAPIDK_MP {
 		public static function IDTypes($token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/v1/identification_types", $token); }
 		public static function MethodTypes($token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/v1/payment_methods", $token); }
 
-
-
-
-
 		public static function NewBox($data, $token) { return CURL::CURL_POST("https://api.mercadopago.com/pos", $data, $token); }
 		public static function GetBox($token) { return CURL::CURL_GET_AB("https://api.mercadopago.com/pos", $token); }
 
@@ -142,6 +138,9 @@ namespace SAPIDK_MP {
 			return CURL::CURL_GET_OA("https://api.mercadopago.com/v1/payments/search", $token."&".$ext); 
 
 		}
+
+		public static function UserView($id, $token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/users/".$id, $token); }
+
 
 		public static function StoreID($id, $token) { return CURL::CURL_GET_OA("https://api.mercadopago.com/stores/".$id, $token); }
 		public static function StoreNew($data, $id, $token) { return CURL::CURL_POST("https://api.mercadopago.com/users/".$id."/stores", $data, $token); }
