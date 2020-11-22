@@ -1,9 +1,10 @@
-
 # SAPI-DK Mercado Pago
 SDK no oficial de Mercado Pago, para la integración de sistemas PHP
 
 ### Antes de continuar
 Si visita este proyecto con el fin de descargar una copia y empezar a trabajar, es ***altamente - recomendable*** que descargue [la ultima version compilada en las build](https://github.com/gusgeek/SAPIDK-MercadoPago-PHP/releases/latest).
+
+
 
 Nos sentiremos feliz de que en su proyecto nombre a SAPIDK-MP.
 
@@ -37,7 +38,12 @@ Ingresa en [Issue desde Aquí](https://github.com/gusgeek/SAPIDK-MercadoPago-PHP
 ## Autores
 
 * **Agustin Fernandez** 
-
+<p align="center">
+ <img src="https://img.shields.io/github/downloads/gusgeek/SAPIDK-MercadoPago-PHP/total">  
+ <img src="https://img.shields.io/github/v/release/gusgeek/SAPIDK-MercadoPago-PHP">  
+ <img src="https://img.shields.io/github/release-date/gusgeek/SAPIDK-MercadoPago-PHP">  
+ <img src="https://img.shields.io/github/languages/code-size/gusgeek/SAPIDK-MercadoPago-PHP"></p>
+ 
 <p align="center" >
  <strong>:pencil2: con :heart:</strong>
 </p>
