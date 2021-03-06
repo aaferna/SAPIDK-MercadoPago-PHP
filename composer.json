@@ -3,7 +3,7 @@
     "name": "gusgeek/sapidk-mercadopago-php",
     "description": "SDK no-oficial de Mercado Pago",
     "type": "library",
-    "license": "Apache-2",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Agustin Fernandez",
