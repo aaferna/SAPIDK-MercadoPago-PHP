@@ -1,0 +1,20 @@
+
+{
+    "name": "gusgeek/sapidk-mercadopago-php",
+    "description": "SDK no-oficial de Mercado Pago",
+    "type": "library",
+    "license": "Apache-2",
+    "authors": [
+        {
+            "name": "Agustin Fernandez",
+            "email": "aaferna@outlook.com.ar"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload":{
+        "psr-4": {
+            "SAPIDK_MP": "library/"
+        }
+    }
+}
