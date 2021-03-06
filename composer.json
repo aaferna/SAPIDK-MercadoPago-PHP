@@ -1,0 +1,21 @@
+{
+    "name": "gusgeek/sapidk-mercadopago-php",
+    "type": "library",
+    "description": "SDK no oficial de Mercado Pago, para la integración de sistemas PHP",
+    "keywords": ["mercado pago","mercado","pago","mercado libre", "sdk"],
+    "homepage": "https://github.com/gusgeek/SAPIDK-MercadoPago-PHP",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Agustin Fernandez",
+            "email": "aaferna@outlook.com.ar",
+            "homepage": "https://github.com/gusgeek",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "SAPIDK_MP\\Action\\": "library/"
+        }
+    }
+}
