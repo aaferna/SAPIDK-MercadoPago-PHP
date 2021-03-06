@@ -10,7 +10,7 @@
             "email": "aaferna@outlook.com.ar"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "3.1.2",
     "require": {
         "php": ">=7.0.0"
     },
