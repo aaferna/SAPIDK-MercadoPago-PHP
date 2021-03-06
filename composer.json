@@ -15,7 +15,7 @@
     ],
     "autoload": {
         "psr-4": {
-          "SAPIDK_MP\\Action\\": "library/"
+          "SAPIDK_MP": "library/"
         }
     }
 }
