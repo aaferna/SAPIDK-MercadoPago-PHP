@@ -1,6 +1,6 @@
 <?php 
 
-namespace SAPIDK_MP {
+namespace SAPIDK_MP;
 
 	class CURL {
 
@@ -160,7 +160,6 @@ namespace SAPIDK_MP {
 
 	}
 
-}
 
 
 ?>
