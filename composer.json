@@ -11,9 +11,7 @@
     ],
     "minimum-stability": "stable",
     "require": {},
-    "autoload":{
-        "psr-4": {
-            "SAPIDKMP\\": "src/"
-        }
+    "autoload": {
+        "files": ["src/core.php"]
     }
 }
