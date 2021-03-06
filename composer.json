@@ -14,7 +14,7 @@
     "require": {},
     "autoload":{
         "psr-4": {
-            "SAPIDK_MP": "library/"
+            "SAPIDK_MP\\": "library/"
         }
     }
 }
