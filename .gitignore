@@ -11,3 +11,5 @@ git-ignore
 old
 sapidkmp_log.txt
 index.php
+
+/vendor/
