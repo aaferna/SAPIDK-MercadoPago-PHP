@@ -39,10 +39,10 @@ Ingresa en [Issue desde Aquí](https://github.com/gusgeek/SAPIDK-MercadoPago-PHP
 
 * **Agustin Fernandez** 
 <p align="center">
- <img src="https://img.shields.io/github/downloads/gusgeek/SAPIDK-MercadoPago-PHP/total">  
- <img src="https://img.shields.io/github/v/release/gusgeek/SAPIDK-MercadoPago-PHP">  
- <img src="https://img.shields.io/github/release-date/gusgeek/SAPIDK-MercadoPago-PHP">  
- <img src="https://img.shields.io/github/languages/code-size/gusgeek/SAPIDK-MercadoPago-PHP"></p>
+ <img src="https://img.shields.io/github/downloads/aaferna/SAPIDK-MercadoPago-PHP/total">  
+ <img src="https://img.shields.io/github/v/release/aaferna/SAPIDK-MercadoPago-PHP">  
+ <img src="https://img.shields.io/github/release-date/aaferna/SAPIDK-MercadoPago-PHP">  
+ <img src="https://img.shields.io/github/languages/code-size/aaferna/SAPIDK-MercadoPago-PHP"></p>
  
 <p align="center" >
  <strong>:pencil2: con :heart:</strong>
